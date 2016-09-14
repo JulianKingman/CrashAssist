@@ -10,7 +10,7 @@ import Landing from './pages/Landing/Landing';
 
 import 'onsenui/css/onsenui.css'
 //Custom theme for OnsenUi components
-import './css/onsen-css-components.css';
+import '../startup/client/css/onsen-css-components.css';
 
 export default class App extends TrackerReact(Component){
 
