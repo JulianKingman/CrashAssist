@@ -1,1 +1,1 @@
-import '../imports/startup/client/routes';
+import '../imports/startup/routes';
