@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import onsen from 'onsenui';
+
 import {
     Navigator
 } from 'react-onsenui';
@@ -9,8 +10,9 @@ import {
 import Landing from './pages/Landing/Landing';
 
 import 'onsenui/css/onsenui.css'
+import 'onsenui/css/onsen-css-components.css'
 //Custom theme for OnsenUi components
-import '../startup/client/css/onsen-css-components.css';
+//import '../startup/client/css/onsen-css-components.css';
 
 export default class App extends TrackerReact(Component){
 
@@ -43,7 +45,7 @@ export default class App extends TrackerReact(Component){
         return (
             <Navigator
                 appContext={this}
-                initialRoute={{component:Landing}}
+                initialRoute={{component:Landing, props:{key:"landing"}}}
                 renderPage={this.renderPage}
                 />
         );

@@ -1,0 +1,15 @@
+.accordion {
+    .title {
+        &.open{
+            &:before{
+                transform: translateY(50%) rotate(90deg);
+            }
+        }
+        cursor: pointer;
+    }
+    >.expander {
+        min-height: 0;
+        overflow:hidden;
+        transition: all 0.3s ease;
+    }
+}
