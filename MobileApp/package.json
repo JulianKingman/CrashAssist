@@ -13,6 +13,6 @@
     "react-addons-css-transition-group": "^15.3.1",
     "react-addons-pure-render-mixin": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-onsenui": "^0.6.2"
+    "react-onsenui": "^1.0.0"
   }
 }
