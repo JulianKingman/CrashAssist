@@ -6,6 +6,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.11.5",
     "bcrypt": "^0.8.7",
     "meteor-node-stubs": "~0.2.0",
     "onsenui": "^2.0.0-rc.18",
