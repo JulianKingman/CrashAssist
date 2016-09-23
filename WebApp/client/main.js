@@ -1,1 +1,1 @@
-import '/api/startup/routes';
+import '/imports/startup/routes';
