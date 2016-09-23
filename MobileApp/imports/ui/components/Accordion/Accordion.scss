@@ -1,9 +1,7 @@
 .accordion {
     .title {
-        &.open{
-            &:before{
-                transform: translateY(50%) rotate(90deg);
-            }
+        .chevron {
+            transition: all .3s ease;
         }
         cursor: pointer;
     }

@@ -12,6 +12,7 @@ export default class Accordion extends Component {
             open: false
         }
     }
+
     handleClick() {
         let height = this.expander.style.height;
 
@@ -23,26 +24,26 @@ export default class Accordion extends Component {
             this.chevron.style.transform = "";
         }
     }
+
     expanderRef(ref) {
-        this.expander = ref;
-        window.requestAnimationFrame(()=>{
+        if(ref){
+            this.expander = ref;
+            window.requestAnimationFrame(()=>{
 
-            this.clientHeight = this.expander.clientHeight;
+                this.clientHeight = this.expander.clientHeight;
 
-            this.expander.style.height="0";
-        });
+                this.expander.style.height="0";
+            });
+        }
     }
+
     chevronRef(ref) {
         this.chevron = ReactDOM.findDOMNode(ref);
     }
-    render() {
-        let className = "accordion";
 
-        if(this.state.open) {
-            className += " open";
-        }
+    render() {
         return (
-            <div className={className}>
+            <div className="accordion">
                 <ListItem
                     className="title"
                     tappable={true}
