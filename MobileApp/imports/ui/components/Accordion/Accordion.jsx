@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom';
 
 import { ListItem, Icon } from 'react-onsenui';
 
+import onsen from 'onsenui';
+
 import './Accordion.scss';
 
 export default class Accordion extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false
-        }
-    }
 
-    handleClick() {
+    handleClick = () => {
         let height = this.expander.style.height;
 
         if(height === "0px"){
@@ -25,7 +21,7 @@ export default class Accordion extends Component {
         }
     }
 
-    expanderRef(ref) {
+    expanderRef = (ref) => {
         if(ref){
             this.expander = ref;
             window.requestAnimationFrame(()=>{
@@ -37,26 +33,34 @@ export default class Accordion extends Component {
         }
     }
 
-    chevronRef(ref) {
+    chevronRef = (ref) => {
         this.chevron = ReactDOM.findDOMNode(ref);
     }
 
     render() {
+        let { platform } = onsen;
+        let className = ["ons-icon", "chevron"];
+
+        if(!platform.isAndroid()){
+            className.push("ion-chevron-right", "ons-icon--ion");
+        }else{
+            className.push("zmdi-chevron-right", "zmdi");
+        }
         return (
             <div className="accordion">
-                <ListItem
-                    className="title"
-                    tappable={true}
-                    onClick={() => this.handleClick()} >
-                    <div className="left">
-                        <Icon className="chevron" ref={(ref) => this.chevronRef(ref)} size={{default: 14, material: 14}} icon='ion-chevron-right' />
+                <div className="title list__item" onClick={this.handleClick}>
+                    <div className="left list__item__left">
+                        <div ref={this.chevronRef} className={className.join(" ")} style={{fontSize:"14px"}}></div>
                     </div>
-                    <div className="center">{this.props.title}</div>
-                </ListItem>
-                <div className="expander" ref={(ref) => this.expanderRef(ref)}>
-                    <ListItem>
-                        <div className="center">{this.props.text}</div>
-                    </ListItem>
+                    <div className="center list__item__center">
+                        {this.props.title}
+                    </div>
+                </div>
+
+                <div className="expander" ref={this.expanderRef}>
+                    <div className="list__item">
+                        <div className="center list__item__center">{this.props.text}</div>
+                    </div>
                     {this.props.children}
                 </div>
             </div>
