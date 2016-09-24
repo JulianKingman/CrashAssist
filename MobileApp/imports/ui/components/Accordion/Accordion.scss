@@ -1,0 +1,13 @@
+.accordion {
+    .title {
+        .chevron {
+            transition: all .3s ease;
+        }
+        cursor: pointer;
+    }
+    >.expander {
+        min-height: 0;
+        overflow:hidden;
+        transition: all 0.3s ease;
+    }
+}
