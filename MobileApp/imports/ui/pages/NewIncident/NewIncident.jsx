@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Page, Toolbar, BackButton, ToolbarButton } from 'react-onsenui';
+import React, {Component} from 'react';
+import {Page, Toolbar, BackButton, ToolbarButton} from 'react-onsenui';
 import StepNav from '/imports/ui/components/StepNav/StepNav.jsx';
-import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
+import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 
 import pageSchema from '/imports/api/page-schema.js'
 
@@ -17,24 +17,28 @@ export default class NewIncident extends Component {
     }
 
     nextStep = () => {
-        if(this.state.currentStep < pageSchema.length){
-            this.setState({currentStep:this.state.currentStep+1});
+        if (this.state.currentStep < pageSchema.length) {
+            this.setState({currentStep: this.state.currentStep + 1, activeAccordion: 0});
         }
     }
 
     prevStep = () => {
-        if(this.state.currentStep > 1){
-            this.setState({currentStep:this.state.currentStep-1});
+        if (this.state.currentStep > 1) {
+            this.setState({currentStep: this.state.currentStep - 1, activeAccordion: 0});
         }
     }
 
+    currentStepData() {
+        return pageSchema[this.state.currentStep - 1];
+    }
+
     renderAccordions() {
-        let currentStep = pageSchema[this.state.currentStep-1];
+        let currentStep = pageSchema[this.state.currentStep - 1];
 
         return currentStep.accordions.map((accordion, index) => {
             let key = `${this.state.currentStep}-${index}`;
 
-            return  <Accordion key={key} title={accordion.title} text={accordion.text} />
+            return <Accordion key={key} title={accordion.title} text={accordion.text}/>
         });
     }
 
@@ -57,19 +61,22 @@ export default class NewIncident extends Component {
             </Toolbar>
         );
     }
-    render(){
+
+    render() {
+        console.log(this.currentStepData());
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <div id="new-incident">
-                    <div id="accordions">
-                        {this.renderAccordions()}
-                    </div>
+                    <Accordions data={this.currentStepData()} defaultAccordion="0"/>
+                    {/*<div id="accordions">*/}
+                    {/*{this.renderAccordions()}*/}
+                    {/*</div>*/}
                     <StepNav
                         steps={pageSchema}
                         currentStep={this.state.currentStep}
                         prev={this.prevStep}
                         next={this.nextStep}
-                        />
+                    />
                 </div>
             </Page>
         );
