@@ -27,4 +27,5 @@ socialize:base-model
 static-html
 fourseven:scss
 crosswalk
+lepozepo:cloudinary
 react-meteor-data
