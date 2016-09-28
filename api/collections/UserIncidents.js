@@ -8,24 +8,28 @@ const UserIncidents = new Mongo.Collection("user_incidents");
 let Schemas = {};
 
 Schemas.UserIncidents = new SimpleSchema({
-    user_id: {
-        type: String,
-        label: "User"
+    "userId": {
+        type:String,
+        regEx:SimpleSchema.RegEx.Id,
+        autoValue: function() {
+            if (this.isInsert){
+                return this.userId;
+            }
+        },
+        index: 1,
+        denyUpdate:true
     },
     title: {
         type: String
     },
     dateCreated: {
         type: Date,
-        autoValue: ()=> {
+        autoValue: function() {
             if (this.isInsert) {
                 return new Date();
-            } else if (this.isUpsert) {
-                return {$setOnInsert: new Date()};
-            } else {
-                this.unset();  // Prevent user from supplying their own value
             }
-        }
+        },
+        denyUpdate:true
     }
 });
 
@@ -71,10 +75,13 @@ UserIncident.attachCollection(UserIncidents);
 
 UserIncidents.allow({
     insert(userId, userIncident){
+        return userIncident.checkOwnership();
     },
     update(userId, userIncident){
+        return userIncident.checkOwnership();
     },
     remove(userId, userIncident) {
+        return userIncident.checkOwnership()
     }
 });
 
