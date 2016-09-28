@@ -1,6 +1,8 @@
 /**
  * Created by Julian on 9/15/16.
  */
+import { BaseModel } from 'meteor/socialize:base-model';
+
 const UserIncidents = new Mongo.Collection("user_incidents");
 
 let Schemas = {};
