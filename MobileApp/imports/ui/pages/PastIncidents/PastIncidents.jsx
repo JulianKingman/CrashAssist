@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
 import { Page, Toolbar, BackButton, ListItem, List } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
+import SingleIncident from '/imports/ui/pages/SingleIncident/SingleIncident.jsx';
 import { UserIncidents } from '/imports/api/collections/UserIncidents';
+
 
 class PastIncidents extends Component {
     renderToolbar() {
@@ -19,13 +21,20 @@ class PastIncidents extends Component {
             </Toolbar>
         );
     }
+
     render(){
+        let { navigator } = this.props.appContext;
+
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <List
                     dataSource={this.props.pastIncidents}
                     renderRow={(incident) =>
-                        <ListItem key={incident._id} modifier="chevron" tappable >
+                        <ListItem
+                            key={incident._id}
+                            modifier="chevron"
+                            tappable
+                            onClick={()=> navigator.pushPage({component:SingleIncident, props:{_id:incident._id, key:"SingleIncident"}}) } >
                             <div className="center">{incident.title}</div>
                         </ListItem>
                     }
