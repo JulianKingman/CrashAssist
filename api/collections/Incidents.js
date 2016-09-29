@@ -1,8 +1,10 @@
 /**
  * Created by Julian on 9/15/16.
  */
-const Incidents = new Mongo.Collection("user_incidents");
+const Incidents = new Mongo.Collection("incidents");
 import moment from 'moment';
+import {BaseModel} from 'meteor/socialize:base-model';
+import {Users} from './Users.js';
 
 let Schemas = {};
 
@@ -13,7 +15,7 @@ Schemas.Incidents = new SimpleSchema({
     },
     title: {
         type: String,
-        autovalue: ()=> {
+        autoValue: ()=> {
             return `${moment().format('mm/dd/yy')} incident`;
         }
     },

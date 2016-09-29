@@ -4,7 +4,7 @@ import {FieldType} from 'simple-react-form'
 import {Icon} from 'react-onsenui';
 // import onsen from 'onsenui';
 
-export default class PhotoInput extends FieldType {}
+export default class PhotoInput extends FieldType {
     // constructor(props) {
     //     super(props)
     //     this.state = {}

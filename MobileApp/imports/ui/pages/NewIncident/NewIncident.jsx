@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Page, Toolbar, BackButton, ToolbarButton} from 'react-onsenui';
 import StepNav from '/imports/ui/components/StepNav/StepNav.jsx';
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
+import {Users, User} from '/imports/api/collections/Users.js';
+import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 
 import pageSchema from '/imports/api/page-schema.js'
 
