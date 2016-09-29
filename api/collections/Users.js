@@ -1,7 +1,11 @@
 /**
  * Created by Julian on 9/15/16.
  */
-Users = Meteor.users();
+
+import {BaseModel} from 'meteor/socialize:base-model';
+import {Incidents} from './Incidents.js';
+
+const Users = Meteor.users;
 
 //collection hooks
 
@@ -23,16 +27,16 @@ class User extends BaseModel {
     }
 
     incidents() {
-        return UserIncidents.find({user_id: this._id});
+        return Incidents.find({user_id: this._id});
     }
 
-    forms() {
-        return UserForms.find({user_id: this._id});
-    }
-
-    inputs() {
-        return UserInputs.find({user_id: this._id});
-    }
+    // forms() {
+    //     return UserForms.find({user_id: this._id});
+    // }
+    //
+    // inputs() {
+    //     return UserInputs.find({user_id: this._id});
+    // }
 }
 
 Users.allow({
