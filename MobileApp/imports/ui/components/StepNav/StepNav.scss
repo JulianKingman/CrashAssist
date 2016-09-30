@@ -19,6 +19,7 @@ $stepper-color: #3F81B1;
             height: 4px;
             position: absolute;
             z-index:0;
+            top: calc(50% - 2px);
             left:$stepper-spacing;
             right:$stepper-spacing;
             border-radius:12px;

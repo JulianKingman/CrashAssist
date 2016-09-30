@@ -9,27 +9,34 @@ import {Users} from './Users.js';
 let Schemas = {};
 
 Schemas.Incidents = new SimpleSchema({
-    user_id: {
+    userId: {
         type: String,
-        label: "User"
+        regEx: SimpleSchema.RegEx.Id,
+        autoValue: function () {
+            if(this.isInsert){
+                return this.userId;
+            }
+        },
+        index: 1,
+        denyUpdate:true
     },
     title: {
         type: String,
-        autoValue: ()=> {
-            return `${moment().format('mm/dd/yy')} incident`;
+        autoValue: function() {
+            if(!this.isSet){
+                return `${moment().format('MM/DD/YY')} incident`;
+            }
         }
     },
     dateCreated: {
         type: Date,
-        autoValue: ()=> {
+        autoValue: function() {
             if (this.isInsert) {
                 return new Date();
-            } else if (this.isUpsert) {
-                return {$setOnInsert: new Date()};
-            } else {
-                this.unset();  // Prevent user from supplying their own value
             }
-        }
+        },
+        denyUpdate: true,
+        index: 1
     },
     //driver info
     "driverInfo.name": {type: String},
@@ -68,15 +75,24 @@ Schemas.Incidents = new SimpleSchema({
     "witnessInfo.$.email": {type: String},
     "witnessInfo.$.testimony": {type: String},
     //driver statement
-    "driverStatement": {type: String},
+    "driverStatement": {
+        type: String,
+        optional: true
+    },
     //sketch photo public id
-    "sketch": {type: String},
+    "sketch": {
+        type: String,
+        optional: true
+    },
     //array of photo public ids
-    "photos": {type: [String]},
+    "photos":  {
+        type: [String],
+        optional: true
+    },
 
 });
 
-Incidents.attachSchema(Schemas.UserIncidents);
+Incidents.attachSchema(Schemas.Incidents);
 
 //collection hooks
 
@@ -100,16 +116,8 @@ class Incident extends BaseModel {
     }
 
     user() {
-        return Users.findOne(this.user_id);
+        return Users.findOne(this.userId);
     }
-
-    // forms() {
-    //     return UserForms.find({form_id: this._id});
-    // }
-    //
-    // inputs() {
-    //     return UserInputs.find({form_id: this._id});
-    // }
 }
 
 Incident.attachCollection(Incidents);
@@ -117,11 +125,14 @@ Incident.attachCollection(Incidents);
 //allow/deny
 
 Incidents.allow({
-    insert(userId, userIncident){
+    insert(userId, Incident){
+        return Incident.checkOwnership();
     },
-    update(userId, userIncident){
+    update(userId, Incident){
+        return Incident.checkOwnership();
     },
-    remove(userId, userIncident) {
+    remove(userId, Incident) {
+        return Incident.checkOwnership();
     }
 });
 

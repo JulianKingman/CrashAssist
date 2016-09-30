@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Page, Button, Ripple } from 'react-onsenui';
 import onsen from 'onsenui';
-import NewIncident from '../../pages/NewIncident/NewIncident.jsx';
+import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
+import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
+
 import './Landing.scss';
 
 export default class Landing extends Component {
@@ -9,7 +11,7 @@ export default class Landing extends Component {
     render(){
         let { navigator } = this.props.appContext;
         let modifier = "large";
-        let ripple = false;
+        let ripple;
 
 
         if(!onsen.platform.isAndroid()){
@@ -28,7 +30,10 @@ export default class Landing extends Component {
                         {ripple}New Incident
                     </Button>
                     <p>In an accident? Start here.</p>
-                    <Button modifier='large outline' >{ripple}Past Incidents</Button>
+                    <Button modifier='large outline'
+                        onClick={()=> navigator.pushPage({component:PastIncidents, props:{key:"PastIncidents"}})}>
+                        {ripple}Past Incidents
+                    </Button>
                 </div>
             </Page>
         );
