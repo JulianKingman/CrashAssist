@@ -1,5 +1,5 @@
-import { UserIncidents } from '/imports/api/collections/UserIncidents.js';
+import { Incidents } from '/imports/api/collections/Incidents.js';
 
 Meteor.publish('singleIncident', function(_id) {
-    return UserIncidents.find(_id);
+    return Incidents.find(_id);
 });

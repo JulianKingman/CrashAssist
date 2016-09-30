@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Page, Toolbar, BackButton, List, ListItem } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
-import { UserIncidents } from '/imports/api/collections/UserIncidents';
+import { Incidents } from '/imports/api/collections/Incidents.js';
 
 class SingleIncident extends Component {
     renderToolbar = () => {
@@ -32,7 +32,7 @@ export default SingleIncidentContainer = createContainer((props)=>{
 
     const singleIncidentHandle = Meteor.subscribe("singleIncident", _id);
     const ready = singleIncidentHandle.ready();
-    const incident = UserIncidents.findOne(_id)
+    const incident = Incidents.findOne(_id)
 
     return {
         singleIncidentHandle,

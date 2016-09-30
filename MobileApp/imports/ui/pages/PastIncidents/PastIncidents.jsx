@@ -3,7 +3,7 @@ import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
 import { Page, Toolbar, BackButton, ListItem, List } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
 import SingleIncident from '/imports/ui/pages/SingleIncident/SingleIncident.jsx';
-import { UserIncidents } from '/imports/api/collections/UserIncidents';
+import { Incidents } from '/imports/api/collections/Incidents.js';
 
 
 class PastIncidents extends Component {
@@ -45,9 +45,9 @@ class PastIncidents extends Component {
 }
 
 export default PastIncidentsContainer = createContainer(() => {
-    const pastIncidentsHandle = Meteor.subscribe('UserIncidents');
+    const pastIncidentsHandle = Meteor.subscribe('PastIncidents');
     const loading = !pastIncidentsHandle.ready();
-    const pastIncidents = UserIncidents.find().fetch();
+    const pastIncidents = Incidents.find().fetch();
 
     return {
         pastIncidentsHandle,

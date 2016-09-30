@@ -76,7 +76,7 @@ Schemas.Incidents = new SimpleSchema({
 
 });
 
-Incidents.attachSchema(Schemas.UserIncidents);
+Incidents.attachSchema(Schemas.Incidents);
 
 //collection hooks
 
