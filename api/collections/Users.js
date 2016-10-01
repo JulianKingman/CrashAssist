@@ -4,6 +4,8 @@
 
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Incidents} from './Incidents.js';
+import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+
 
 const Users = Meteor.users;
 

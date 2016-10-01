@@ -21,12 +21,13 @@
         min-height: 0;
         overflow:hidden;
         transition: all 0.3s ease;
-        .list__item{
-            padding-left: 36px;
-            padding-right: 36px;
-            .list__item__center{
-                background: none;
-            }
+    }
+    .list__item {
+        padding-left: 36px;
+        padding-right: 36px;
+        .list__item__center {
+            background: none;
+            //background-image: none;
         }
     }
 }

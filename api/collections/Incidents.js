@@ -5,6 +5,8 @@ const Incidents = new Mongo.Collection("incidents");
 import moment from 'moment';
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Users} from './Users.js';
+import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+
 
 let Schemas = {};
 
@@ -32,48 +34,47 @@ Schemas.Incidents = new SimpleSchema({
         }
     },
     //driver info
-    "driverInfo.name": {type: String},
-    "driverInfo.address": {type: String},
-    "driverInfo.phone": {type: String},
-    "driverInfo.email": {type: String},
-    "driverInfo.license": {type: String},
+    "driverInfo.name": {type: String, srf: {type: Text}},
+    "driverInfo.address": {type: String, srf: {type: Text}},
+    "driverInfo.phone": {type: String, srf: {type: Phone}},
+    "driverInfo.email": {type: String, srf: {type: Email}},
+    "driverInfo.license": {type: String, srf: {type: Text}},
     //[passenger info]
-    "passengerInfo.$.name": {type: String},
-    "passengerInfo.$.phone": {type: String},
-    "passengerInfo.$.email": {type: String},
+    "passengerInfo.$.name": {type: String, srf: {type: Text}},
+    "passengerInfo.$.phone": {type: String, srf: {type: Phone}},
+    "passengerInfo.$.email": {type: String, srf: {type: Email}},
     //vehicle info
-    "vehicleInfo.make": {type: String},
-    "vehicleInfo.model": {type: String},
-    "vehicleInfo.year": {type: Number},
-    "vehicleInfo.plate": {type: String},
+    "vehicleInfo.make": {type: String, srf: {type: Text}},
+    "vehicleInfo.model": {type: String, srf: {type: Text}},
+    "vehicleInfo.year": {type: Number, srf: {type: Number}},
+    "vehicleInfo.plate": {type: String, srf: {type: Text}},
     //owner info
-    "ownerInfo.name": {type: String, optional: true},
-    "ownerInfo.phone": {type: String, optional: true},
-    "ownerInfo.email": {type: String, optional: true},
-    "ownerInfo.license": {type: String, optional: true},
+    "ownerInfo.name": {type: String, optional: true, srf: {type: Text}},
+    "ownerInfo.phone": {type: String, optional: true, srf: {type: Phone}},
+    "ownerInfo.email": {type: String, optional: true, srf: {type: Email}},
+    "ownerInfo.license": {type: String, optional: true, srf: {type: Text}},
     //insurance info
-    "insuranceInfo.company": {type: String},
-    "insuranceInfo.policyNumber": {type: String},
-    "insuranceInfo.agent": {type: String},
+    "insuranceInfo.company": {type: String, srf: {type: Text}},
+    "insuranceInfo.policyNumber": {type: String, srf: {type: Text}},
+    "insuranceInfo.agent": {type: String, srf: {type: Text}},
     //time & location
-    "timeLocation.date": {type: Date},
-    "timeLocation.time": {type: String},
-    "timeLocation.location": {type: String},
+    "timeLocation.date": {type: Date, srf: {type: Date}},
+    "timeLocation.time": {type: String, srf: {type: Text}},
+    "timeLocation.location": {type: String, srf: {type: Text}},
     //Traffic Information
-    "trafficInfo.roadConditions": {type: String},
-    "trafficInfo.trafficControls": {type: String},
+    "trafficInfo.roadConditions": {type: String, srf: {type: Text}},
+    "trafficInfo.trafficControls": {type: String, srf: {type: Text}},
     //Witness Information
-    "witnessInfo.$.name": {type: String},
-    "witnessInfo.$.phone": {type: String},
-    "witnessInfo.$.email": {type: String},
-    "witnessInfo.$.testimony": {type: String},
+    "witnessInfo.$.name": {type: String, srf: {type: Text}},
+    "witnessInfo.$.phone": {type: String, srf: {type: Phone}},
+    "witnessInfo.$.email": {type: String, srf: {type: Email}},
+    "witnessInfo.$.testimony": {type: String, srf: {type: Textarea}},
     //driver statement
-    "driverStatement": {type: String},
+    "driverStatement": {type: String, srf: {type: Textarea}},
     //sketch photo public id
-    "sketch": {type: String},
+    "sketch": {type: String, srf: {type: Photo}},
     //array of photo public ids
-    "photos": {type: [String]},
-
+    "photos": {type: [String], srf: {type: Photo}},
 });
 
 Incidents.attachSchema(Schemas.UserIncidents);

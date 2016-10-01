@@ -44,6 +44,10 @@ export default class NewIncident extends Component {
         });
     }
 
+    componentDidMount(){
+        // console.log(Incidents.simpleSchema().pick(['driverInfo']));
+    }
+
     renderToolbar() {
         return (
             <Toolbar>

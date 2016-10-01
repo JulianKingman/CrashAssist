@@ -23,14 +23,17 @@ export default class Accordions extends Component {
         // this.setState({activeAccordion: index});
         let accordion = this.refs[`accordion-${index}`];
         let expander = accordion.refs.expander;
+        let accordionDom = ReactDOM.findDOMNode(accordion);
         // $(expander).css({"height": "auto"});
         // let normalHeight = expander.clientHeight;
         // $(expander).css({"height": 0});
         // console.log(expander, normalHeight);
-        $(".accordion .expander").height(0).addClass("closed");
-        $(expander).removeClass("closed").animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
+        $(".accordion .expander").height(0);
+        console.log($(accordion));
+        $(".accordion").removeClass("open").addClass("closed");
+        $(accordionDom).removeClass("closed").addClass("open");
+        $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
                 //todo: tweak this later to make sure everything scrolls right
-                let accordionDom =  ReactDOM.findDOMNode(accordion);
                 $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
             }
         );
