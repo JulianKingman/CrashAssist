@@ -47,7 +47,7 @@ class PastIncidents extends Component {
 export default PastIncidentsContainer = createContainer(() => {
     const pastIncidentsHandle = Meteor.subscribe('PastIncidents');
     const loading = !pastIncidentsHandle.ready();
-    const pastIncidents = Incidents.find().fetch();
+    const pastIncidents = Incidents.find({completed:true}).fetch();
 
     return {
         pastIncidentsHandle,
