@@ -89,6 +89,7 @@ raix:onetimeout@1.0.4
 raix:stubfence@1.0.3
 random@1.0.10
 rate-limit@1.0.5
+react-meteor-data@0.2.9
 reactive-dict@1.1.8
 reactive-var@1.0.10
 reload@1.1.10
@@ -108,6 +109,7 @@ standard-minifier-js@1.2.0
 static-html@1.1.12
 templating@1.2.14
 templating-tools@1.0.4
+tmeasday:check-npm-versions@0.2.0
 tracker@1.1.0
 ui@1.0.11
 ultimatejs:tracker-react@1.0.5

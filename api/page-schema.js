@@ -1,6 +1,6 @@
 const pageSchema = [
   {
-    "_id": "example",
+    "_id": "1",
     "title": "Safety",
     "subtitle": "Stay safe and follow along with the steps above.",
     "order": 1,
@@ -40,7 +40,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "2",
     "title": "Cooperate",
     "subtitle": "Cooperate with the police.",
     "order": 2,
@@ -52,7 +52,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "3",
     "title": "Get Info",
     "subtitle": "Stay safe and follow along with the steps above.",
     "order": 3,
@@ -309,7 +309,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "4",
     "title": "Notify insurance",
     "subtitle": "Next step is to notify insurance.",
     "order": 4,
@@ -321,7 +321,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "5",
     "title": "Seek medical attention",
     "subtitle": "It's important to seek medical attention.",
     "order": 5,
@@ -333,7 +333,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "6",
     "title": "Consult attorney",
     "subtitle": "Let professionals arbitrate on your behalf.",
     "order": 6,
@@ -345,7 +345,7 @@ const pageSchema = [
     ]
   },
   {
-    "_id": "example",
+    "_id": "7",
     "title": "Info on whiplash",
     "subtitle": "Whiplash is a common crash injury.",
     "order": 7,
