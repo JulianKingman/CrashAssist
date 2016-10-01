@@ -40,6 +40,12 @@ export default class Accordions extends Component {
         this.openAccordion(0);
     }
 
+    componentDidUpdate(oldProps) {
+        if(oldProps.data._id !== this.props.data._id){
+            this.openAccordion(0);
+        }
+    }
+
     render() {
         return (
             <div className="accordions" id={`accordions-${this.props.data._id}`}>
