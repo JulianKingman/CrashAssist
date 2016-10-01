@@ -38,6 +38,11 @@ Schemas.Incidents = new SimpleSchema({
         denyUpdate: true,
         index: 1
     },
+    completed: {
+        type: Boolean,
+        defaultValue: false,
+        index: 1
+    },
     //driver info
     "driverInfo.name": {type: String},
     "driverInfo.address": {type: String},
@@ -113,6 +118,10 @@ Incidents.attachSchema(Schemas.Incidents);
 class Incident extends BaseModel {
     constructor(document) {
         super(document);  //Must call super passing in the document.
+    }
+
+    markCompleted() {
+        this.update({$set:{completed:true}});
     }
 
     user() {
