@@ -30,7 +30,7 @@ class SingleIncident extends Component {
 export default SingleIncidentContainer = createContainer((props)=>{
     const { _id } = props;
 
-    const singleIncidentHandle = Meteor.subscribe("singleIncident", _id);
+    const singleIncidentHandle = Meteor.subscribe("SingleIncident", _id);
     const ready = singleIncidentHandle.ready();
     const incident = Incidents.findOne(_id)
 

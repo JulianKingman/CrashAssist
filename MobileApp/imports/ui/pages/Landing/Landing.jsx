@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Page, Button, Ripple } from 'react-onsenui';
 import onsen from 'onsenui';
+import { Incidents, Incident } from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
 
 import './Landing.scss';
 
 export default class Landing extends Component {
-
+    gotoNewIncident = () => {
+        if(!Incidents.findOne({completed:false})){
+            new Incident().save();
+        }
+        this.props.appContext.navigator.pushPage({component:NewIncident, props:{currentStep:1, key:"Steps"}});
+    }
     render(){
         let { navigator } = this.props.appContext;
         let modifier = "large";
@@ -26,7 +32,7 @@ export default class Landing extends Component {
                     <h1>Remain Calm, <span>We'll help you through this!</span></h1>
                     <img src="images/crash.svg" />
                     <Button modifier={modifier}
-                        onClick={() => navigator.pushPage({component:NewIncident, props:{currentStep:1, key:"Steps"}})}>
+                        onClick={this.gotoNewIncident}>
                         {ripple}New Incident
                     </Button>
                     <p>In an accident? Start here.</p>
