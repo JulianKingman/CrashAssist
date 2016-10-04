@@ -52,47 +52,47 @@ Schemas.Incidents = new SimpleSchema({
         index: 1
     },
     //driver info
-    "driverInfo.name": {type: String, optional: true, srf: {type: TextInput}},
-    "driverInfo.address": {type: String, optional: true, srf: {type: TextInput}},
-    "driverInfo.phone": {type: String, optional: true, srf: {type: TelInput}},
-    "driverInfo.email": {type: String, optional: true, srf: {type: EmailInput}},
-    "driverInfo.license": {type: String, optional: true, srf: {type: TextInput}},
+    "driverInfo.name": {type: String, srf: {type: TextInput}},
+    "driverInfo.address": {type: String, srf: {type: TextInput}},
+    "driverInfo.phone": {type: String, srf: {type: TelInput}},
+    "driverInfo.email": {type: String, srf: {type: EmailInput}},
+    "driverInfo.license": {type: String, srf: {type: TextInput}},
     //[passenger info]
-    "passengerInfo.$.name": {type: String, srf: {type: TextInput}, optional: true},
-    "passengerInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
-    "passengerInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
+    "passengerInfo.$.name": {type: String, srf: {type: TextInput}},
+    "passengerInfo.$.phone": {type: String, srf: {type: TelInput}},
+    "passengerInfo.$.email": {type: String, srf: {type: EmailInput}},
     //vehicle info
-    "vehicleInfo.make": {type: String, srf: {type: TextInput}}, optional: true,
-    "vehicleInfo.model": {type: String, srf: {type: TextInput}}, optional: true,
-    "vehicleInfo.year": {type: Number, srf: {type: NumberInput}, optional: true},
-    "vehicleInfo.plate": {type: String, srf: {type: TextInput}}, optional: true,
+    "vehicleInfo.make": {type: String, srf: {type: TextInput}},
+    "vehicleInfo.model": {type: String, srf: {type: TextInput}},
+    "vehicleInfo.year": {type: Number, srf: {type: NumberInput}},
+    "vehicleInfo.plate": {type: String, srf: {type: TextInput}},
     //owner info
-    "ownerInfo.name": {type: String, optional: true, srf: {type: TextInput}},
-    "ownerInfo.phone": {type: String, optional: true, srf: {type: TelInput}},
-    "ownerInfo.email": {type: String, optional: true, srf: {type: EmailInput}},
-    "ownerInfo.license": {type: String, optional: true, srf: {type: TextInput}},
+    "ownerInfo.name": {type: String, srf: {type: TextInput}},
+    "ownerInfo.phone": {type: String, srf: {type: TelInput}},
+    "ownerInfo.email": {type: String, srf: {type: EmailInput}},
+    "ownerInfo.license": {type: String, srf: {type: TextInput}},
     //insurance info
-    "insuranceInfo.company": {type: String, srf: {type: TextInput}, optional: true},
-    "insuranceInfo.policyNumber": {type: String, srf: {type: TextInput}, optional: true},
-    "insuranceInfo.agent": {type: String, srf: {type: TextInput}, optional: true},
+    "insuranceInfo.company": {type: String, srf: {type: TextInput}},
+    "insuranceInfo.policyNumber": {type: String, srf: {type: TextInput}},
+    "insuranceInfo.agent": {type: String, srf: {type: TextInput}},
     //time & location
-    "timeLocation.date": {type: Date, srf: {type: DateInput}, optional: true},
-    "timeLocation.time": {type: String, srf: {type: TextInput}, optional: true},
-    "timeLocation.location": {type: String, srf: {type: TextInput}, optional: true},
+    "timeLocation.date": {type: Date, srf: {type: DateInput}},
+    "timeLocation.time": {type: String, srf: {type: TextInput}},
+    "timeLocation.location": {type: String, srf: {type: TextInput}},
     //Traffic Information
-    "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}, optional: true},
-    "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}, optional: true},
+    "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}},
+    "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}},
     //Witness Information
-    "witnessInfo.$.name": {type: String, srf: {type: TextInput}, optional: true},
-    "witnessInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
-    "witnessInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
-    "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}, optional: true},
+    "witnessInfo.$.name": {type: String, srf: {type: TextInput}},
+    "witnessInfo.$.phone": {type: String, srf: {type: TelInput}},
+    "witnessInfo.$.email": {type: String, srf: {type: EmailInput}},
+    "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}},
     //driver statement
-    "driverStatement": {type: String, srf: {type: TextareaInput}, optional: true},
+    "driverStatement": {type: String, srf: {type: TextareaInput}},
     //sketch photo public id
-    "sketch": {type: String, srf: {type: PhotoInput}, optional: true},
+    "sketch": {type: String, srf: {type: PhotoInput}},
     //array of photo public ids
-    "photos": {type: [String], srf: {type: PhotoInput}, optional: true},
+    "photos": {type: [String], srf: {type: PhotoInput}},
 });
 
 Incidents.attachSchema(Schemas.Incidents);
