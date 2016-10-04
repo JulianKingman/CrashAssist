@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form'
 // import ReactDOM from 'react-dom';
-import {Icon} from 'react-onsenui';
+// import {Icon} from 'react-onsenui';
 // import onsen from 'onsenui';
 
 export default class PhotoInput extends FieldType {

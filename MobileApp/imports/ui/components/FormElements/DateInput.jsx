@@ -1,9 +1,9 @@
 import React from 'react';
 import {FieldType} from 'simple-react-form';
-import {TextInput} from './TextInput.jsx';
+import TextInput from './TextInput.jsx';
 
 // textarea
-class DateInput extends TextFieldComponent {
+export default class DateInput extends TextInput {
     constructor(props) {
         super(props);
         this.type = 'date';

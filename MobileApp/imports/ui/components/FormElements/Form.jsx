@@ -20,7 +20,7 @@ export default class Form extends Component {
                     {
                         this.props.fields.map((field)=> {
                             return <Field fieldName={field}/>
-                        });
+                        })
                     }
                 </Form>
                 <RaisedButton primary={true} label='Save' onTouchTap={() => this.refs.form.submit()}/>

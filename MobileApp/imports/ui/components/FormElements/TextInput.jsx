@@ -62,8 +62,8 @@ export default class TextInput extends FieldType {
     }
 }
 
-TextFieldComponent.propTypes = propTypes;
-TextFieldComponent.defaultProps = defaultProps;
+TextInput.propTypes = propTypes;
+TextInput.defaultProps = defaultProps;
 
 
 // password

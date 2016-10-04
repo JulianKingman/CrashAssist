@@ -1,9 +1,9 @@
 import React from 'react';
-import {FieldType} from 'simple-react-form';
-import {TextInput} from './TextInput.jsx';
+// import {FieldType} from 'simple-react-form';
+import TextInput from './TextInput.jsx';
 
 // textarea
-class NumberInput extends TextFieldComponent {
+export default class NumberInput extends TextInput {
     constructor(props) {
         super(props);
         this.type = 'number';

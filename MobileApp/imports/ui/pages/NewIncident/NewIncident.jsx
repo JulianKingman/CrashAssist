@@ -53,8 +53,8 @@ class NewIncident extends Component {
         });
     }
 
-    componentDidMount(){
-        // console.log(Incidents.simpleSchema().pick(['driverInfo']));
+    componentDidMount() {
+        // console.log(Incidents.simpleSchema().pick(['driverInfo', 'driverInfo.name']))
     }
 
     renderToolbar = () => {
