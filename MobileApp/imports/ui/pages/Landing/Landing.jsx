@@ -9,10 +9,15 @@ import './Landing.scss';
 
 export default class Landing extends Component {
     gotoNewIncident = () => {
-        if(!Incidents.findOne({completed:false})){
-            new Incident().save();
+        if(!Meteor.userId()){
+            Meteor.loginWithUuid(undefined, function(err, res){
+                console.log(err, res);
+            });
         }
-        this.props.appContext.navigator.pushPage({component:NewIncident, props:{currentStep:1, key:"Steps"}});
+        // if(!Incidents.findOne({completed:false})){
+        //     new Incident().save();
+        // }
+        // this.props.appContext.navigator.pushPage({component:NewIncident, props:{currentStep:1, key:"Steps"}});
     }
     render(){
         let { navigator } = this.props.appContext;
