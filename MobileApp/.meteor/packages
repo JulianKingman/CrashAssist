@@ -29,5 +29,6 @@ fourseven:scss
 crosswalk@1.6.2
 lepozepo:cloudinary
 react-meteor-data
-okland:camera-ui
+brettle:accounts-anonymous-auto
+brettle:accounts-add-service
 instantsolutions:accounts-uuid

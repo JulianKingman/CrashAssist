@@ -88,11 +88,11 @@ Schemas.Incidents = new SimpleSchema({
     "witnessInfo.$.email": {type: String, srf: {type: EmailInput}},
     "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}},
     //driver statement
-    "driverStatement": {type: String, srf: {type: TextareaInput}},
+    "driverStatement": {type: String, srf: {type: TextareaInput}, optional: true},
     //sketch photo public id
-    "sketch": {type: String, srf: {type: PhotoInput}},
+    "sketch": {type: String, optional: true, srf: {type: PhotoInput}},
     //array of photo public ids
-    "photos": {type: [String], srf: {type: PhotoInput}},
+    "photos": {type: [String], optional: true, srf: {type: PhotoInput}},
 });
 
 Incidents.attachSchema(Schemas.Incidents);

@@ -1,32 +1,56 @@
-import React, { Component } from 'react';
-import { Page, Button, Ripple } from 'react-onsenui';
+import React, {Component} from 'react';
+import {Page, Button, Ripple} from 'react-onsenui';
 import onsen from 'onsenui';
-import { Incidents, Incident } from '/imports/api/collections/Incidents.js';
+import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
+import { Meteor } from 'meteor/meteor';
 
 import './Landing.scss';
 
 export default class Landing extends Component {
-    gotoNewIncident = () => {
-        if(!Meteor.userId()){
-            Meteor.loginWithUuid(undefined, function(err, res){
+
+    componentDidMount() {
+        if (!Meteor.userId()) {
+            console.log('not logged in');
+            Meteor.loginWithUuid(function (err, res) {
                 console.log(err, res);
+                if (res) {
+                }
             });
+            console.log(Meteor.userId());
+        } else {
+            console.log('should be logged in');
         }
-        // if(!Incidents.findOne({completed:false})){
-        //     new Incident().save();
-        // }
-        // this.props.appContext.navigator.pushPage({component:NewIncident, props:{currentStep:1, key:"Steps"}});
     }
-    render(){
-        let { navigator } = this.props.appContext;
+
+    gotoNewIncident = () => {
+        if (!Incidents.findOne({completed: false})) {
+            if (Meteor.userId()) {
+                new Incident().save();
+            } else {
+                console.log('not logged in!');
+                Meteor.loginWithUuid(null, function (err, res) {
+                    console.log(err, res);
+                    if (res) {
+                    }
+                });
+            }
+        }
+        this.props.appContext.navigator.pushPage({
+            component: NewIncident,
+            props: {currentStep: 1, key: "Steps"}
+        });
+    }
+
+    render() {
+        let {navigator} = this.props.appContext;
         let modifier = "large";
         let ripple;
 
 
-        if(!onsen.platform.isAndroid()){
-            modifier +=  " outline";
+        if (!onsen.platform.isAndroid()) {
+            modifier += " outline";
         } else {
             ripple = <Ripple />;
         }
@@ -35,14 +59,17 @@ export default class Landing extends Component {
             <Page key="landing">
                 <div id="landing">
                     <h1>Remain Calm, <span>We'll help you through this!</span></h1>
-                    <img src="images/crash.svg" />
+                    <img src="images/crash.svg"/>
                     <Button modifier={modifier}
-                        onClick={this.gotoNewIncident}>
+                            onClick={this.gotoNewIncident}>
                         {ripple}New Incident
                     </Button>
                     <p>In an accident? Start here.</p>
                     <Button modifier='large outline'
-                        onClick={()=> navigator.pushPage({component:PastIncidents, props:{key:"PastIncidents"}})}>
+                            onClick={()=> navigator.pushPage({
+                                component: PastIncidents,
+                                props: {key: "PastIncidents"}
+                            })}>
                         {ripple}Past Incidents
                     </Button>
                 </div>

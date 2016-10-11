@@ -3,7 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "ios": "meteor run ios --port 4000 --mobile-server localhost:3000",
+    "ios-device": "meteor run ios-device --port 4000 --mobile-server http://10.0.0.30:3000",
+    "build": "meteor build ~/Builds/CrashAssist --server app.crashassist.com"
   },
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.11.5",
