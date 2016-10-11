@@ -81,7 +81,7 @@ class NewIncident extends Component {
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <div id="new-incident">
-                    <Accordions data={this.currentStepData()} defaultAccordion="0"/>
+                    <Accordions data={this.currentStepData()} defaultAccordion="0" incident={this.props.incident}/>
                     <StepNav
                         steps={pageSchema}
                         currentStep={this.state.currentStep}

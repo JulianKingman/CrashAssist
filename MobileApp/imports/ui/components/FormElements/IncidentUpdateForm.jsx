@@ -1,8 +1,9 @@
-import {React} from 'react';
+import React, {Component} from 'react';
 import {Form, Field} from 'simple-react-form';
-import Incidents from 'imports/api/collections/Incidents.js'
+import { Incidents } from '/imports/api/collections/Incidents.js';
+import {Button} from 'react-onsenui';
 
-export default class Form extends Component {
+export default class IncidentUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -15,15 +16,15 @@ export default class Form extends Component {
                     collection={Incidents}
                     type='update'
                     ref='form'
-                    doc={this.props.incident}
+                    doc={this.props.doc}
                     onSuccess={(docId) => FlowRouter.go('posts.update', {postId: docId})}>
                     {
-                        this.props.fields.map((field)=> {
-                            return <Field fieldName={field}/>
+                        this.props.fields.map((field, index)=> {
+                            return <Field fieldName={field.name} key={index}/>
                         })
                     }
                 </Form>
-                <RaisedButton primary={true} label='Save' onTouchTap={() => this.refs.form.submit()}/>
+                <Button modifier="outline large" label='Save' onTouchTap={() => this.refs.form.submit()}/>
             </div>
         )
     }

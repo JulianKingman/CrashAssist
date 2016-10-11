@@ -13,12 +13,13 @@
     "bcrypt": "^0.8.7",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.15.1",
-    "onsenui": "^2.0.0-rc.18",
+    "onsenui": "^2.0.1",
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.3.1",
     "react-addons-pure-render-mixin": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-onsenui": "^1.0.0",
-    "simple-react-form": "^1.6.16"
+    "simple-react-form": "^1.6.16",
+    "cookie": "^0.3.1"
   }
 }

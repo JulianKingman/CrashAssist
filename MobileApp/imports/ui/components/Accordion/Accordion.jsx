@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
 import {ListItem, Icon} from 'react-onsenui';
-
 import onsen from 'onsenui';
-
 import './Accordion.scss';
 
 export default class Accordion extends Component {

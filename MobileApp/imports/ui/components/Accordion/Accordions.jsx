@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
 // import {ListItem, Icon} from 'react-onsenui';
-
-import onsen from 'onsenui';
-
+// import onsen from 'onsenui';
 import './Accordion.scss';
-
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
+import IncidentUpdateForm from '/imports/ui/components/FormElements/IncidentUpdateForm.jsx';
 
 export default class Accordions extends Component {
 
@@ -39,15 +36,25 @@ export default class Accordions extends Component {
         );
     }
 
+    saveForm = (doc) => {
+
+    }
+
     componentDidMount() {
         this.openAccordion(0);
     }
 
     componentDidUpdate(oldProps) {
-        if(oldProps.data._id !== this.props.data._id){
+        if (oldProps.data._id !== this.props.data._id) {
             this.openAccordion(0);
         }
     }
+
+    renderFields = (accordion)=> {
+
+
+    }
+
 
     render() {
         return (
@@ -56,17 +63,18 @@ export default class Accordions extends Component {
                     this.props.data.accordions.map((accordion, index)=> {
                         let key = `${this.props.data._id}-${index}`;
                         let hasFields = accordion.fields ? accordion.fields.length : false;
-                        {/*console.log(this.state.activeAccordion, index, this.state.activeAccordion*1 === index*1);*/
-                        }
-                        {/*let isOpen = this.state.activeAccordion*1 === index*1;*/
-                        }
+                        {/*console.log(this.state.activeAccordion, index, this.state.activeAccordion*1 === index*1);*/}
+                        {/*let isOpen = this.state.activeAccordion*1 === index*1;*/}
                         return (
                             <Accordion key={key} title={accordion.title} index={index} ref={`accordion-${index}`}
                                        openAccordion={this.openAccordion}>
                                 {accordion.text}
                                 {
-                                    hasFields
-                                        ? <form><input /></form>
+                                    hasFields ?
+                                        <IncidentUpdateForm
+                                            doc={this.props.incident}
+                                            fields={accordion.fields}
+                                        />
                                         : ""
                                 }
                             </Accordion>

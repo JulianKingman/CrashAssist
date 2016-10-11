@@ -11,15 +11,7 @@ import './Landing.scss';
 export default class Landing extends Component {
 
     componentDidMount() {
-        if (!Meteor.userId()) {
-            console.log('not logged in');
-            Meteor.loginWithUuid(function (err, res) {
-                console.log(err, res);
-                if (res) {
-                }
-            });
-            console.log(Meteor.userId());
-        } else {
+        if (Meteor.userId()) {
             console.log('should be logged in');
         }
     }
@@ -30,11 +22,7 @@ export default class Landing extends Component {
                 new Incident().save();
             } else {
                 console.log('not logged in!');
-                Meteor.loginWithUuid(null, function (err, res) {
-                    console.log(err, res);
-                    if (res) {
-                    }
-                });
+                loginByDeviceId(device.uuid);
             }
         }
         this.props.appContext.navigator.pushPage({

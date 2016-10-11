@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
+import { cookie } from 'cookie';
 
 export default loginByDeviceId = (deviceId = Random.id(/*browser default*/), callback) => {
     if (!Meteor.userId()) {

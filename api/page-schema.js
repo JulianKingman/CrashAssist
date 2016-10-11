@@ -63,27 +63,27 @@ const pageSchema = [
         "form_id": "getInfo",
         "fields": [
           {
-            "name": "driverName",
+            "name": "driverInfo.name",
             "type": "text",
             "placeholder": "Name",
           },
           {
-            "name": "driverAddress",
+            "name": "driverInfo.address",
             "type": "textarea",
             "placeholder": "Address"
           },
           {
-            "name": "driverPhone",
+            "name": "driverInfo.phone",
             "type": "tel",
             "placeholder": "Phone"
           },
           {
-            "name": "driverEmail",
+            "name": "driverInfo.email",
             "type": "email",
             "placeholder": "Email"
           },
           {
-            "name": "driverLicense",
+            "name": "driverInfo.license",
             "type": "text",
             "placeholder": "License Number"
           }

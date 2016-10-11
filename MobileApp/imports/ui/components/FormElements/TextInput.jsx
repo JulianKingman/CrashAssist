@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
+// import {Input} from 'react-onsenui';
 
 const propTypes = {
     changeOnKeyDown: React.PropTypes.bool,
@@ -10,16 +11,16 @@ const defaultProps = {
     changeOnKeyDown: true
 };
 
-export default class TextInput extends FieldType {
+export default class TextInput extends Component {
 
     constructor(props) {
         super(props);
         this.type = props.type || 'text';
-        this.state = { value: props.value };
+        this.state = {value: props.value};
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ value: nextProps.value });
+        this.setState({value: nextProps.value});
     }
 
     onKeyDown(event) {
@@ -29,7 +30,7 @@ export default class TextInput extends FieldType {
     }
 
     onChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({value: event.target.value});
         if (this.props.changeOnKeyDown) {
             this.props.onChange(event.target.value);
         }
@@ -38,26 +39,18 @@ export default class TextInput extends FieldType {
     render() {
         var fieldType = this.props.fieldType || this.type;
         return (
-            <FormGroup
-                validationState={this.props.errorMessage ? 'error' : undefined}
-            >
-                { this.props.label ? <ControlLabel>{this.props.label}</ControlLabel> : null }
-                <FormControl
-                    ref='input'
-                    value={this.state.value || ''}
-                    type={fieldType}
-                    placeholder={this.props.placeholder}
-                    disabled={this.props.disabled}
-                    onChange={this.onChange.bind(this)}
-                    onKeyDown={this.onKeyDown.bind(this)}
-                    onBlur={() => this.props.onChange(this.state.value)}
-                    componentClass={fieldType === 'textarea' ? 'textarea' : 'input'}
-                    {...this.passProps}
-                />
-                {this.props.errorMessage &&
-                <HelpBlock>{this.props.errorMessage}</HelpBlock>
-                }
-            </FormGroup>
+            <Input
+                ref='input'
+                value={this.state.value || ''}
+                type={fieldType}
+                placeholder={this.props.placeholder}
+                disabled={this.props.disabled}
+                onChange={this.onChange.bind(this)}
+                onKeyDown={this.onKeyDown.bind(this)}
+                onBlur={() => this.props.onChange(this.state.value)}
+                componentClass={fieldType === 'textarea' ? 'textarea' : 'input'}
+                {...this.passProps}
+            />
         );
     }
 }
