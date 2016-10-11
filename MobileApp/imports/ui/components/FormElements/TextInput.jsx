@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
-// import {Input} from 'react-onsenui';
+if(Meteor.isClient){
+    Ons = require('react-onsenui');
+};
 
 const propTypes = {
     changeOnKeyDown: React.PropTypes.bool,
@@ -39,7 +41,7 @@ export default class TextInput extends Component {
     render() {
         var fieldType = this.props.fieldType || this.type;
         return (
-            <Input
+            <Ons.Input
                 ref='input'
                 value={this.state.value || ''}
                 type={fieldType}

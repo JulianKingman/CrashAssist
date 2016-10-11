@@ -68,6 +68,7 @@ Schemas.Incidents = new SimpleSchema({
     "vehicleInfo.plate": {type: String, srf: {type: TextInput}},
     //owner info
     "ownerInfo.name": {type: String, srf: {type: TextInput}},
+    "ownerInfo.address": {type: String, srf: {type: TextInput}},
     "ownerInfo.phone": {type: String, srf: {type: TelInput}},
     "ownerInfo.email": {type: String, srf: {type: EmailInput}},
     "ownerInfo.license": {type: String, srf: {type: TextInput}},
@@ -93,6 +94,8 @@ Schemas.Incidents = new SimpleSchema({
     "sketch": {type: String, srf: {type: PhotoInput}, optional:true},
     //array of photo public ids
     "photos": {type: [String], optional: true, srf: {type: PhotoInput}},
+    //Symptoms
+    "symptoms": {type: [String], optional: true, srf: {type: TextInput}},
 });
 
 Incidents.attachSchema(Schemas.Incidents);

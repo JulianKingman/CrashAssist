@@ -95,17 +95,17 @@ const pageSchema = [
         "form_id": "passengerInfo",
         "fields": [
           {
-            "name": "passengerName",
+            "name": "passengerInfo.$.name",
             "type": "text",
             "placeholder": "Name",
           },
           {
-            "name": "passengerPhone",
+            "name": "passengerInfo.$.phone",
             "type": "tel",
             "placeholder": "Phone"
           },
           {
-            "name": "passengerEmail",
+            "name": "passengerInfo.$.email",
             "type": "email",
             "placeholder": "Email"
           }
@@ -116,22 +116,22 @@ const pageSchema = [
         "form_id": "vehicleInfo",
         "fields": [
           {
-            "name": "vehicleMake",
+            "name": "vehicleInfo.make",
             "type": "text",
             "placeholder": "Vehicle Make",
           },
           {
-            "name": "vehicleModel",
+            "name": "vehicleInfo.model",
             "type": "text",
             "placeholder": "Vehicle Model"
           },
           {
-            "name": "vehicleYear",
+            "name": "vehicleInfo.year",
             "type": "number",
             "placeholder": "Vehicle Year"
           },
           {
-            "name": "vehiclePlate",
+            "name": "vehicleInfo.plate",
             "type": "text",
             "placeholder": "Vehicle Plate"
           }
@@ -143,27 +143,27 @@ const pageSchema = [
         "form_id": "ownerInfo",
         "fields": [
           {
-            "name": "ownerName",
+            "name": "ownerInfo.name",
             "type": "text",
             "placeholder": "Name",
           },
           {
-            "name": "ownerAddress",
+            "name": "ownerInfo.address",
             "type": "textarea",
             "placeholder": "Address"
           },
           {
-            "name": "ownerPhone",
+            "name": "ownerInfo.phone",
             "type": "tel",
             "placeholder": "Phone"
           },
           {
-            "name": "ownerEmail",
+            "name": "ownerInfo.email",
             "type": "email",
             "placeholder": "Email"
           },
           {
-            "name": "ownerLicense",
+            "name": "ownerInfo.license",
             "type": "text",
             "placeholder": "License Number"
           }
@@ -174,17 +174,17 @@ const pageSchema = [
         "form_id": "insuranceInfo",
         "fields": [
           {
-            "name": "inuranceInfo",
+            "name": "insuranceInfo.company",
             "type": "text",
             "placeholder": "Company Name",
           },
           {
-            "name": "insurancePolicyNumber",
+            "name": "insuranceInfo.policyNumber",
             "type": "text",
             "placeholder": "Insurance Policy Number"
           },
           {
-            "name": "insuranceAgent",
+            "name": "insuranceInfo.agent",
             "type": "text",
             "placeholder": "Insurance Agent"
           }
@@ -195,17 +195,17 @@ const pageSchema = [
         "form_id": "timeLocation",
         "fields": [
           {
-            "name": "date",
+            "name": "timeLocation.date",
             "type": "date",
             "placeholder": "Date"
           },
           {
-            "name": "time",
+            "name": "timeLocation.time",
             "type": "date",
             "placeholder": "time"
           },
           {
-            "name": "location",
+            "name": "timeLocation.location",
             "type": "textarea",
             "placeholder": "Location"
           }
@@ -217,12 +217,12 @@ const pageSchema = [
         "form_id": "trafficInfo",
         "fields": [
           {
-            "name": "roadConditions",
+            "name": "trafficInfo.roadConditions",
             "type": "textarea",
             "placeholder": "Describe the Road Conditions"
           },
           {
-            "name": "trafficControls",
+            "name": "trafficInfo.trafficControls",
             "type": "textarea",
             "placeholder": "Describe the traffic controls and signs."
           }
@@ -234,22 +234,22 @@ const pageSchema = [
         "form_id": "witnessInfo",
         "fields": [
           {
-            "name": "witnessName",
+            "name": "witnessInfo.$.name",
             "type": "text",
             "placeholder": "Name",
           },
           {
-            "name": "witnessPhone",
+            "name": "witnessInfo.$.phone",
             "type": "tel",
             "placeholder": "Phone"
           },
           {
-            "name": "witnessEmail",
+            "name": "witnessInfo.$.email",
             "type": "email",
             "placeholder": "Email"
           },
           {
-            "name": "witnessTestimony",
+            "name": "witnessInfo.$.testimony",
             "type": "textarea",
             "placeholder": "Witness Comments or Testimony"
           }
@@ -261,9 +261,9 @@ const pageSchema = [
         "form_id": "symptoms",
         "fields": [
           {
-            "name": "",
-            "type": "",
-            "placeholder": ""
+            "name": "symptoms",
+            "type": "text",
+            "placeholder": "Symptoms"
           }
         ]
       },
@@ -285,7 +285,7 @@ const pageSchema = [
         "form_id": "sketch",
         "fields": [
           {
-            "name": "sketchPhoto",
+            "name": "sketch",
             "type": "photo"
           }
         ]

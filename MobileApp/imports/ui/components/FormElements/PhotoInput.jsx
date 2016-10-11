@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {FieldType} from 'simple-react-form'
+import {FieldType} from 'simple-react-form';
+import TextInput from './TextInput.jsx';
 // import ReactDOM from 'react-dom';
 // import {Icon} from 'react-onsenui';
 // import onsen from 'onsenui';
@@ -17,7 +18,7 @@ export default class PhotoInput extends FieldType {
                     {this.props.label}
                 </p>
                 <img src={this.props.value} />
-                <TextField
+                <TextInput
                     value={this.props.value}
                     hintText='Image Url'
                     onChange={(event) => this.props.onChange(event.target.value)} />
