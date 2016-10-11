@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Page, Toolbar, BackButton, ToolbarButton} from 'react-onsenui';
 import StepNav from '/imports/ui/components/StepNav/StepNav.jsx';
-import Landing from '/imports/ui/pages/Landing/Landing.jsx';
+import NewIncidentSuccess from '/imports/ui/pages/NewIncidentSuccess/NewIncidentSuccess.jsx';
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 import {Users, User} from '/imports/api/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
@@ -33,7 +33,7 @@ class NewIncident extends Component {
     }
 
     finishSteps = () => {
-        this.props.appContext.navigator.popPage({callback:()=>{
+        this.props.appContext.navigator.replacePage({component:NewIncidentSuccess, props:{key:"Success"}}, {callback:()=>{
             this.props.incident.markCompleted();
         }});
 
