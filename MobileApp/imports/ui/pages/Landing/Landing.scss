@@ -5,7 +5,7 @@ $light-blue: rgba(18,114,224,0.77);
     display:flex;
     align-items:center;
     flex-direction: column;
-    min-height:100vh;
+    min-height: calc(100vh - 20px);
     box-sizing: border-box;
     //border: 2px solid $light-blue;
     h1 {

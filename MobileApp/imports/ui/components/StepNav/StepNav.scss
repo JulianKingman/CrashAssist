@@ -2,110 +2,114 @@ $stepper-spacing: 15px;
 $stepper-color: #3F81B1;
 
 .step-nav {
-    position: fixed;
-    bottom:0;
-    width:100%;
-    background-color: rgba(0,0,0, .8);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .8);
 
-    .stepper {
-        position: relative;
-        display:flex;
-        flex-direction:column;
+  .stepper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px $stepper-spacing;
+
+    .bar {
+      background-color: $stepper-color;
+      height: 4px;
+      position: absolute;
+      z-index: 0;
+      top: calc(50% - 2px);
+      left: $stepper-spacing;
+      right: $stepper-spacing;
+      border-radius: 12px;
+    }
+
+    #steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 22px;
+
+      .step {
+        background-color: $stepper-color;
+        width: 22px;
+        height: 22px;
+        max-width: 12px;
+        max-height: 12px;
+        transition: max-width .1s ease-out, max-height .1s ease-out;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
         justify-content: center;
-        padding: 16px $stepper-spacing;
-
-        .bar {
-            background-color:$stepper-color;
-            height: 4px;
-            position: absolute;
-            z-index:0;
-            top: calc(50% - 2px);
-            left:$stepper-spacing;
-            right:$stepper-spacing;
-            border-radius:12px;
+        color: white;
+        font-size: 12px;
+        z-index: 1;
+        span {
+          display: none;
         }
 
-        #steps{
-            display:flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .step {
-                background-color:$stepper-color;
-                width:12px;
-                height:12px;
-                border-radius:50%;
-                display:flex;
-                align-items: center;
-                justify-content: center;
-                color:white;
-                font-size: 12px;
-                z-index:1;
-                span {
-                    display:none;
-                }
-
-                &.active {
-                    width:22px;
-                    height:22px;
-                    span{
-                        display:inline-block;
-                    }
-                }
-            }
+        &.active {
+          max-width: 22px;
+          max-height: 22px;
+          span {
+            display: inline-block;
+          }
         }
-
+      }
     }
 
-    footer {
-        display:flex;
+  }
 
-        .placeholder {
-            width:70px;
-            border:1px solid transparent;
-        }
-        .navButton {
-            border:1px solid;
-            margin-bottom:1px;
-            display:flex;
-            flex-direction:column;
-            justify-content: center;
-            align-items: center;
-            width: 70px;
-            color: white;
+  footer {
+    display: flex;
 
-            span {
-                margin-top:7px;
-            }
-
-            &.active{
-                background-color:#B7E173;
-                color: #2B2B2B;
-            }
-        }
-        .contextual{
-            flex:1;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align: center;
-            padding: 0 8px;
-            min-height: 90px;
-
-            color:#fff;
-
-            h1{
-                font-size:20px;
-                font-weight: normal;
-                margin: 0;
-            }
-
-            p{
-                margin: 6px 0;
-                font-size: 14px;
-            }
-        }
+    .placeholder {
+      width: 70px;
+      border: 1px solid transparent;
     }
+    .navButton {
+      border: 1px solid;
+      margin-bottom: 1px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      color: white;
+
+      span {
+        margin-top: 7px;
+      }
+
+      &.active {
+        background-color: #B7E173;
+        color: #2B2B2B;
+      }
+    }
+    .contextual {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 8px;
+      min-height: 90px;
+
+      color: #fff;
+
+      h1 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+      }
+
+      p {
+        margin: 6px 0;
+        font-size: 14px;
+      }
+    }
+  }
 
 }

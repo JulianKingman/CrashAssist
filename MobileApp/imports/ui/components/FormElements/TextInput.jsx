@@ -51,7 +51,6 @@ export default class TextInput extends FieldType {
                 onChange={this.onChange.bind(this)}
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
-                componentClass={fieldType === 'textarea' ? 'textarea' : 'input'}
                 modifier='underbar'
                 {...this.passProps}
             />

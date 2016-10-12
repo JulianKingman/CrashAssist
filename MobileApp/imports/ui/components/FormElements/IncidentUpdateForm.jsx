@@ -12,9 +12,23 @@ export default class IncidentUpdateForm extends Component {
     renderField = (field, index)=> {
         // let value = this.props.doc[field.name] || "";
         // console.log(`value ${value} for ${field.name}`);
-        return (
-            <Field fieldName={field.name} key={index} fieldType={field.type} label={field.label}/>
-        )
+        // var nestedFields = field.nestedFields ? field.nestedFields.length : false;
+        // console.log(field.nestedFields);
+        // if (nestedFields) {
+        //     return (
+        //         <Field fieldName={field.name} key={index} label={field.label}>
+        //             {
+        //                 field.nestedFields.map((field, index)=> {
+        //                     return <Field fieldName={field.name} key={index} label={field.label}/>
+        //                 })
+        //             }
+        //         </Field>
+        //     )
+        // } else {
+            return (
+                <Field fieldName={field.name} key={index} label={field.label}/>
+            )
+        // }
     };
 
     submitForm = ()=> {
@@ -26,14 +40,17 @@ export default class IncidentUpdateForm extends Component {
         let component = this;
         return (
             <div>
-                <Form collection={Incidents} type='update' ref='form' doc={this.props.doc} onSuccess={(docId) => {console.log(`succeeded saving ${docId}`)}}>
+                <Form collection={Incidents} type='update' ref='form' doc={this.props.doc} onSuccess={(docId) => {
+                    console.log(`succeeded saving ${docId}`)
+                }}>
                     {
                         this.props.fields.map(function (field, index) {
                             return component.renderField(field, index)
                         })
                     }
                 </Form>
-                <Button modifier="outline large" label='Save' onClick={() => this.submitForm()} ripple={true}>Save</Button>
+                <Button modifier="outline large" label='Save' onClick={() => this.submitForm()}
+                        ripple={true}>Save</Button>
             </div>
         )
     }

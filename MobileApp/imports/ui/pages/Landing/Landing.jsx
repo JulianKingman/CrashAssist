@@ -5,6 +5,7 @@ import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
 import { Meteor } from 'meteor/meteor';
+import loginByDeviceId from '/imports/startup/client/accounts.js';
 
 import './Landing.scss';
 

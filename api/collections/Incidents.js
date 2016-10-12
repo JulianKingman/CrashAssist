@@ -6,7 +6,6 @@ import moment from 'moment';
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Users} from './Users.js';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import {ArrayComponent} from 'simple-react-form';
 import TextInput from '../../ui/components/FormElements/TextInput.jsx';
 import NumberInput from '../../ui/components/FormElements/NumberInput.jsx';
 import TextareaInput from '../../ui/components/FormElements/TextareaInput.jsx';
@@ -14,6 +13,7 @@ import DateInput from '../../ui/components/FormElements/DateInput.jsx';
 import PhotoInput from '../../ui/components/FormElements/PhotoInput.jsx';
 import TelInput from '../../ui/components/FormElements/TelInput.jsx';
 import EmailInput from '../../ui/components/FormElements/EmailInput.jsx';
+import ArrayField from '../../ui/components/FormElements/Array.jsx';
 
 let Schemas = {};
 
@@ -21,17 +21,17 @@ Schemas.Incidents = new SimpleSchema({
     userId: {
         type: String,
         regEx: SimpleSchema.RegEx.Id,
-        autoValue: function () {
-            if (this.isInsert) {
-                return this.userId;
-            }
+        defaultValue: function () {
+            // if (this.isInsert) {
+            return this.userId;
+            // }
         },
         index: 1,
         denyUpdate: true
     },
     title: {
         type: String,
-        autoValue: function () {
+        defaultValue: function () {
             if (!this.isSet) {
                 return `${moment().format('MM/DD/YY')} incident`;
             }
@@ -39,7 +39,7 @@ Schemas.Incidents = new SimpleSchema({
     },
     dateCreated: {
         type: Date,
-        autoValue: function () {
+        defaultValue: function () {
             if (this.isInsert) {
                 return new Date();
             }
@@ -59,7 +59,11 @@ Schemas.Incidents = new SimpleSchema({
     "driverInfo.email": {type: String, srf: {type: EmailInput}},
     "driverInfo.license": {type: String, srf: {type: TextInput}},
     //[passenger info]
-    "passengerInfo": {type: [Object], autoValue: function(){return [{"name": "", "phone":"", "email": ""}]}, srf: {type: ArrayComponent}},
+    "passengerInfo": {
+        type: [Object], defaultValue: function () {
+            return [{"name": "", "phone": "", "email": ""}]
+        }, srf: {type: ArrayField}
+    },
     "passengerInfo.$.name": {type: String, srf: {type: TextInput}},
     "passengerInfo.$.phone": {type: String, srf: {type: TelInput}},
     "passengerInfo.$.email": {type: String, srf: {type: EmailInput}},
@@ -86,16 +90,22 @@ Schemas.Incidents = new SimpleSchema({
     "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}},
     "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}},
     //Witness Information
+    "witnessInfo": {
+        type: [Object], defaultValue: function () {
+            return [{"name": "", "phone": "", "email": "", "testimony": ""}]
+        }, srf: {type: ArrayField}
+    },
     "witnessInfo.$.name": {type: String, srf: {type: TextInput}},
     "witnessInfo.$.phone": {type: String, srf: {type: TelInput}},
     "witnessInfo.$.email": {type: String, srf: {type: EmailInput}},
     "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}},
     //driver statement
-    "driverStatement": {type: String, srf: {type: TextareaInput}, optional:true},
+    "driverStatement": {type: String, srf: {type: TextareaInput}, optional: true},
     //sketch photo public id
-    "sketch": {type: String, srf: {type: PhotoInput}, optional:true},
+    "sketch": {type: String, srf: {type: PhotoInput}, optional: true},
     //array of photo public ids
-    "photos": {type: [String], optional: true, srf: {type: PhotoInput}},
+    "photos": {type: Array, optional: true, srf: {type: ArrayField}},
+    "photos.$": {type: String, srf: {type: PhotoInput}},
     //Symptoms
     "symptoms": {type: [String], optional: true, srf: {type: TextInput}},
 });
