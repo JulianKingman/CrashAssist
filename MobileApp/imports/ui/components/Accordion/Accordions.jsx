@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-// import {ListItem, Icon} from 'react-onsenui';
+import {Col, Row} from 'react-onsenui';
 // import onsen from 'onsenui';
 import './Accordion.scss';
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
@@ -29,11 +29,14 @@ export default class Accordions extends Component {
         console.log($(accordion));
         $(".accordion").removeClass("open").addClass("closed");
         $(accordionDom).removeClass("closed").addClass("open");
-        $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
-                //todo: tweak this later to make sure everything scrolls right
-                $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
-            }
-        );
+        //timeout is a fix for content that appears after loading
+        setTimeout(function () {
+            $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
+                    //todo: tweak this later to make sure everything scrolls right
+                    $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
+                }
+            );
+        }, 30);
     }
 
     saveForm = (doc) => {
@@ -63,20 +66,24 @@ export default class Accordions extends Component {
                     this.props.data.accordions.map((accordion, index)=> {
                         let key = `${this.props.data._id}-${index}`;
                         let hasFields = accordion.fields ? accordion.fields.length : false;
-                        {/*console.log(this.state.activeAccordion, index, this.state.activeAccordion*1 === index*1);*/}
-                        {/*let isOpen = this.state.activeAccordion*1 === index*1;*/}
+                        {/*console.log(this.state.activeAccordion, index, this.state.activeAccordion*1 === index*1);*/
+                        }
+                        {/*let isOpen = this.state.activeAccordion*1 === index*1;*/
+                        }
                         return (
                             <Accordion key={key} title={accordion.title} index={index} ref={`accordion-${index}`}
                                        openAccordion={this.openAccordion}>
-                                {accordion.text}
-                                {
-                                    hasFields ?
-                                        <IncidentUpdateForm
-                                            doc={this.props.incident}
-                                            fields={accordion.fields}
-                                        />
-                                        : ""
-                                }
+                                <Col>
+                                    <Row>{accordion.text}</Row>
+                                    {
+                                        hasFields ?
+                                            <IncidentUpdateForm
+                                                doc={this.props.incident}
+                                                fields={accordion.fields}
+                                            />
+                                            : ""
+                                    }
+                                </Col>
                             </Accordion>
                         )
                     })

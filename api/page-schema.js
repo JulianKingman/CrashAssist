@@ -65,27 +65,27 @@ const pageSchema = [
           {
             "name": "driverInfo.name",
             "type": "text",
-            "placeholder": "Name",
+            "label": "Name",
           },
           {
             "name": "driverInfo.address",
             "type": "textarea",
-            "placeholder": "Address"
+            "label": "Address"
           },
           {
             "name": "driverInfo.phone",
             "type": "tel",
-            "placeholder": "Phone"
+            "label": "Phone"
           },
           {
             "name": "driverInfo.email",
             "type": "email",
-            "placeholder": "Email"
+            "label": "Email"
           },
           {
             "name": "driverInfo.license",
             "type": "text",
-            "placeholder": "License Number"
+            "label": "License Number"
           }
         ]
       },
@@ -95,19 +95,9 @@ const pageSchema = [
         "form_id": "passengerInfo",
         "fields": [
           {
-            "name": "passengerInfo.$.name",
-            "type": "text",
-            "placeholder": "Name",
-          },
-          {
-            "name": "passengerInfo.$.phone",
-            "type": "tel",
-            "placeholder": "Phone"
-          },
-          {
-            "name": "passengerInfo.$.email",
-            "type": "email",
-            "placeholder": "Email"
+            "name": "passengerInfo",
+            "type": "array",
+            "label": "Passenger Information"
           }
         ]
       },
@@ -118,22 +108,22 @@ const pageSchema = [
           {
             "name": "vehicleInfo.make",
             "type": "text",
-            "placeholder": "Vehicle Make",
+            "label": "Vehicle Make",
           },
           {
             "name": "vehicleInfo.model",
             "type": "text",
-            "placeholder": "Vehicle Model"
+            "label": "Vehicle Model"
           },
           {
             "name": "vehicleInfo.year",
             "type": "number",
-            "placeholder": "Vehicle Year"
+            "label": "Vehicle Year"
           },
           {
             "name": "vehicleInfo.plate",
             "type": "text",
-            "placeholder": "Vehicle Plate"
+            "label": "Vehicle Plate"
           }
         ]
       },
@@ -145,27 +135,27 @@ const pageSchema = [
           {
             "name": "ownerInfo.name",
             "type": "text",
-            "placeholder": "Name",
+            "label": "Name",
           },
           {
             "name": "ownerInfo.address",
             "type": "textarea",
-            "placeholder": "Address"
+            "label": "Address"
           },
           {
             "name": "ownerInfo.phone",
             "type": "tel",
-            "placeholder": "Phone"
+            "label": "Phone"
           },
           {
             "name": "ownerInfo.email",
             "type": "email",
-            "placeholder": "Email"
+            "label": "Email"
           },
           {
             "name": "ownerInfo.license",
             "type": "text",
-            "placeholder": "License Number"
+            "label": "License Number"
           }
         ]
       },
@@ -176,17 +166,17 @@ const pageSchema = [
           {
             "name": "insuranceInfo.company",
             "type": "text",
-            "placeholder": "Company Name",
+            "label": "Company Name",
           },
           {
             "name": "insuranceInfo.policyNumber",
             "type": "text",
-            "placeholder": "Insurance Policy Number"
+            "label": "Insurance Policy Number"
           },
           {
             "name": "insuranceInfo.agent",
             "type": "text",
-            "placeholder": "Insurance Agent"
+            "label": "Insurance Agent"
           }
         ]
       },
@@ -197,17 +187,17 @@ const pageSchema = [
           {
             "name": "timeLocation.date",
             "type": "date",
-            "placeholder": "Date"
+            "label": "Date"
           },
           {
             "name": "timeLocation.time",
             "type": "date",
-            "placeholder": "time"
+            "label": "time"
           },
           {
             "name": "timeLocation.location",
             "type": "textarea",
-            "placeholder": "Location"
+            "label": "Location"
           }
         ]
       },
@@ -219,12 +209,12 @@ const pageSchema = [
           {
             "name": "trafficInfo.roadConditions",
             "type": "textarea",
-            "placeholder": "Describe the Road Conditions"
+            "label": "Describe the Road Conditions"
           },
           {
             "name": "trafficInfo.trafficControls",
             "type": "textarea",
-            "placeholder": "Describe the traffic controls and signs."
+            "label": "Describe the traffic controls and signs."
           }
         ]
       },
@@ -236,22 +226,22 @@ const pageSchema = [
           {
             "name": "witnessInfo.$.name",
             "type": "text",
-            "placeholder": "Name",
+            "label": "Name",
           },
           {
             "name": "witnessInfo.$.phone",
             "type": "tel",
-            "placeholder": "Phone"
+            "label": "Phone"
           },
           {
             "name": "witnessInfo.$.email",
             "type": "email",
-            "placeholder": "Email"
+            "label": "Email"
           },
           {
             "name": "witnessInfo.$.testimony",
             "type": "textarea",
-            "placeholder": "Witness Comments or Testimony"
+            "label": "Witness Comments or Testimony"
           }
         ]
       },
@@ -263,7 +253,7 @@ const pageSchema = [
           {
             "name": "symptoms",
             "type": "text",
-            "placeholder": "Symptoms"
+            "label": "Symptoms"
           }
         ]
       },
@@ -275,7 +265,7 @@ const pageSchema = [
           {
             "name": "driverStatement",
             "type": "textarea",
-            "placeholder": "Driver Statement"
+            "label": "Driver Statement"
           }
         ]
       },
@@ -303,7 +293,7 @@ const pageSchema = [
         ]
       },
       {
-        "title": "Fill out an /“Operator’s report.“",
+        "title": "Fill out an “Operator’s report.“",
         "text": "As soon as is practical you should fill out an Operator’s Report. This can be downloaded at: www.massrmv.com/rmv/forms/21278.pdf (This is for Massachusetts residents, but other states have similar options. You could always fill this one out first while researching where to get the form for your state.) The sooner you complete these steps the better, while your memory is focused on the events."
       }
     ]

@@ -6,6 +6,7 @@ import moment from 'moment';
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Users} from './Users.js';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+import {ArrayComponent} from 'simple-react-form';
 import TextInput from '../../ui/components/FormElements/TextInput.jsx';
 import NumberInput from '../../ui/components/FormElements/NumberInput.jsx';
 import TextareaInput from '../../ui/components/FormElements/TextareaInput.jsx';
@@ -58,6 +59,7 @@ Schemas.Incidents = new SimpleSchema({
     "driverInfo.email": {type: String, srf: {type: EmailInput}},
     "driverInfo.license": {type: String, srf: {type: TextInput}},
     //[passenger info]
+    "passengerInfo": {type: [Object], autoValue: function(){return [{"name": "", "phone":"", "email": ""}]}, srf: {type: ArrayComponent}},
     "passengerInfo.$.name": {type: String, srf: {type: TextInput}},
     "passengerInfo.$.phone": {type: String, srf: {type: TelInput}},
     "passengerInfo.$.email": {type: String, srf: {type: EmailInput}},

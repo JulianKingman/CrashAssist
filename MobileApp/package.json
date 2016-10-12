@@ -19,8 +19,7 @@
     "react-addons-pure-render-mixin": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-onsenui": "^1.0.0",
-    "simple-react-form": "^1.6.16",
-    "cookie": "^0.3.1",
-    "simpl-schema": "^0.0.3"
+    "simple-react-form": "^1.7.3",
+    "cookie": "^0.3.1"
   }
 }

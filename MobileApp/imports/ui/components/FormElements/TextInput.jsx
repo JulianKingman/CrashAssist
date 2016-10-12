@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
 if(Meteor.isClient){
     Ons = require('react-onsenui');
-};
+}
 
 const propTypes = {
     changeOnKeyDown: React.PropTypes.bool,
@@ -13,7 +13,7 @@ const defaultProps = {
     changeOnKeyDown: true
 };
 
-export default class TextInput extends Component {
+export default class TextInput extends FieldType {
 
     constructor(props) {
         super(props);
@@ -34,6 +34,7 @@ export default class TextInput extends Component {
     onChange(event) {
         this.setState({value: event.target.value});
         if (this.props.changeOnKeyDown) {
+            console.log('changed');
             this.props.onChange(event.target.value);
         }
     }
@@ -45,12 +46,13 @@ export default class TextInput extends Component {
                 ref='input'
                 value={this.state.value || ''}
                 type={fieldType}
-                placeholder={this.props.placeholder}
+                placeholder={this.props.label}
                 disabled={this.props.disabled}
                 onChange={this.onChange.bind(this)}
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
                 componentClass={fieldType === 'textarea' ? 'textarea' : 'input'}
+                modifier='underbar'
                 {...this.passProps}
             />
         );
