@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
 import TextInput from './TextInput.jsx';
+import {Meteor} from 'meteor/meteor';
 // import ReactDOM from 'react-dom';
 // import onsen from 'onsenui';
 if (Meteor.isClient) {
