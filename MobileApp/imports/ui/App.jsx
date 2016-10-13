@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import onsen from 'onsenui';
 
@@ -14,7 +13,7 @@ import 'onsenui/css/onsen-css-components.css'
 //Custom theme for OnsenUi components
 //import '../startup/client/css/onsen-css-components.css';
 
-export default class App extends TrackerReact(Component){
+export default class App extends Component {
 
     auth() {
         return Meteor.userId() ? true : false;
