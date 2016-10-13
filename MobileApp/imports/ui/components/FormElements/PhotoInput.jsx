@@ -11,13 +11,17 @@ import
 
 
 export default class PhotoInput extends FieldType {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {}
-    // }
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
 
     addPhoto = (publicId)=> {
-
+        if (!this.state.value) return;
+        var value = (this.props.value || []);
+        value.push(this.state.value);
+        this.props.onChange(value);
+        this.setState({value: ''});
     };
 
     getPicture = ()=> {
@@ -26,16 +30,20 @@ export default class PhotoInput extends FieldType {
             Camera.getPicture((res)=> {
                 console.log(res);
                 let publicId = res;
-                this.addPhoto(publicId);
-            })
+            });
         }
+        let publicId = '/crashedcar.jpg';
+        this.setState({value: publicId});
+        this.addPhoto(publicId);
     };
 
-    removePhoto = (index)=> {
+    removePhoto = (publicId)=> {
         let doDelete = confirm("Are you sure you want to delete this photo?");
         if (doDelete) {
             //delete picture
             console.log('picture deleted');
+            const newValue = _.without(this.props.value, publicId);
+            this.props.onChange(newValue);
         }
         return false;
     };
@@ -45,24 +53,15 @@ export default class PhotoInput extends FieldType {
     };
 
     renderPhoto = ()=> {
-        return (
-            <div className="photo">
-                <div className="image" style={{backgroundImage: "url('/crashedcar.jpg')"}} onClick={()=> {
-                    this.enlargeImage()
-                }}></div>
-                <a className="delete-photo" onClick={()=> {
-                    this.removePhoto()
-                }}>
-                    <Ons.Icon icon="md-minus"/>
-                </a>
-                <Ons.Input
-                    value={this.props.value}
-                    hintText='Image Url'
-                    onChange={(event) => this.props.onChange(event.target.value)}
-                    type="hidden"
-                />
-            </div>
-        )
+        return (this.props.value || []).map((publicId, index) => {
+            return (
+                <div className="photo" key={index}>
+                    {/*todo: change the url to include publicId, but not just be publicId*/}
+                    <div className="image" style={{backgroundImage: `url('${publicId}')`}} onClick={()=> {this.enlargeImage()}}></div>
+                    <a className="delete-photo" onClick={()=> {this.removePhoto(publicId)}}><Ons.Icon icon="md-minus"/></a>
+                </div>
+            )
+        });
     }
 
     render() {
@@ -73,10 +72,18 @@ export default class PhotoInput extends FieldType {
                 </p>
                 <div className="photos">
                     {this.renderPhoto()}
-                    <a className="photo-button" onClick={()=> {this.getPicture()}}>
+                    <a className="photo-button" onClick={()=> {
+                        this.getPicture()
+                    }}>
                         <Ons.Icon icon="md-camera"/>
                     </a>
                 </div>
+                <Ons.Input
+                    value={this.state.value}
+                    hintText='Image Url'
+                    onChange={(event) => this.props.onChange(event.target.value)}
+                    type="hidden"
+                />
             </div>
         )
     }

@@ -57,6 +57,11 @@ class NewIncident extends Component {
         // console.log(Incidents.simpleSchema().pick(['driverInfo', 'driverInfo.name']))
     }
 
+    rename = ()=>{
+        var newName = prompt('Use a concise, descriptive title to name your incident');
+        Incidents.update({_id: this.props.incident._id}, {$set: {title: newName}});
+    };
+
     renderToolbar = () => {
         return (
             <Toolbar>
@@ -69,7 +74,7 @@ class NewIncident extends Component {
                     {this.props.incident.title}
                 </div>
                 <div className="right">
-                    <ToolbarButton>
+                    <ToolbarButton onClick={()=>{this.rename()}}>
                         Rename
                     </ToolbarButton>
                 </div>

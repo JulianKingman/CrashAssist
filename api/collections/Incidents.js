@@ -94,10 +94,9 @@ Schemas.Incidents = new SimpleSchema({
     //driver statement
     "driverStatement": {type: String, srf: {type: TextareaInput}, optional: true},
     //sketch photo public id
-    "sketch": {type: String, srf: {type: PhotoInput}, optional: true},
+    "sketch": {type: [String], srf: {type: PhotoInput}, optional: true},
     //array of photo public ids
-    "photos": {type: Array, optional: true, srf: {type: ArrayField}},
-    "photos.$": {type: String, srf: {type: PhotoInput}},
+    "photos": {type: [String], optional: true, srf: {type: PhotoInput}},
     //Symptoms
     "symptoms": {type: [String], optional: true, srf: {type: TextInput}},
 });
