@@ -12,19 +12,31 @@ if (Meteor.isClient) {
 export default class PhotoInput extends FieldType {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            dialogShown: false
+        };
     }
 
-    getPicture = ()=> {
+
+    getPicture = (source)=> {
         console.log('getting image');
+        let publicId = '/crashedcar.jpg';
         if (Meteor.isCordova) {
-            Camera.getPicture((res)=> {
+            navigator.camera.getPicture((res)=> {
                 console.log(res);
-                let publicId = res;
+                this.setState({dialogShown: false});
+                // Meteor.call('uploadFile', res);
+                Cloudinary.upload(res, {}, function(err, res){
+                    console.log(err,res);
+                });
+                publicId = res;
+            }, (err)=>{
+                console.log(err);
+            },{
+                sourceType: Camera.PictureSourceType[source]
             });
         }
         let value = (this.props.value || []);
-        let publicId = '/crashedcar.jpg';
         // this.setState({value: publicId});
         // this.addPhoto();
         value.push(publicId);
@@ -63,12 +75,25 @@ export default class PhotoInput extends FieldType {
     render() {
         return (
             <div className="photo-input">
+                <Ons.Dialog
+                    isOpen={this.state.dialogShown}
+                    isCancelable={true}
+                    onCancel={this.hideDialog}>
+                    <div style={{textAlign: 'center', margin: '20px'}}>
+                        <p style={{opacity: 0.5}}>Would you like to take a picture, or choose a photo from your library?</p>
+                        <p>
+                            <Ons.Button onClick={()=>{this.getPicture('CAMERA')}}>Picture</Ons.Button>
+                            <Ons.Button onClick={()=>{this.getPicture('PHOTOLIBRARY')}}>Library</Ons.Button>
+                            <Ons.Button onClick={this.hideDialog}>Cancel</Ons.Button>
+                        </p>
+                    </div>
+                </Ons.Dialog>
                 {/*<p>*/}
                     {/*{this.props.label}*/}
                 {/*</p>*/}
                 <div className="photos">
                     {this.renderPhotos()}
-                    <a className="photo-button" onClick={()=> {this.getPicture()}}><Ons.Icon icon="md-camera"/></a>
+                    <a className="photo-button" onClick={()=> {this.setState({dialogShown: true})}}><Ons.Icon icon="md-camera"/></a>
                     <div className="spacer"></div>
                 </div>
             </div>

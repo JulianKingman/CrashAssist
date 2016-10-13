@@ -8,6 +8,7 @@ App.info({
 
 //Allow accessing outside urls
 App.accessRule("*");
+App.accessRule("blob:*");
 
 //set statusbar color
 App.setPreference('StatusBarBackgroundColor', '#ffffff');

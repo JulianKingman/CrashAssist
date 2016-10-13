@@ -4,7 +4,7 @@ import {Col, Row} from 'react-onsenui';
 // import onsen from 'onsenui';
 import './Accordion.scss';
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
-import IncidentUpdateForm from '/imports/ui/components/FormElements/IncidentUpdateForm.jsx';
+import IncidentUpdateForm from '/imports/api/ui/FormElements/IncidentUpdateForm.jsx';
 
 export default class Accordions extends Component {
 
