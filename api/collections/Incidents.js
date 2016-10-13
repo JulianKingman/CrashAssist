@@ -21,17 +21,17 @@ Schemas.Incidents = new SimpleSchema({
     userId: {
         type: String,
         regEx: SimpleSchema.RegEx.Id,
-        defaultValue: function () {
-            // if (this.isInsert) {
-            return this.userId;
-            // }
+        autoValue: function () {
+            if (this.isInsert) {
+                return this.userId;
+            }
         },
         index: 1,
         denyUpdate: true
     },
     title: {
         type: String,
-        defaultValue: function () {
+        autoValue: function () {
             if (!this.isSet) {
                 return `${moment().format('MM/DD/YY')} incident`;
             }
@@ -39,7 +39,7 @@ Schemas.Incidents = new SimpleSchema({
     },
     dateCreated: {
         type: Date,
-        defaultValue: function () {
+        autoValue: function () {
             if (this.isInsert) {
                 return new Date();
             }
@@ -59,11 +59,7 @@ Schemas.Incidents = new SimpleSchema({
     "driverInfo.email": {type: String, srf: {type: EmailInput}},
     "driverInfo.license": {type: String, srf: {type: TextInput}},
     //[passenger info]
-    "passengerInfo": {
-        type: [Object], defaultValue: function () {
-            return [{"name": "", "phone": "", "email": ""}]
-        }, srf: {type: ArrayField}
-    },
+    "passengerInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
     "passengerInfo.$.name": {type: String, srf: {type: TextInput}},
     "passengerInfo.$.phone": {type: String, srf: {type: TelInput}},
     "passengerInfo.$.email": {type: String, srf: {type: EmailInput}},
@@ -90,11 +86,7 @@ Schemas.Incidents = new SimpleSchema({
     "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}},
     "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}},
     //Witness Information
-    "witnessInfo": {
-        type: [Object], defaultValue: function () {
-            return [{"name": "", "phone": "", "email": "", "testimony": ""}]
-        }, srf: {type: ArrayField}
-    },
+    "witnessInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
     "witnessInfo.$.name": {type: String, srf: {type: TextInput}},
     "witnessInfo.$.phone": {type: String, srf: {type: TelInput}},
     "witnessInfo.$.email": {type: String, srf: {type: EmailInput}},

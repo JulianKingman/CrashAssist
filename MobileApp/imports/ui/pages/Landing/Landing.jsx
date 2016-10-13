@@ -23,7 +23,7 @@ export default class Landing extends Component {
                 new Incident().save();
             } else {
                 console.log('not logged in!');
-                loginByDeviceId(device.uuid);
+                loginByDeviceId(device.uuid, (err,res)=>{console.log(err, res)});
             }
         }
         this.props.appContext.navigator.pushPage({

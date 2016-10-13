@@ -1,15 +1,56 @@
-.photo-input{
-  border-radius: 3px;
-  border: 2px dashed #ccc;
-  height: 55px;
-  width: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  .ons-icon{
-    &:before{
-      color: #cccccc;
-      font-size: 1.4em;
+.photo-input {
+  .photos {
+    display: flex;
+    flex-direction: row;
+    & > * {
+      margin-right: 15px;
+    }
+    .photo {
+      width: 55px;
+      height: 55px;
+      position: relative;
+      .image {
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+      }
+      .delete-photo {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: -11px;
+        right: -11px;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 23px;
+        color: #fff;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
+        opacity: 0;
+        transition: opacity .2s;
+      }
+      &:hover {
+        .delete-photo {
+          opacity: 1;
+        }
+      }
+    }
+    .photo-button {
+      border-radius: 3px;
+      border: 2px dashed #ccc;
+      height: 55px;
+      width: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-sizing: border-box;
+      .ons-icon {
+        &:before {
+          color: #cccccc;
+          font-size: 1.4em;
+        }
+      }
     }
   }
 }
