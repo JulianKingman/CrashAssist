@@ -5,7 +5,7 @@ import NewIncidentSuccess from '/imports/ui/pages/NewIncidentSuccess/NewIncident
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 import {Users, User} from '/imports/api/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
-import { createContainer } from 'meteor/react-meteor-data';
+import {createContainer} from 'meteor/react-meteor-data';
 
 import pageSchema from '/imports/api/page-schema.js'
 
@@ -33,9 +33,11 @@ class NewIncident extends Component {
     }
 
     finishSteps = () => {
-        this.props.appContext.navigator.replacePage({component:NewIncidentSuccess, props:{key:"Success"}}, {callback:()=>{
-            this.props.incident.markCompleted();
-        }});
+        this.props.appContext.navigator.replacePage({component: NewIncidentSuccess, props: {key: "Success"}}, {
+            callback: ()=> {
+                this.props.incident.markCompleted();
+            }
+        });
 
     }
 
@@ -57,7 +59,8 @@ class NewIncident extends Component {
         // console.log(Incidents.simpleSchema().pick(['driverInfo', 'driverInfo.name']))
     }
 
-    rename = ()=>{
+    rename = ()=> {
+        'todo: why doesnt this save to server?';
         var newName = prompt('Use a concise, descriptive title to name your incident');
         Incidents.update({_id: this.props.incident._id}, {$set: {title: newName}});
     };
@@ -74,7 +77,9 @@ class NewIncident extends Component {
                     {this.props.incident.title}
                 </div>
                 <div className="right">
-                    <ToolbarButton onClick={()=>{this.rename()}}>
+                    <ToolbarButton onClick={()=> {
+                        this.rename()
+                    }}>
                         Rename
                     </ToolbarButton>
                 </div>
@@ -100,17 +105,17 @@ class NewIncident extends Component {
     }
 }
 
-export default NewIncidentContainer = createContainer((props)=>{
-    const { incidentId } = props;
+export default NewIncidentContainer = createContainer((props)=> {
+    const {incidentId} = props;
 
     let incident;
 
     //if we supply an incidentId we can use this to edit an incident
-    if(incidentId){
+    if (incidentId) {
         Meteor.subscribe('SingleIncident', incidentId);
         incident = Incidents.findOne(incidentId);
-    }else{
-        incident = Incidents.findOne({completed:false});
+    } else {
+        incident = Incidents.findOne({completed: false});
     }
 
     return {

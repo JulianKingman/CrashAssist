@@ -6,14 +6,14 @@ import moment from 'moment';
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Users} from './Users.js';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import TextInput from '../../ui/components/FormElements/TextInput.jsx';
-import NumberInput from '../../ui/components/FormElements/NumberInput.jsx';
-import TextareaInput from '../../ui/components/FormElements/TextareaInput.jsx';
-import DateInput from '../../ui/components/FormElements/DateInput.jsx';
-import PhotoInput from '../../ui/components/FormElements/PhotoInput.jsx';
-import TelInput from '../../ui/components/FormElements/TelInput.jsx';
-import EmailInput from '../../ui/components/FormElements/EmailInput.jsx';
-import ArrayField from '../../ui/components/FormElements/Array.jsx';
+import TextInput from '../ui/FormElements/TextInput.jsx';
+import NumberInput from '../ui/FormElements/NumberInput.jsx';
+import TextareaInput from '../ui/FormElements/TextareaInput.jsx';
+import DateInput from '../ui/FormElements/DateInput.jsx';
+import PhotoInput from '../ui/FormElements/PhotoInput.jsx';
+import TelInput from '../ui/FormElements/TelInput.jsx';
+import EmailInput from '../ui/FormElements/EmailInput.jsx';
+import ArrayField from '../ui/FormElements/Array.jsx';
 
 let Schemas = {};
 
@@ -96,7 +96,7 @@ Schemas.Incidents = new SimpleSchema({
     //sketch photo public id
     "sketch": {type: [String], srf: {type: PhotoInput}, optional: true},
     //array of photo public ids
-    "photos": {type: [String], optional: true, srf: {type: PhotoInput}},
+    "photos": {type: [String], srf: {type: PhotoInput}, optional: true},
     //Symptoms
     "symptoms": {type: [String], optional: true, srf: {type: TextInput}},
 });
@@ -131,6 +131,7 @@ class Incident extends BaseModel {
     user() {
         return Users.findOne(this.userId);
     }
+
 }
 
 Incident.attachCollection(Incidents);

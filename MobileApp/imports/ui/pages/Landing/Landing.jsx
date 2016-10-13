@@ -61,7 +61,7 @@ export default class Landing extends Component {
                         width="253.252px"
                         height="50.715px"
                         viewBox="0 0 253.252 50.715"
-                        enable-background="new 0 0 253.252 50.715"
+                        enableBackground="new 0 0 253.252 50.715"
                     >
                         <g id="layer1" transform="translate(-161.1029,-495.79516)">
                             <path id="path4333" d="M342.808,495.795l-8.477,7.843c-5.404,4.999-9.563,8.033-11.477,8.371c-1.65,0.293-9.525,1.281-17.5,2.197
