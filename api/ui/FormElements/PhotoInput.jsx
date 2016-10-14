@@ -27,16 +27,16 @@ export default class PhotoInput extends FieldType {
                 console.log(res);
                 this.setState({dialogShown: false});
                 // Meteor.call('uploadFile', res);
-                Cloudinary.upload(res, {}, function(err, res){
-                    console.log(err,res);
-                });
                 publicId = res;
-            }, (err)=>{
+            }, (err)=> {
                 console.log(err);
-            },{
+            }, {
                 sourceType: Camera.PictureSourceType[source]
             });
         }
+        Cloudinary.upload(publicId, {}, function (err, res) {
+            console.log(err, res);
+        });
         let value = (this.props.value || []);
         // this.setState({value: publicId});
         // this.addPhoto();
@@ -61,13 +61,17 @@ export default class PhotoInput extends FieldType {
     };
 
     renderPhotos = ()=> {
-        if(!this.props.value) return;
+        if (!this.props.value) return;
         return (this.props.value).map((publicId, index) => {
             return (
                 <div className="photo" key={index}>
                     {/*todo: change the url to include publicId, but not just be publicId*/}
-                    <div className="image" style={{backgroundImage: `url('${publicId}')`}} onClick={()=> {this.enlargeImage()}}></div>
-                    <a className="delete-photo" onClick={()=> {this.removePhoto(index)}}><Ons.Icon icon="md-minus"/></a>
+                    <div className="image" style={{backgroundImage: `url('${publicId}')`}} onClick={()=> {
+                        this.enlargeImage()
+                    }}></div>
+                    <a className="delete-photo" onClick={()=> {
+                        this.removePhoto(index)
+                    }}><Ons.Icon icon="md-minus"/></a>
                 </div>
             )
         });
@@ -81,20 +85,27 @@ export default class PhotoInput extends FieldType {
                     isCancelable={true}
                     onCancel={this.hideDialog}>
                     <div style={{textAlign: 'center', margin: '20px'}}>
-                        <p style={{opacity: 0.5}}>Would you like to take a picture, or choose a photo from your library?</p>
+                        <p style={{opacity: 0.5}}>Would you like to take a picture, or choose a photo from your
+                            library?</p>
                         <p>
-                            <Ons.Button onClick={()=>{this.getPicture('CAMERA')}}>Picture</Ons.Button>
-                            <Ons.Button onClick={()=>{this.getPicture('PHOTOLIBRARY')}}>Library</Ons.Button>
+                            <Ons.Button onClick={()=> {
+                                this.getPicture('CAMERA')
+                            }}>Picture</Ons.Button>
+                            <Ons.Button onClick={()=> {
+                                this.getPicture('PHOTOLIBRARY')
+                            }}>Library</Ons.Button>
                             <Ons.Button onClick={this.hideDialog}>Cancel</Ons.Button>
                         </p>
                     </div>
                 </Ons.Dialog>
                 {/*<p>*/}
-                    {/*{this.props.label}*/}
+                {/*{this.props.label}*/}
                 {/*</p>*/}
                 <div className="photos">
                     {this.renderPhotos()}
-                    <a className="photo-button" onClick={()=> {this.setState({dialogShown: true})}}><Ons.Icon icon="md-camera"/></a>
+                    <a className="photo-button" onClick={()=> {
+                        this.setState({dialogShown: true})
+                    }}><Ons.Icon icon="md-camera"/></a>
                     <div className="spacer"></div>
                 </div>
             </div>

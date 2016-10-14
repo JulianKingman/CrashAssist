@@ -2,7 +2,7 @@ $stepper-spacing: 15px;
 $stepper-color: #3F81B1;
 
 .step-nav {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, .8);

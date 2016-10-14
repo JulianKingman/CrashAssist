@@ -1,0 +1,41 @@
+.accordions {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-bottom: 144px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  .accordion {
+    &.closed {
+      .expander {
+        height: 0;
+      }
+    }
+    &.open {
+      .chevron {
+        transform: rotate(90deg);
+      }
+      .expander {
+      }
+    }
+    .title {
+      .chevron {
+        transition: all .3s ease;
+      }
+      cursor: pointer;
+    }
+    > .expander {
+      min-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .list__item {
+      padding-left: 36px;
+      padding-right: 36px;
+      .list__item__center {
+        background: none;
+        //background-image: none;
+      }
+    }
+  }
+}

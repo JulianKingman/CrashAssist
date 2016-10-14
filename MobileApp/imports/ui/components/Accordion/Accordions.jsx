@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Col, Row} from 'react-onsenui';
 // import onsen from 'onsenui';
-import './Accordion.scss';
+import './Accordions.scss';
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
 import IncidentUpdateForm from '/imports/api/ui/FormElements/IncidentUpdateForm.jsx';
 
