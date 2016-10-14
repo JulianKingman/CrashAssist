@@ -34,7 +34,7 @@ Schemas.Incidents = new SimpleSchema({
     title: {
         type: String,
         autoValue: function () {
-            if (!this.isSet) {
+            if (this.isInsert && !this.isSet) {
                 return `${moment().format('MM/DD/YY')} incident`;
             }
         }
