@@ -1,3 +1,0 @@
-[submodule "MobileApp/packages/meteor-accounts-uuid"]
-	path = MobileApp/packages/meteor-accounts-uuid
-	url = https://github.com/instantsol/meteor-accounts-uuid.git
