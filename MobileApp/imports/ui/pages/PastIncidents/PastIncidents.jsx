@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
 import { Page, Toolbar, BackButton, ListItem, List } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
 import SingleIncident from '/imports/ui/pages/SingleIncident/SingleIncident.jsx';

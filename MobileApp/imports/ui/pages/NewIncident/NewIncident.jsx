@@ -55,14 +55,9 @@ class NewIncident extends Component {
         });
     }
 
-    componentDidMount() {
-        // console.log(Incidents.simpleSchema().pick(['driverInfo', 'driverInfo.name']))
-    }
-
     rename = ()=> {
-        'todo: why doesnt this save to server?';
         var newName = prompt('Use a concise, descriptive title to name your incident');
-        Incidents.update({_id: this.props.incident._id}, {$set: {title: newName}});
+        this.props.incident.update({$set: {title: newName}});
     };
 
     renderToolbar = () => {
