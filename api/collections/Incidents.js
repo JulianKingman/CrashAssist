@@ -15,6 +15,8 @@ import TelInput from '../ui/FormElements/TelInput.jsx';
 import EmailInput from '../ui/FormElements/EmailInput.jsx';
 import ArrayField from '../ui/FormElements/Array.jsx';
 
+import '../SimpleSchemaExtension.js';
+
 let Schemas = {};
 
 Schemas.Incidents = new SimpleSchema({
