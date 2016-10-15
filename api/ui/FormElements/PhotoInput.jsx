@@ -10,7 +10,7 @@ if (Meteor.isClient) {
 }
 
 
-export default class PhotoInput extends FieldType {
+export default class PhotoInput extends Component {
     constructor(props) {
         super(props);
         this.state = {

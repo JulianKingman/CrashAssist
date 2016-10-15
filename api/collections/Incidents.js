@@ -85,8 +85,8 @@ Schemas.Incidents = new SimpleSchema({
     "timeLocation.time": {type: String, srf: {type: TextInput}},
     "timeLocation.location": {type: String, srf: {type: TextInput}},
     //Traffic Information
-    "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}},
-    "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}},
+    "trafficInfo.roadConditions": {type: String, srf: {type: TextareaInput}},
+    "trafficInfo.trafficControls": {type: String, srf: {type: TextareaInput}},
     //Witness Information
     "witnessInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
     "witnessInfo.$.name": {type: String, srf: {type: TextInput}},

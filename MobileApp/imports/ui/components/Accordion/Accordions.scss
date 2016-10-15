@@ -1,10 +1,55 @@
 .accordions {
+  //transition: left .3s, right .3s;
   position: absolute;
   top: 0;
   bottom: 0;
+  right: 0;
+  left: 0;
   padding-bottom: 144px;
+  width: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+
+  &.step-enter {
+    //transition: left 0s, right 0s;
+    &.step-forward {
+      right: -100vw;
+      left: 100vw;
+      & + .step-leave-active{
+        transition: left .3s, right .3s;
+        right: 100vw;
+        left: -100vw;
+      }
+    }
+    &.step-backward {
+      right: 100vw;
+      left: -100vw;
+      & + .step-leave-active{
+        transition: left .3s, right .3s;
+        right: -100vw;
+        left: 100vw;
+      }
+    }
+    &.step-enter-active {
+      transition: left .3s, right .3s;
+      right: 0;
+      left: 0;
+    }
+  }
+  //&.step-leave {
+  //  transition: left .3s, right .3s;
+  //  &.step-leave-active {
+  //    &.step-forward {
+  //      right: 100vw;
+  //      left: -100vw;
+  //    }
+  //    &.step-backward {
+  //      right: -100vw;
+  //      left: 100vw;
+  //    }
+  //  }
+  //}
+
   .accordion {
     &.closed {
       .expander {
@@ -30,10 +75,10 @@
       transition: all 0.3s ease;
     }
     .list__item {
-      padding-left: 36px;
-      padding-right: 36px;
+      padding: 0 15px;
       .list__item__center {
         background: none;
+        padding-right: 0;
         //background-image: none;
       }
     }
