@@ -1,0 +1,11 @@
+.IncidentUpdateForm {
+  width: 100%;
+  form {
+    display: flex;
+    flex-direction: column;
+    ons-input {
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+}

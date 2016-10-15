@@ -98,23 +98,7 @@ const pageSchema = [
                         "name": "passengerInfo",
                         "type": "Array",
                         "label": "Passenger Information",
-                        "nestedFields": [
-                            {
-                                "name": "name",
-                                "type": "text",
-                                "label": "Passenger Name"
-                            },
-                            {
-                                "name": "phone",
-                                "type": "text",
-                                "label": "Passenger Phone"
-                            },
-                            {
-                                "name": "email",
-                                "type": "text",
-                                "label": "Passenger Email"
-                            },
-                        ]
+                        "arrayText": "Passenger"
                     }
                 ]
             },
@@ -244,6 +228,7 @@ const pageSchema = [
                         "name": "witnessInfo",
                         "type": "Array",
                         "label": "Witness Information",
+                        "arrayText": "Witness"
                     }
                 ]
             },
@@ -290,7 +275,7 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "photos",
-                        "type": "array"
+                        "type": "photo"
                     }
                 ]
             },

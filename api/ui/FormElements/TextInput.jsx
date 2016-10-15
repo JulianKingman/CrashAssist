@@ -52,6 +52,7 @@ export default class TextInput extends Component {
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
                 modifier='underbar'
+                className={`Field ${this.props.className}`}
                 {...this.passProps}
             />
         );

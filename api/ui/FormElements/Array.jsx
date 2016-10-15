@@ -1,7 +1,8 @@
 import React from 'react'
-import { ArrayComponent } from 'simple-react-form'
-if(Meteor.isClient){
+import {ArrayComponent} from 'simple-react-form'
+if (Meteor.isClient) {
     Ons = require('react-onsenui');
+    require('./Array.scss');
 }
 
 export default class ArrayField extends ArrayComponent {
@@ -10,41 +11,45 @@ export default class ArrayField extends ArrayComponent {
         super(props);
     }
 
-    renderChildrenItem({ index, children }) {
+    renderChildrenItem({index, children}) {
         return (
             <div className={this.props.childrenClassName} key={`${this.props.fieldName}.${index}`}>
-                <div className="col-sm-11">
-                    {this.renderChildrenItemWithContext({index, children})}
-                </div>
-                <div className="col-sm-1 text-right">
-                    {this.renderRemoveButton(index)}
-                </div>
+                <Ons.Row>
+                    <Ons.Col width="calc(100% - 47px)" verticalAlign="center">
+                        <h4>{`${this.props.passProps.arrayText} ${index + 1}`}</h4>
+                        {this.renderChildrenItemWithContext({index, children})}
+                    </Ons.Col>
+                    <Ons.Col width="32px" verticalAlign="center">
+                        {this.renderRemoveButton(index)}
+                    </Ons.Col>
+                </Ons.Row>
             </div>
         )
     }
 
     renderRemoveButton(index) {
-        if (this.props.disabled) return
+        if (this.props.disabled) return;
         return (
-            <Ons.Button modifier="outline" onClick={() => this.removeItem(index)}>
-                <Ons.Icon icon="md-minus" />
+            <Ons.Button modifier="outline" onClick={() => this.removeItem(index)} className="right">
+                <Ons.Icon icon="md-minus"/>
             </Ons.Button>
         )
     }
 
     renderAddButton() {
-        if (!this.props.showAddButton) return
-        if (this.props.disabled) return
+        if (!this.props.showAddButton) return;
+        if (this.props.disabled) return;
         return (
-            <Ons.Button modifier="outline" onClick={() => this.addItem()}>
-                <Ons.Icon icon="md-plus" />
+            <Ons.Button modifier="outline" onClick={() => this.addItem()} className="addButton">
+                <Ons.Icon
+                    icon="md-plus"/> {this.props.passProps.arrayText ? `Add ${this.props.passProps.arrayText}` : ''}
             </Ons.Button>
         )
     }
 
     render() {
         return (
-            <div>
+            <div className="ArrayField">
                 <div className={this.props.parentClassName}>
                     {this.renderChildren()}
                 </div>

@@ -50,6 +50,7 @@ class NewIncident extends Component {
                 isForward: stepNumber + 1 > this.state.currentStep
             })
         }
+
     };
 
     finishSteps = () => {

@@ -4,7 +4,7 @@
     flex-direction: row;
     flex-flow: wrap;
     justify-content: space-between;
-    margin: 0 -7.5px;
+    margin: -7.5px -7.5px 7.5px -7.5px;
     & > * {
       margin: 7.5px;
     }
