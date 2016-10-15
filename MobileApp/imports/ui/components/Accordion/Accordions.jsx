@@ -23,6 +23,7 @@ export default class Accordions extends Component {
         // console.log(typeof accordion);
         if (typeof accordion === 'undefined') {
             this.props.next();
+            return;
         }
         let expander = accordion.refs.expander;
         let accordionDom = ReactDOM.findDOMNode(accordion);
@@ -38,6 +39,7 @@ export default class Accordions extends Component {
         setTimeout(function () {
             $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
                     //todo: tweak this later to make sure everything scrolls right
+                    $(expander).css({height: "auto"});
                     $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
                 }
             );
@@ -47,40 +49,6 @@ export default class Accordions extends Component {
     componentDidMount() {
         this.openAccordion(0);
     }
-
-    componentWillAppear(callback) {
-        console.log('componentWillAppear');
-        if (confirm('componentWillAppear')) {
-            callback();
-        }
-    }
-
-    componentDidAppear() {
-        console.log('componentDidAppear');
-    }
-
-    componentWillEnter(callback) {
-        console.log('componentWillEnter');
-        if (confirm('componentWillEnter')) {
-            callback();
-        }
-    }
-
-    componentDidEnter() {
-        console.log('componentDidEnter');
-    }
-
-    componentWillLeave(callback) {
-        console.log('componentWillLeave');
-        if (confirm('componentWillLeave')) {
-            callback();
-        }
-    }
-
-    componentDidLeave() {
-        console.log('componentDidLeave');
-    }
-
 
     render() {
         let currentStepData = this.props.data[this.state.currentStep];

@@ -6,6 +6,7 @@ $stepper-color: #3F81B1;
   bottom: 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 5px 3px rgba(0, 0, 0, .5);
 
   .stepper {
     position: relative;
@@ -25,6 +26,7 @@ $stepper-color: #3F81B1;
       left: $stepper-spacing;
       right: $stepper-spacing;
       border-radius: 12px;
+      box-shadow: inset 0 0 2px 0px rgba(0,0,0,.5);
     }
 
     #steps {
@@ -46,6 +48,7 @@ $stepper-color: #3F81B1;
         justify-content: center;
         color: #fff;
         font-size: 12px;
+        box-shadow: inset 0 0 4px 0px rgba(0,0,0,.5);
         z-index: 1;
         span {
           display: none;
@@ -54,6 +57,7 @@ $stepper-color: #3F81B1;
         &.active {
           max-width: 22px;
           max-height: 22px;
+          text-shadow: 1px 1px 1px rgba(0,0,0,.5);
           span {
             display: inline-block;
           }
