@@ -73,7 +73,9 @@ export default class PhotoInput extends Component {
     renderPhotos = ()=> {
         if (!this.props.value) return;
         return (this.props.value).map((publicId, index) => {
-            let bgImage = Cloudinary._helpers.url(publicId, {});
+            let bgImage = Cloudinary._helpers.url(publicId, {hash:{
+                width: 55, height: 55, crop: 'fill'
+            }});
             return (
                 <div className="photo" key={index}>
                     {/*todo: change the url to include publicId, but not just be publicId*/}
