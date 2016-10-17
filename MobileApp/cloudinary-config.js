@@ -3,18 +3,18 @@
  */
 // #SERVER
 
-if (Meteor.isServer)(
-    Cloudinary.config = {
+if (Meteor.isServer) {
+    Cloudinary.config({
         cloud_name: 'crash-assist',
         api_key: '433828571112967',
         api_secret: '_ujL-pUC-Jw-aHbHzgEBRKA8xu4'
-    }
-)
+    });
+}
 
 if (Meteor.isClient) {
-    $.cloudinary.config = {
+    $.cloudinary.config({
         cloud_name: "crash-assist"
-    }
+    });
 }
 
 

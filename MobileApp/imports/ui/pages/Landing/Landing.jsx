@@ -25,7 +25,6 @@ export default class Landing extends Component {
             props: {currentStep: 1, key: "Steps"}
         });
     };
-    }
 
     incompleteIncidentExists(){
         return Incidents.findOne({completed: false})? true: false;
