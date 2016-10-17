@@ -5,7 +5,6 @@ import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
 import {Meteor} from 'meteor/meteor';
-import loginByDeviceId from '/imports/startup/client/accounts.js';
 
 import './Landing.scss';
 
@@ -19,19 +18,13 @@ export default class Landing extends Component {
 
     gotoNewIncident = () => {
         if (!Incidents.findOne({completed: false})) {
-            if (Meteor.userId()) {
-                new Incident().save();
-            } else {
-                console.log('not logged in!');
-                loginByDeviceId(device.uuid, (err, res)=> {
-                    console.log(err, res)
-                });
-            }
+            new Incident().save();
         }
         this.props.appContext.navigator.pushPage({
             component: NewIncident,
             props: {currentStep: 1, key: "Steps"}
         });
+    };
     }
 
     render() {
