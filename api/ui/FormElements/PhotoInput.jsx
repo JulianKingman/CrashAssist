@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
-// import TextInput from './TextInput.jsx';
 import {Meteor} from 'meteor/meteor';
+import {Cloudinary} from 'meteor/lepozepo:cloudinary'
 // import ReactDOM from 'react-dom';
 // import onsen from 'onsenui';
 const packageOpts = require('/package.json');
@@ -13,11 +13,8 @@ if (packageOpts.name === "CrashAssistApp") {
     cameraIcon = "icon ons-icon md-camera";
 } else if (packageOpts.name === "CrashAssistServer") {
     Rb = Meteor.isClient? require('react-bootstrap'): '';
-    //     Rb = require('react-bootstrap');
     minusIcon = "icon glyphicon glyphicon-minus";
     cameraIcon = "icon glyphicon glyphicon-camera";
-    //     minusIcon = <Rb.Glyphicon glyph="minus"/>;
-    //     cameraIcon = <Rb.Glyphicon glyph="camera"/>;
 }
 
 
@@ -34,8 +31,6 @@ export default class PhotoInput extends Component {
     }
 
     getPicture = (source)=> {
-        console.log('getting image');
-        let publicId = '/crashedcar.jpg';
         if (Meteor.isCordova) {
             let actionSheetOptions = {
                 androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT, // material
@@ -68,8 +63,37 @@ export default class PhotoInput extends Component {
                 }, {
                     sourceType: pictureSource
                 });
+            navigator.camera.getPicture((res)=> {
+                window.resolveLocalFileSystemURL(res,
+                    (FileEntry) => {
+                        FileEntry.file((file)=>{
+                            const context = this;
+                            this.setState({dialogShown: false});
+
+                            Cloudinary.upload(file, {
+                                eager: [
+                                    {width:55, height:55, crop:"fill"}
+                                ]
+                            }, function(err, res){
+                                let value = (context.props.value || []);
+                                value.push(res.public_id);
+                                context.props.onChange(value);
+                            });
+                        }, (err) => {
+                            console.log("error getting file", err);
+                        });
+                    },
+                    (err)=>{
+                        console.log("error resolving url", err);
+                    }
+                );
+            }, (err)=>{
+                console.log(err);
+            },{
+                sourceType: Camera.PictureSourceType[source]
             });
         }
+
     };
 
     removePhoto = (index)=> {
@@ -91,10 +115,13 @@ export default class PhotoInput extends Component {
     renderPhotos = ()=> {
         if (!this.props.value) return;
         return (this.props.value).map((publicId, index) => {
+            let bgImage = Cloudinary._helpers.url(publicId, {hash:{
+                width: 55, height: 55, crop: 'fill'
+            }});
             return (
                 <div className="photo" key={index}>
                     {/*todo: change the url to include publicId, but not just be publicId*/}
-                    <div className="image" style={{backgroundImage: `url('${publicId}')`}} onClick={()=> {
+                    <div className="image" style={{backgroundImage: `url('${bgImage}')`}} onClick={()=> {
                         this.enlargeImage()
                     }}></div>
                     <a className="delete-photo" onClick={()=> {

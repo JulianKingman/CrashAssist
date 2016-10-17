@@ -5,7 +5,7 @@ import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
 import {Meteor} from 'meteor/meteor';
-import loginByDeviceId from '/imports/startup/client/accounts.js';
+import {createContainer} from 'meteor/react-meteor-data';
 
 import './Landing.scss';
 
@@ -27,16 +27,9 @@ export default class Landing extends Component {
     }
 
     gotoNewIncident = () => {
-        if (!this.state.hasIncompleteIncident) {
-            if (Meteor.userId()) {
+        if (!Incidents.findOne({completed: false})) {
                 this.setState({hasIncompleteIncident: true});
-                new Incident().save();
-            } else {
-                console.log('not logged in!');
-                loginByDeviceId(device.uuid, (err, res)=> {
-                    console.log(err, res)
-                });
-            }
+            new Incident().save();
         }
         this.props.appContext.navigator.pushPage({
             component: NewIncident,
@@ -180,3 +173,9 @@ export default class Landing extends Component {
         );
     }
 }
+
+export default LandingContainer = createContainer(()=>{
+    return {
+        incompleteIncidentExists: !!Incidents.findOne({completed: false})
+    }
+}, Landing);
