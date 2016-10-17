@@ -17,7 +17,7 @@ export default class Accordions extends Component {
         }
     }
 
-    openAccordion = (index) => {
+    openAccordion = (index = this.state.activeAccordion + 1) => {
         this.setState({activeAccordion: index});
         let accordion = this.refs[`accordion-${index}`];
         // console.log(typeof accordion);
@@ -76,6 +76,7 @@ export default class Accordions extends Component {
                                         <IncidentUpdateForm
                                             doc={this.props.incident}
                                             fields={accordion.fields}
+                                            goNext={this.openAccordion}
                                         />
                                         : <Button modifier="outline large" onClick={()=> {
                                         this.openAccordion(index + 1)

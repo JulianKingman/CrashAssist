@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
-import TextInput from './TextInput.jsx';
+// import TextInput from './TextInput.jsx';
 import {Meteor} from 'meteor/meteor';
 // import ReactDOM from 'react-dom';
 // import onsen from 'onsenui';
-if (Meteor.isClient) {
-    require('./PhotoInput.scss');
-    Ons = require('react-onsenui');
+const packageOpts = require('/package.json');
+let minusIcon, cameraIcon;
+Meteor.isClient ? require('./PhotoInput.scss') : '';
+if (packageOpts.name === "CrashAssistApp") {
+    Ons = Meteor.isClient ? require('react-onsenui') : '';
+    minusIcon = "icon ons-icon md-minus";
+    cameraIcon = "icon ons-icon md-camera";
+} else if (packageOpts.name === "CrashAssistServer") {
+    Rb = Meteor.isClient? require('react-bootstrap'): '';
+    //     Rb = require('react-bootstrap');
+    minusIcon = "icon glyphicon glyphicon-minus";
+    cameraIcon = "icon glyphicon glyphicon-camera";
+    //     minusIcon = <Rb.Glyphicon glyph="minus"/>;
+    //     cameraIcon = <Rb.Glyphicon glyph="camera"/>;
 }
 
 
@@ -18,6 +29,9 @@ export default class PhotoInput extends Component {
         };
     }
 
+    componentDidMount() {
+        // console.log(packageOpts.name);
+    }
 
     getPicture = (source)=> {
         console.log('getting image');
@@ -35,7 +49,7 @@ export default class PhotoInput extends Component {
             };
             window.plugins.actionsheet.show(actionSheetOptions, (index)=> {
                 // console.log(index);
-                let pictureSource = index===1? 1: 0;
+                let pictureSource = index === 1 ? 1 : 0;
                 navigator.camera.getPicture((res)=> {
                     console.log(res);
                     this.setState({dialogShown: false});
@@ -85,7 +99,10 @@ export default class PhotoInput extends Component {
                     }}></div>
                     <a className="delete-photo" onClick={()=> {
                         this.removePhoto(index)
-                    }}><Ons.Icon icon="md-minus"/></a>
+                    }}>
+                        {/*<Ons.Icon icon="md-minus"/></a>*/}
+                        <i className={minusIcon}></i>
+                    </a>
                 </div>
             )
         });
@@ -98,40 +115,44 @@ export default class PhotoInput extends Component {
     render() {
         return (
             <div className="photo-input">
-                <Ons.Dialog
-                    isOpen={this.state.dialogShown}
-                    isCancelable={true}
-                    onCancel={this.hideDialog.bind(this)}
-                >
-                    <div style={{textAlign: 'center', margin: '20px'}}>
-                        <p style={{opacity: 0.5}}>
-                            Would you like to take a picture, or choose a photo from your
-                            library?
-                        </p>
-                        <p>
-                            <Ons.Button onClick={()=> {
-                                this.getPicture('CAMERA')
-                            }}>Picture</Ons.Button>
-                            <Ons.Button onClick={()=> {
-                                this.getPicture('PHOTOLIBRARY')
-                            }}>Library</Ons.Button>
-                            <Ons.Button onClick={this.hideDialog.bind(this)}>Cancel</Ons.Button>
-                        </p>
-                    </div>
-                </Ons.Dialog>
-                {/*<p>*/}
-                {/*{this.props.label}*/}
-                {/*</p>*/}
                 <div className="photos">
                     {this.renderPhotos()}
                     <a className="photo-button" onClick={()=> {
                         {/*this.setState({dialogShown: true})*/
                         }
                         this.getPicture();
-                    }}><Ons.Icon icon="md-camera"/></a>
+                    }}>
+                        {/*<Ons.Icon icon="md-camera"/>*/}
+                        <i className={cameraIcon}></i>
+                    </a>
                     <div className="spacer"></div>
                 </div>
             </div>
         )
     }
 }
+
+// <Ons.Dialog
+//     isOpen={this.state.dialogShown}
+//     isCancelable={true}
+//     onCancel={this.hideDialog.bind(this)}
+// >
+//     <div style={{textAlign: 'center', margin: '20px'}}>
+//         <p style={{opacity: 0.5}}>
+//             Would you like to take a picture, or choose a photo from your
+//             library?
+//         </p>
+//         <p>
+//             <Ons.Button onClick={()=> {
+//                 this.getPicture('CAMERA')
+//             }}>Picture</Ons.Button>
+//             <Ons.Button onClick={()=> {
+//                 this.getPicture('PHOTOLIBRARY')
+//             }}>Library</Ons.Button>
+//             <Ons.Button onClick={this.hideDialog.bind(this)}>Cancel</Ons.Button>
+//         </p>
+//     </div>
+// </Ons.Dialog>
+// <p>
+// {this.props.label}
+// </p>

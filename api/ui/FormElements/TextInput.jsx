@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import {FieldType} from 'simple-react-form';
-if(Meteor.isClient){
-    Ons = require('react-onsenui');
+let inputClass;
+const packageOpts = require('/package.json');
+if (packageOpts.name === "CrashAssistApp") {
+    Ons = Meteor.isClient? require('react-onsenui'): '';
+    inputClass = "text-input text-input--underbar";
+} else if (packageOpts.name === "CrashAssistServer") {
+    Rb = require('react-bootstrap');
+    inputClass = "form-control";
 }
 
 const propTypes = {
@@ -42,7 +47,7 @@ export default class TextInput extends Component {
     render() {
         var fieldType = this.props.fieldType || this.type;
         return (
-            <Ons.Input
+            <input
                 ref='input'
                 value={this.state.value || ''}
                 type={fieldType}
@@ -51,8 +56,7 @@ export default class TextInput extends Component {
                 onChange={this.onChange.bind(this)}
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
-                modifier='underbar'
-                className={`Field ${this.props.className}`}
+                className={`Field ${this.props.className} ${inputClass}`}
                 {...this.passProps}
             />
         );

@@ -5,6 +5,7 @@
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Incidents} from './Incidents.js';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+// import {Ground} from 'meteor/ground:db';
 
 
 const Users = Meteor.users;
@@ -49,5 +50,7 @@ Users.allow({
     remove(userId, userIncident) {
     }
 });
+
+// Ground.Collection(Users);
 
 export {Users, User};

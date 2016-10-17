@@ -1,11 +1,33 @@
-import React, { Component } from 'react';
-import { Page, Icon } from 'react-onsenui';
+import React, {Component} from 'react';
+import {Page, Icon, ProgressBar} from 'react-onsenui';
 
 import './NewIncidentSuccess.scss';
 
 export default class NewIncidentSuccess extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            progress: 0
+        }
+    }
+
     componentDidMount() {
-        setTimeout(()=> this.props.appContext.navigator.popPage(), 2000)
+        this.interval = setInterval(() => {
+            let progress = this.state.progress;
+            if (progress === 100) {
+                clearInterval(this.interval);
+                return;
+            }
+            progress++;
+            this.setState({progress: progress});
+        }, 20);
+        setTimeout(()=> this.props.appContext.navigator.popPage(), 2000);
+    }
+
+    componentWillUnmount() {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
     }
 
     render() {
@@ -18,6 +40,7 @@ export default class NewIncidentSuccess extends Component {
                     />
                     <h1>All Done!</h1>
                     <p>Good Job, we knew you could do it!</p>
+                    <ProgressBar value={this.state.progress}/>
                 </div>
             </Page>
         )

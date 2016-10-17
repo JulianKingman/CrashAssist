@@ -48,14 +48,15 @@
       align-items: center;
       justify-content: space-around;
       box-sizing: border-box;
-      .ons-icon {
+      text-decoration: none;
+      .icon{
         &:before {
           color: #cccccc;
           font-size: 1.4em;
         }
       }
     }
-    .spacer{
+    .spacer {
       opacity: 0;
       flex-grow: 1;
     }

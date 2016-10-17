@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Page, Button, Ripple} from 'react-onsenui';
+import {Page, Button, Ripple, Popover, Modal} from 'react-onsenui';
 import onsen from 'onsenui';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
@@ -11,6 +11,15 @@ import './Landing.scss';
 
 export default class Landing extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasCompleteIncidents: Incidents.find({completed: true}).count() ? true : false,
+            hasIncompleteIncident: Incidents.find({completed: false}).count(),
+            tooltipOpen: Incidents.find().count() ? false : true
+        }
+    }
+
     componentDidMount() {
         if (Meteor.userId()) {
             console.log('should be logged in');
@@ -18,8 +27,9 @@ export default class Landing extends Component {
     }
 
     gotoNewIncident = () => {
-        if (!Incidents.findOne({completed: false})) {
+        if (!this.state.hasIncompleteIncident) {
             if (Meteor.userId()) {
+                this.setState({hasIncompleteIncident: true});
                 new Incident().save();
             } else {
                 console.log('not logged in!');
@@ -32,17 +42,60 @@ export default class Landing extends Component {
             component: NewIncident,
             props: {currentStep: 1, key: "Steps"}
         });
+    };
+
+    incompleteIncidentExists() {
+        return Incidents.findOne({completed: false}) ? true : false;
     }
 
-    incompleteIncidentExists(){
-        return Incidents.findOne({completed: false})? true: false;
-    }
+    startButton = ()=> {
+        console.log(this.refs.startButton);
+        return this.refs.startButton;
+    };
+    toggleTooltip = (state)=> {
+        if (state || this.state.tooltipOpen) {
+            this.setState({toolTipOpen: false});
+        } else if (!state || !this.state.tooltipOpen) {
+            this.setState({toolTipOpen: true});
+        }
+    };
+
+    renderFirstTimeDialog = ()=> {
+        // return (
+        //     <Popover
+        //         getTarget={this.startButton}
+        //         isOpen={this.state.tooltipOpen}
+        //         onOpen={this.toggleTooltip}
+        //         onHide={this.toggleTooltip}
+        //         isCancelable={true}
+        //         direction="up down"
+        //     >
+        //         <p>In an accident? Start here.</p>
+        //     </Popover>
+        // )
+    };
+
+    renderLoginDialog = ()=> {
+        if (Incidents.find({completed: true}).count()) {
+            // return (
+            //     <Popover
+            //         getTarget={this.startButton}
+            //         isOpen={this.state.tooltipOpen}
+            //         onOpen={this.toggleTooltip}
+            //         onHide={this.toggleTooltip}
+            //         isCancelable={true}
+            //         direction="up down"
+            //     >
+            //         <p>Enter your email and password to save and share your information.</p>
+            //     </Popover>
+            // )
+        }
+    };
 
     render() {
         let {navigator} = this.props.appContext;
         let modifier = "large";
         let ripple;
-
 
         if (!onsen.platform.isAndroid()) {
             modifier += " outline";
@@ -107,10 +160,11 @@ export default class Landing extends Component {
                     </svg>
                     <div className="buttons">
                         <Button modifier={modifier}
-                                onClick={this.gotoNewIncident}>
-                            {ripple}{this.incompleteIncidentExists()? "Continue Incident": "New Incident"}
+                                onClick={this.gotoNewIncident}
+                                ref="startButton"
+                        >
+                            {ripple}{this.incompleteIncidentExists() ? "Continue Incident" : "New Incident"}
                         </Button>
-                        <p>In an accident? Start here.</p>
                         <Button modifier='large outline'
                                 onClick={()=> navigator.pushPage({
                                     component: PastIncidents,
@@ -118,6 +172,8 @@ export default class Landing extends Component {
                                 })}>
                             {ripple}Past Incidents
                         </Button>
+                        {this.renderFirstTimeDialog()}
+                        {this.renderLoginDialog()}
                     </div>
                 </div>
             </Page>

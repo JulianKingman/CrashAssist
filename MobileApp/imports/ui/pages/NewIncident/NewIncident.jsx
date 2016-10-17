@@ -60,7 +60,7 @@ class NewIncident extends Component {
             }
         });
 
-    }
+    };
 
     rename = ()=> {
         var newName = prompt('Use a concise, descriptive title to name your incident');

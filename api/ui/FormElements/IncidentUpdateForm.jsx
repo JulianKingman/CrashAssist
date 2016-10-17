@@ -11,8 +11,9 @@ export default class IncidentUpdateForm extends Component {
     }
 
     submitForm = ()=> {
-        console.log(this.props.doc, this.refs.form);
+        // console.log(this.props.doc, this.refs.form);
         this.refs.form.submit();
+        this.props.goNext();
     };
 
     render() {
@@ -34,7 +35,7 @@ export default class IncidentUpdateForm extends Component {
                         })
                     }
                 </Form>
-                <Button modifier="outline large" label='Save' onClick={() => this.submitForm()} ripple={true}>Save</Button>
+                <Button modifier="outline large" label='Save and Continue' onClick={() => this.submitForm()} ripple={true}>Save and Continue</Button>
             </div>
         )
     }

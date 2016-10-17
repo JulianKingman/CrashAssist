@@ -14,6 +14,7 @@ import PhotoInput from '../ui/FormElements/PhotoInput.jsx';
 import TelInput from '../ui/FormElements/TelInput.jsx';
 import EmailInput from '../ui/FormElements/EmailInput.jsx';
 import ArrayField from '../ui/FormElements/Array.jsx';
+// import {Ground} from 'meteor/ground:db';
 
 import '../SimpleSchemaExtension.js';
 
@@ -138,6 +139,7 @@ class Incident extends BaseModel {
 
 Incident.attachCollection(Incidents);
 
+
 //allow/deny
 
 Incidents.allow({
@@ -151,5 +153,7 @@ Incidents.allow({
         return Incident.checkOwnership();
     }
 });
+
+// Ground.Collection(Incidents);
 
 export {Incidents, Incident};
