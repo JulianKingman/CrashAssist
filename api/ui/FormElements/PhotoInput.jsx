@@ -28,7 +28,11 @@ export default class PhotoInput extends Component {
                             const context = this;
                             this.setState({dialogShown: false});
 
-                            Cloudinary.upload(file, {}, function(err, res){
+                            Cloudinary.upload(file, {
+                                eager: [
+                                    {width:55, height:55, crop:"fill"}
+                                ]
+                            }, function(err, res){
                                 let value = (context.props.value || []);
                                 value.push(res.public_id);
                                 context.props.onChange(value);
