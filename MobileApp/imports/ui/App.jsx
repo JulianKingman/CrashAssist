@@ -3,11 +3,18 @@ import React, { Component } from 'react';
 import onsen from 'onsenui';
 
 import {
-    Navigator
+    Navigator,
+    Splitter,
+    SplitterSide,
+    SplitterContent,
+    Page,
+    List,
+    ListItem
 } from 'react-onsenui';
 
 import Landing from './pages/Landing/Landing.jsx';
 import Login from './pages/Login/Login.jsx';
+import PastIncidents from './pages/PastIncidents/PastIncidents.jsx';
 import loginByDeviceId from '../startup/client/accounts.js';
 
 import 'onsenui/css/onsenui.css'
@@ -21,11 +28,34 @@ import 'onsenui/css/onsenui.css'
 //import '../startup/client/css/onsen-css-components.css';
 import 'onsenui/css/onsen-css-components.css'
 
+const splitterMenuItems = [
+    {title:"Past Incidents", component:PastIncidents},
+    {title:"My Account", component:undefined},
+    {title:"Help", component:undefined}
+];
+
+let navigation;
+
 export default class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            menuOpen:false
+        }
+    }
+
+    navigateTo(item){
+        this.handleMenu(false);
+        navigation.pushPage({component:item.component, props:{key:item.title}});
+    }
+
+    handleMenu = (state) => {
+        this.setState({menuOpen:state});
+    };
 
     renderPage(route, navigator) {
         const props = route.props || {};
-        this.appContext.navigator = navigator;
+        navigation = this.appContext.navigator = navigator;
         props.appContext = this.appContext;
 
         let deviceId;
@@ -41,13 +71,35 @@ export default class App extends Component {
 
         return React.createElement(route.component, props);
     }
+
     render() {
         return (
-            <Navigator
-                appContext={this}
-                initialRoute={{component:Landing, props:{key:"landing"}}}
-                renderPage={this.renderPage}
-                />
+            <Splitter>
+                <SplitterSide
+                    side='right'
+                    width={300}
+                    collapse={true}
+                    isSwipeable={true}
+                    isOpen={this.state.menuOpen}
+                    onOpen={() => this.handleMenu(true)}
+                    onClose={() => this.handleMenu(false)}>
+                    <Page>
+                        <List
+                            dataSource={splitterMenuItems}
+                            renderRow={(item) => (
+                                <ListItem key={item.title} onClick={()=>this.navigateTo(item)} tappable>{item.title}</ListItem>
+                            )}
+                        />
+                    </Page>
+                </SplitterSide>
+                <SplitterContent>
+                    <Navigator
+                        appContext={this}
+                        initialRoute={{component:Landing, props:{key:"landing"}}}
+                        renderPage={this.renderPage}
+                    />
+                </SplitterContent>
+            </Splitter>
         );
     }
 }

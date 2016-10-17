@@ -1,19 +1,27 @@
 $light-blue: rgba(18, 114, 224, 0.77);
 
 #landing {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100vh - 20px);
-  box-sizing: border-box;
-  //border: 2px solid $light-blue;
-  h1 {
-    text-align: center;
-    font-size: 1.15em;
-    color: $light-blue;
-    padding: 20px;
+    padding:10px;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 20px);
+    box-sizing: border-box;
+
+    #menuActuator{
+        $position: 15px;
+
+        position: absolute;
+        top: $position;
+        right: $position;
+        color:#ccc;
+    }
+    h1 {
+        text-align: center;
+        font-size: 1.15em;
+        color: $light-blue;
+        padding: 20px;
 
     span {
       display: inline-block;
