@@ -8,7 +8,15 @@ $light-blue: rgba(18,114,224,0.77);
     justify-content: space-between;
     height: calc(100vh - 20px);
     box-sizing: border-box;
-    //border: 2px solid $light-blue;
+
+    #menuActuator{
+        $position: 15px;
+
+        position: absolute;
+        top: $position;
+        right: $position;
+        color:#ccc;
+    }
     h1 {
         text-align: center;
         font-size: 1.15em;

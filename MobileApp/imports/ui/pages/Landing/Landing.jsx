@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Page, Button, Ripple} from 'react-onsenui';
+import {Page, Button, Ripple, Icon} from 'react-onsenui';
 import onsen from 'onsenui';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
-import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
+
 import {Meteor} from 'meteor/meteor';
 import {createContainer} from 'meteor/react-meteor-data';
 
@@ -43,6 +43,11 @@ export default class Landing extends Component {
         return (
             <Page key="landing">
                 <div id="landing">
+                    <Icon
+                        id="menuActuator"
+                        size={26}
+                        icon='ion-navicon, material:md-menu' 
+                        onClick={()=>this.props.appContext.handleMenu(!this.props.appContext.state.menuOpen)}/>
                     <h1>Remain Calm, <span>We'll help you through this!</span></h1>
                     {/*<img src="images/crash.svg"/>*/}
                     <svg
@@ -99,14 +104,6 @@ export default class Landing extends Component {
                         <Button modifier={modifier}
                                 onClick={this.gotoNewIncident}>
                             {ripple}{this.props.incompleteIncidentExists? "Continue Incident": "New Incident"}
-                        </Button>
-                        <p>In an accident? Start here.</p>
-                        <Button modifier='large outline'
-                                onClick={()=> navigator.pushPage({
-                                    component: PastIncidents,
-                                    props: {key: "PastIncidents"}
-                                })}>
-                            {ripple}Past Incidents
                         </Button>
                     </div>
                 </div>
