@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {FieldType} from 'simple-react-form';
-import TextInput from './TextInput.jsx';
 import {Meteor} from 'meteor/meteor';
-// import ReactDOM from 'react-dom';
-// import onsen from 'onsenui';
+import {Cloudinary} from 'meteor/lepozepo:cloudinary'
 if (Meteor.isClient) {
     require('./PhotoInput.scss');
     Ons = require('react-onsenui');
@@ -41,7 +39,7 @@ export default class PhotoInput extends Component {
                             console.log("error getting file", err);
                         });
                     },
-                    function(err){
+                    (err)=>{
                         console.log("error resolving url", err);
                     }
                 );
