@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Page, Button, Ripple, Popover, Modal} from 'react-onsenui';
+import {Page, Button, Ripple, Popover, Modal, Icon} from 'react-onsenui';
 import onsen from 'onsenui';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
