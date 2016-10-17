@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {ListItem, Icon} from 'react-onsenui';
 import onsen from 'onsenui';
-import './Accordion.scss';
+// import './Accordions.scss';
 
 export default class Accordion extends Component {
 
     clickHandler = () => {
-        var index = this.props.index;
+        let index = this.props.index;
         this.props.openAccordion(index);
-    }
+    };
 
     render() {
         let {platform} = onsen;

@@ -63,8 +63,8 @@ Schemas.Incidents = new SimpleSchema({
     //[passenger info]
     "passengerInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
     "passengerInfo.$.name": {type: String, srf: {type: TextInput}},
-    "passengerInfo.$.phone": {type: String, srf: {type: TelInput}},
-    "passengerInfo.$.email": {type: String, srf: {type: EmailInput}},
+    "passengerInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
+    "passengerInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
     //vehicle info
     "vehicleInfo.make": {type: String, srf: {type: TextInput}},
     "vehicleInfo.model": {type: String, srf: {type: TextInput}},
@@ -85,14 +85,14 @@ Schemas.Incidents = new SimpleSchema({
     "timeLocation.time": {type: String, srf: {type: TextInput}},
     "timeLocation.location": {type: String, srf: {type: TextInput}},
     //Traffic Information
-    "trafficInfo.roadConditions": {type: String, srf: {type: TextInput}},
-    "trafficInfo.trafficControls": {type: String, srf: {type: TextInput}},
+    "trafficInfo.roadConditions": {type: String, srf: {type: TextareaInput}},
+    "trafficInfo.trafficControls": {type: String, srf: {type: TextareaInput}},
     //Witness Information
     "witnessInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
     "witnessInfo.$.name": {type: String, srf: {type: TextInput}},
-    "witnessInfo.$.phone": {type: String, srf: {type: TelInput}},
-    "witnessInfo.$.email": {type: String, srf: {type: EmailInput}},
-    "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}},
+    "witnessInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
+    "witnessInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
+    "witnessInfo.$.testimony": {type: String, srf: {type: TextareaInput}, optional: true},
     //driver statement
     "driverStatement": {type: String, srf: {type: TextareaInput}, optional: true},
     //sketch photo public id

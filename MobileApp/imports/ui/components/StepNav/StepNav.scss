@@ -2,17 +2,20 @@ $stepper-spacing: 15px;
 $stepper-color: #3F81B1;
 
 .step-nav {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 5px 3px rgba(0, 0, 0, .5);
 
   .stepper {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 16px $stepper-spacing;
+    padding: 10px $stepper-spacing;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 
     .bar {
       background-color: $stepper-color;
@@ -23,6 +26,7 @@ $stepper-color: #3F81B1;
       left: $stepper-spacing;
       right: $stepper-spacing;
       border-radius: 12px;
+      box-shadow: inset 0 0 2px 0px rgba(0,0,0,.5);
     }
 
     #steps {
@@ -42,8 +46,9 @@ $stepper-color: #3F81B1;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: #fff;
         font-size: 12px;
+        box-shadow: inset 0 0 4px 0px rgba(0,0,0,.5);
         z-index: 1;
         span {
           display: none;
@@ -52,6 +57,7 @@ $stepper-color: #3F81B1;
         &.active {
           max-width: 22px;
           max-height: 22px;
+          text-shadow: 1px 1px 1px rgba(0,0,0,.5);
           span {
             display: inline-block;
           }
@@ -76,7 +82,7 @@ $stepper-color: #3F81B1;
       justify-content: center;
       align-items: center;
       width: 70px;
-      color: white;
+      color: #B2B2B;
 
       span {
         margin-top: 7px;
@@ -97,7 +103,7 @@ $stepper-color: #3F81B1;
       padding: 0 8px;
       min-height: 90px;
 
-      color: #fff;
+      color: #2B2B2B;
 
       h1 {
         font-size: 20px;

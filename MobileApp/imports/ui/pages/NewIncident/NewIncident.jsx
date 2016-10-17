@@ -6,8 +6,9 @@ import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 import {Users, User} from '/imports/api/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import {createContainer} from 'meteor/react-meteor-data';
-
-import pageSchema from '/imports/api/page-schema.js'
+import pageSchema from '/imports/api/page-schema.js';
+import ReactTransitionGroup from 'react-addons-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './NewIncident.scss';
 
@@ -16,21 +17,41 @@ class NewIncident extends Component {
         super(props);
 
         this.state = {
-            currentStep: this.props.currentStep
+            currentStep: this.props.currentStep,
+            isForward: true
         }
     }
 
     nextStep = () => {
         if (this.state.currentStep < pageSchema.length) {
-            this.setState({currentStep: this.state.currentStep + 1, activeAccordion: 0});
+            this.setState({
+                currentStep: this.state.currentStep + 1,
+                activeAccordion: 0,
+                isForward: true
+            });
         }
-    }
+    };
 
     prevStep = () => {
         if (this.state.currentStep > 1) {
-            this.setState({currentStep: this.state.currentStep - 1, activeAccordion: 0});
+            this.setState({
+                currentStep: this.state.currentStep - 1,
+                activeAccordion: 0,
+                isForward: false
+            });
         }
-    }
+    };
+
+    jumpToStep = (stepNumber) =>{
+        if(this.state.currentStep !== stepNumber + 1){
+            this.setState({
+                currentStep: stepNumber + 1,
+                activeAccordion: 0,
+                isForward: stepNumber + 1 > this.state.currentStep
+            })
+        }
+
+    };
 
     finishSteps = () => {
         this.props.appContext.navigator.replacePage({component: NewIncidentSuccess, props: {key: "Success"}}, {
@@ -39,20 +60,6 @@ class NewIncident extends Component {
             }
         });
 
-    }
-
-    currentStepData() {
-        return pageSchema[this.state.currentStep - 1];
-    }
-
-    renderAccordions() {
-        let currentStep = pageSchema[this.state.currentStep - 1];
-
-        return currentStep.accordions.map((accordion, index) => {
-            let key = `${this.state.currentStep}-${index}`;
-
-            return <Accordion key={key} title={accordion.title} text={accordion.text}/>
-        });
     }
 
     rename = ()=> {
@@ -80,18 +87,38 @@ class NewIncident extends Component {
                 </div>
             </Toolbar>
         );
-    }
+    };
+
+    renderAccordions = (key)=> {
+        let animationClass = this.state.isForward? "step-forward": "step-backward";
+        return (
+            <Accordions
+                data={pageSchema}
+                currentStep={this.state.currentStep}
+                defaultAccordion="0"
+                incident={this.props.incident}
+                next={this.nextStep}
+                key={key}
+                className={animationClass}
+            />
+        );
+        // return accordions;
+    };
 
     render() {
+        let key = this.state.currentStep;
         return (
             <Page renderToolbar={this.renderToolbar}>
-                <div id="new-incident">
-                    <Accordions data={this.currentStepData()} defaultAccordion="0" incident={this.props.incident}/>
+                <div className="new-incident">
+                    <ReactCSSTransitionGroup transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionName="step">
+                        {this.renderAccordions(key)}
+                    </ReactCSSTransitionGroup>
                     <StepNav
                         steps={pageSchema}
                         currentStep={this.state.currentStep}
                         prev={this.prevStep}
                         next={this.nextStep}
+                        jump={this.jumpToStep}
                         finish={this.finishSteps}
                     />
                 </div>

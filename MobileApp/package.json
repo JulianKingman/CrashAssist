@@ -20,6 +20,7 @@
     "react-dom": "^15.0.0",
     "react-onsenui": "^1.0.0",
     "simple-react-form": "^1.7.3",
-    "cookie": "^0.3.1"
+    "cookie": "^0.3.1",
+    "react-addons-transition-group": "^15.3.2"
   }
 }

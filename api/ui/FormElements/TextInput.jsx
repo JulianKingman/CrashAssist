@@ -13,7 +13,7 @@ const defaultProps = {
     changeOnKeyDown: true
 };
 
-export default class TextInput extends FieldType {
+export default class TextInput extends Component {
 
     constructor(props) {
         super(props);
@@ -52,6 +52,7 @@ export default class TextInput extends FieldType {
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
                 modifier='underbar'
+                className={`Field ${this.props.className}`}
                 {...this.passProps}
             />
         );
