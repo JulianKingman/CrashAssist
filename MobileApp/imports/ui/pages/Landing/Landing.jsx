@@ -5,6 +5,7 @@ import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 import PastIncidents from '/imports/ui/pages/PastIncidents/PastIncidents.jsx';
 import {Meteor} from 'meteor/meteor';
+import {createContainer} from 'meteor/react-meteor-data';
 
 import './Landing.scss';
 
@@ -26,9 +27,6 @@ export default class Landing extends Component {
         });
     };
 
-    incompleteIncidentExists(){
-        return Incidents.findOne({completed: false})? true: false;
-    }
 
     render() {
         let {navigator} = this.props.appContext;
@@ -100,7 +98,7 @@ export default class Landing extends Component {
                     <div className="buttons">
                         <Button modifier={modifier}
                                 onClick={this.gotoNewIncident}>
-                            {ripple}{this.incompleteIncidentExists()? "Continue Incident": "New Incident"}
+                            {ripple}{this.props.incompleteIncidentExists? "Continue Incident": "New Incident"}
                         </Button>
                         <p>In an accident? Start here.</p>
                         <Button modifier='large outline'
@@ -116,3 +114,9 @@ export default class Landing extends Component {
         );
     }
 }
+
+export default LandingContainer = createContainer(()=>{
+    return {
+        incompleteIncidentExists: !!Incidents.findOne({completed: false})
+    }
+}, Landing);
