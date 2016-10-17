@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {FieldType} from 'simple-react-form';
 import {Meteor} from 'meteor/meteor';
 import {Cloudinary} from 'meteor/lepozepo:cloudinary'
 // import ReactDOM from 'react-dom';
@@ -9,12 +8,30 @@ let minusIcon, cameraIcon;
 Meteor.isClient ? require('./PhotoInput.scss') : '';
 if (packageOpts.name === "CrashAssistApp") {
     Ons = Meteor.isClient ? require('react-onsenui') : '';
-    minusIcon = "icon ons-icon md-minus";
-    cameraIcon = "icon ons-icon md-camera";
+    minusIcon = "icon ons-icon zmdi zmdi-minus";
+    cameraIcon = "icon ons-icon zmdi zmdi-camera";
+    class Modal extends Component {
+        render() {
+            return (
+                <Ons.Modal isOpen={this.props.openState}>
+                    {this.props.children}
+                </Ons.Modal>
+            )
+        }
+    }
 } else if (packageOpts.name === "CrashAssistServer") {
-    Rb = Meteor.isClient? require('react-bootstrap'): '';
+    Rb = Meteor.isClient ? require('react-bootstrap') : '';
     minusIcon = "icon glyphicon glyphicon-minus";
     cameraIcon = "icon glyphicon glyphicon-camera";
+    class Modal extends Component {
+        render() {
+            return (
+                <Rb.Modal showModal={this.props.openState} onHide={this.close}>
+                    {this.props.children}
+                </Rb.Modal>
+            )
+        }
+    }
 }
 
 
@@ -22,7 +39,9 @@ export default class PhotoInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dialogShown: false
+            dialogShown: false,
+            enlargeImageModal: false,
+            activeImageId: ''
         };
     }
 
@@ -43,57 +62,38 @@ export default class PhotoInput extends Component {
                 destructiveButtonLast: true // you can choose where the destructive button is shown
             };
             window.plugins.actionsheet.show(actionSheetOptions, (index)=> {
-                // console.log(index);
-                let pictureSource = index === 1 ? 1 : 0;
+                source = index === 1 ? 1 : 0;
+                console.log(source);
                 navigator.camera.getPicture((res)=> {
-                    console.log(res);
-                    this.setState({dialogShown: false});
-                    // Meteor.call('uploadFile', res);
-                    publicId = res;
-                    Cloudinary.upload(publicId, {}, function (err, res) {
-                        console.log(err, res);
-                    });
-                    let value = (this.props.value || []);
-                    // this.setState({value: publicId});
-                    // this.addPhoto();
-                    value.push(publicId);
-                    this.props.onChange(value);
+                    window.resolveLocalFileSystemURL(res,
+                        (FileEntry) => {
+                            FileEntry.file((file)=> {
+                                const context = this;
+                                Cloudinary.upload(file, {
+                                    eager: [
+                                        {width: 55, height: 55, crop: "fill"}
+                                    ]
+                                }, function (err, res) {
+                                    let value = (context.props.value || []);
+                                    console.log(`got fileid with vale ${value}`);
+                                    value.push(res.public_id);
+                                    context.props.onChange(value);
+                                });
+                            }, (err) => {
+                                console.log("error getting file", err);
+                            });
+                        },
+                        (err)=> {
+                            console.log("error resolving url", err);
+                        }
+                    );
                 }, (err)=> {
                     console.log(err);
                 }, {
-                    sourceType: pictureSource
+                    sourceType: source
                 });
-            navigator.camera.getPicture((res)=> {
-                window.resolveLocalFileSystemURL(res,
-                    (FileEntry) => {
-                        FileEntry.file((file)=>{
-                            const context = this;
-                            this.setState({dialogShown: false});
-
-                            Cloudinary.upload(file, {
-                                eager: [
-                                    {width:55, height:55, crop:"fill"}
-                                ]
-                            }, function(err, res){
-                                let value = (context.props.value || []);
-                                value.push(res.public_id);
-                                context.props.onChange(value);
-                            });
-                        }, (err) => {
-                            console.log("error getting file", err);
-                        });
-                    },
-                    (err)=>{
-                        console.log("error resolving url", err);
-                    }
-                );
-            }, (err)=>{
-                console.log(err);
-            },{
-                sourceType: Camera.PictureSourceType[source]
             });
         }
-
     };
 
     removePhoto = (index)=> {
@@ -108,22 +108,39 @@ export default class PhotoInput extends Component {
         return false;
     };
 
-    enlargeImage = (index)=> {
-        console.log('enlarging image');
+    enlargeImage = (publicId)=> {
+        console.log(`enlarging image ${publicId}`);
+        this.setState({enlargeImageModal: true, activeImageId: publicId});
+    };
+
+    renderImage = ()=> {
+        let image = Cloudinary._helpers.url(publicId, {
+            hash: {}
+        });
+        return (
+            <img src={image}/>
+        )
     };
 
     renderPhotos = ()=> {
         if (!this.props.value) return;
         return (this.props.value).map((publicId, index) => {
-            let bgImage = Cloudinary._helpers.url(publicId, {hash:{
-                width: 55, height: 55, crop: 'fill'
-            }});
+            let bgImage = Cloudinary._helpers.url(publicId, {
+                hash: {
+                    width: 55, height: 55, crop: 'fill'
+                }
+            });
             return (
                 <div className="photo" key={index}>
                     {/*todo: change the url to include publicId, but not just be publicId*/}
-                    <div className="image" style={{backgroundImage: `url('${bgImage}')`}} onClick={()=> {
-                        this.enlargeImage()
-                    }}></div>
+                    <div
+                        className="image"
+                        style={{backgroundImage: `url('${bgImage}')`}}
+                        onClick={()=> {
+                            this.enlargeImage(publicId)
+                        }}
+                    >
+                    </div>
                     <a className="delete-photo" onClick={()=> {
                         this.removePhoto(index)
                     }}>
@@ -136,7 +153,7 @@ export default class PhotoInput extends Component {
     };
 
     hideDialog = ()=> {
-        this.setState({dialogShown: false});
+        // this.setState({dialogShown: false});
     };
 
     render() {
@@ -154,6 +171,9 @@ export default class PhotoInput extends Component {
                     </a>
                     <div className="spacer"></div>
                 </div>
+                <Modal openState={this.state.enlargeImageModal}>
+                    {this.renderImage()}
+                </Modal>
             </div>
         )
     }

@@ -12,7 +12,7 @@ export default class StepNav extends Component {
             if(this.props.currentStep === thisStep){
                 className += ' active';
             }
-            return <div className={className} key={thisStep} onClick={()=>{this.props.jump(index)}}><span>{thisStep}</span></div>
+            return <div className={className} key={thisStep}><div className="clickArea" onClick={()=>{this.props.jump(index)}}></div><span>{thisStep}</span></div>
         })
     }
 
