@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Page, Toolbar, BackButton, List, ListItem } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Incidents } from '/imports/api/collections/Incidents.js';
+import { Incidents } from '/imports/shared/collections/Incidents.js';
 
 class SingleIncident extends Component {
     renderToolbar = () => {
