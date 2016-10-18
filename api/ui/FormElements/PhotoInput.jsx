@@ -6,32 +6,30 @@ import {Cloudinary} from 'meteor/lepozepo:cloudinary'
 const packageOpts = require('/package.json');
 let minusIcon, cameraIcon;
 Meteor.isClient ? require('./PhotoInput.scss') : '';
+// class Modal extends Component {
+// }
 if (packageOpts.name === "CrashAssistApp") {
     Ons = Meteor.isClient ? require('react-onsenui') : '';
     minusIcon = "icon ons-icon zmdi zmdi-minus";
     cameraIcon = "icon ons-icon zmdi zmdi-camera";
-    class Modal extends Component {
-        render() {
-            return (
-                <Ons.Modal isOpen={this.props.openState}>
-                    {this.props.children}
-                </Ons.Modal>
-            )
-        }
-    }
+    // Modal.render = ()=> {
+    //     return (
+    //         <Ons.Modal isOpen={this.props.openState}>
+    //             {this.props.children}
+    //         </Ons.Modal>
+    //     )
+    // }
 } else if (packageOpts.name === "CrashAssistServer") {
     Rb = Meteor.isClient ? require('react-bootstrap') : '';
     minusIcon = "icon glyphicon glyphicon-minus";
     cameraIcon = "icon glyphicon glyphicon-camera";
-    class Modal extends Component {
-        render() {
-            return (
-                <Rb.Modal showModal={this.props.openState} onHide={this.close}>
-                    {this.props.children}
-                </Rb.Modal>
-            )
-        }
-    }
+    // Modal.render = ()=> {
+    //     return (
+    //         <Rb.Modal showModal={this.props.openState} onHide={this.close}>
+    //             {this.props.children}
+    //         </Rb.Modal>
+    //     )
+    // }
 }
 
 
@@ -114,7 +112,7 @@ export default class PhotoInput extends Component {
     };
 
     renderImage = ()=> {
-        let image = Cloudinary._helpers.url(publicId, {
+        let image = Cloudinary._helpers.url(this.state.activeImageId || '', {
             hash: {}
         });
         return (
@@ -171,9 +169,9 @@ export default class PhotoInput extends Component {
                     </a>
                     <div className="spacer"></div>
                 </div>
-                <Modal openState={this.state.enlargeImageModal}>
-                    {this.renderImage()}
-                </Modal>
+                {/*<Modal openState={this.state.enlargeImageModal}>*/}
+                    {/*{this.renderImage()}*/}
+                {/*</Modal>*/}
             </div>
         )
     }
