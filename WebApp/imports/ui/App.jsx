@@ -24,6 +24,7 @@ export default class App extends TrackerReact(Component){
     }
 
     render() {
-        return React.cloneElement(this.props.children, {...this.props})
+        // return React.cloneElement(this.props.children, {...this.props})
+        return this.props.children;
     }
 }

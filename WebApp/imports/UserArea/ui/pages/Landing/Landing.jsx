@@ -14,10 +14,24 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
+import {LoginBox, ResetPasswordBox} from 'meteor/universe:accounts-ui';
 if (Meteor.isClient) {
     require('./Landing.scss');
 }
 export default class Landing extends Component {
+    loginHandler = (e)=> {
+        e.preventDefault();
+        //loginFunction(this.state.email, this.state.password);
+    };
+
+    handlePassword = (e)=> {
+        this.setState({password: e.target.value});
+    };
+
+    handleEmail = (e)=> {
+        this.setState({email: e.target.value});
+    };
+
     render() {
         return (
             <Grid fluid={true}>
@@ -33,13 +47,26 @@ export default class Landing extends Component {
                                 <Navbar.Toggle />
                             </Navbar.Header>
                             <Navbar.Collapse>
-                                {/*<Nav pullRight>*/}
                                 <Navbar.Form pullRight>
-                                    <Button>
-                                        Log In
-                                    </Button>
+                                    {/*<LoginBox />*/}
+                                    {/*<form onSubmit={(e)=>this.loginHandler}>*/}
+                                        {/*<FormGroup>*/}
+                                            {/*<FormControl*/}
+                                                {/*type="email"*/}
+                                                {/*placeholder="Email"*/}
+                                                {/*value={this.state.email}*/}
+                                                {/*onChange={this.emailHandler}/>*/}
+                                            {/*<FormControl*/}
+                                                {/*type="password"*/}
+                                                {/*placeholder="Password"*/}
+                                                {/*value={this.state.password}*/}
+                                                {/*onChange={this.passwordHandler}/>*/}
+                                        {/*</FormGroup>*/}
+                                        {/*<Button type="submit">*/}
+                                            {/*Log In*/}
+                                        {/*</Button>*/}
+                                    {/*</form>*/}
                                 </Navbar.Form>
-                                {/*</Nav>*/}
                             </Navbar.Collapse>
                         </Navbar>
                     </Col>
@@ -47,21 +74,27 @@ export default class Landing extends Component {
                 <Row componentClass="section" className="header-section">
                     <Col xs={12}>
                         <Grid className="hero">
-                            <img src="/images/AccidentBlurry.jpg" alt="" className="img-bg"/>
-                            <img src="/images/Android CrashAssist.png" alt="Android CrashAssist App Screenshot"
-                                 className="android-image"/>
-                            <img src="/images/iOS CrashAssist.png" alt="iOS CrashAssist App Screenshot"
-                                 className="ios-image"/>
-                            <div className="text">
-                                <h1>Get the right information <br/>at the right time</h1>
-                                <p className="lead">A car accident is a stressful situation, and there are too many
-                                    important things to
-                                    remember. Let Crash Assist make it easy by giving you a step-by-step guide to follow
-                                    at
-                                    the scene of the accident. Do the right things, ask the right questions, and follow
-                                    the
-                                    right steps, and the after-math will be that much easier.</p>
-                            </div>
+                            <Row>
+                                <Col smHidden={true} md={4} className="phone-screenshots">
+                                    <img src="/images/Android CrashAssist.png" alt="Android CrashAssist App Screenshot"
+                                         className="android-image"/>
+                                    <img src="/images/iOS CrashAssist.png" alt="iOS CrashAssist App Screenshot"
+                                         className="ios-image"/>
+                                </Col>
+                                <Col sm={12} md={5} mdOffset={3} className="text">
+                                    <h1>Get the right information <br/>at the right time</h1>
+                                    <p className="lead">A car accident is a stressful situation, and there are too
+                                        many
+                                        important things to
+                                        remember. Let Crash Assist make it easy by giving you a step-by-step guide
+                                        to follow
+                                        at
+                                        the scene of the accident. Do the right things, ask the right questions, and
+                                        follow
+                                        the
+                                        right steps, and the after-math will be that much easier.</p>
+                                </Col>
+                            </Row>
                         </Grid>
                     </Col>
                 </Row>
@@ -69,11 +102,11 @@ export default class Landing extends Component {
                     <Col xs={12}>
                         <Grid className="">
                             <h1 className="callout">Download Free</h1>
-                            <a href="#"><img src="/images/google-play-badge.png"
-                                             alt="Download CrashAssist on the Google Play store"
-                                             className="google-play"/></a>
-                            <a href="#"><img src="/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg"
-                                             alt="Download CrashAssist on the App Store" className="app-store"/></a>
+                            <a href="#" className="google-play"><img src="/images/google-play-badge.png"
+                                                                     alt="Download CrashAssist on the Google Play store"/></a>
+                            <a href="#" className="app-store"><img
+                                src="/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg"
+                                alt="Download CrashAssist on the App Store"/></a>
                         </Grid>
                     </Col>
                 </Row>
@@ -131,10 +164,17 @@ export default class Landing extends Component {
                                     <ControlLabel>Content</ControlLabel>
                                     <FormControl componentClass="textarea" placeholder="textarea"/>
                                 </FormGroup>
-                                <Button type="submit" bsStyle="primary" bsSize="large" pullRight>
+                                <Button type="submit" bsStyle="primary" bsSize="large">
                                     <Glyphicon glyph="send"/> Send
                                 </Button>
                             </form>
+                        </Grid>
+                    </Col>
+                </Row>
+                <Row componentClass="section" className="copyright-section">
+                    <Col xs={12}>
+                        <Grid>
+                            © 2016 Designman
                         </Grid>
                     </Col>
                 </Row>
