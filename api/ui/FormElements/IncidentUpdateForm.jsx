@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Field} from 'simple-react-form';
-import {Incidents} from '/imports/api/collections/Incidents.js';
+import {Incidents} from '/imports/shared/collections/Incidents.js';
 import {Button, List, ListItem, Col, Row} from 'react-onsenui';
 import './IncidentUpdateForm.scss';
 
