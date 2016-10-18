@@ -1,3 +1,7 @@
+.content-wrapper{
+  min-height: calc(100vh - 143px);
+}
+
 .container {
   padding: 0 30px;
 }
@@ -8,6 +12,11 @@ header {
     margin-bottom: 0;
     background-color: #fff;
     line-height: 63px;
+    .navbar-nav{
+      & > li > a{
+        line-height: 33px;
+      }
+    }
     .navbar-toggle {
       margin-top: 15px;
       margin-bottom: 15px;
@@ -111,7 +120,7 @@ header {
     margin: 30px auto;
     .big-icon {
       text-align: center;
-      font-size: 80px;
+      font-size: 60px;
       margin-bottom: 50px;
     }
   }
@@ -128,5 +137,13 @@ header {
   .container{
     margin: 30px auto;
     color: #ffffff;
+  }
+}
+
+//incidents.jsx
+.incidents-section{
+  padding: 30px 0;
+  .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
+    vertical-align: middle;
   }
 }
