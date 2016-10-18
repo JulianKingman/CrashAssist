@@ -17,7 +17,6 @@ import {Meteor} from 'meteor/meteor';
 if (Meteor.isClient) {
     require('./Landing.scss');
 }
-
 export default class Landing extends Component {
     render() {
         return (

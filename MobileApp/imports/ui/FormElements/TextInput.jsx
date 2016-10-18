@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-let inputClass;
-const packageOpts = require('/package.json');
-if (packageOpts.name === "CrashAssistApp") {
-    Ons = Meteor.isClient? require('react-onsenui'): '';
-    inputClass = "text-input text-input--underbar";
-} else if (packageOpts.name === "CrashAssistServer") {
-    Rb = require('react-bootstrap');
-    inputClass = "form-control";
+
+if(Meteor.isClient){
+    import {Input} from 'react-onsenui';
 }
+
 
 const propTypes = {
     changeOnKeyDown: React.PropTypes.bool,
@@ -47,7 +43,7 @@ export default class TextInput extends Component {
     render() {
         var fieldType = this.props.fieldType || this.type;
         return (
-            <input
+            <Input
                 ref='input'
                 value={this.state.value || ''}
                 type={fieldType}
@@ -56,7 +52,7 @@ export default class TextInput extends Component {
                 onChange={this.onChange.bind(this)}
                 onKeyDown={this.onKeyDown.bind(this)}
                 onBlur={() => this.props.onChange(this.state.value)}
-                className={`Field ${this.props.className} ${inputClass}`}
+                className={this.props.className}
                 {...this.passProps}
             />
         );

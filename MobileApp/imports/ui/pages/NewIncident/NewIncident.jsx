@@ -3,10 +3,10 @@ import {Page, Toolbar, BackButton, ToolbarButton} from 'react-onsenui';
 import StepNav from '/imports/ui/components/StepNav/StepNav.jsx';
 import NewIncidentSuccess from '/imports/ui/pages/NewIncidentSuccess/NewIncidentSuccess.jsx';
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
-import {Users, User} from '/imports/api/collections/Users.js';
+import {Users, User} from '/imports/shared/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
 import {createContainer} from 'meteor/react-meteor-data';
-import pageSchema from '/imports/api/page-schema.js';
+import pageSchema from '/imports/shared/page-schema.js';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
