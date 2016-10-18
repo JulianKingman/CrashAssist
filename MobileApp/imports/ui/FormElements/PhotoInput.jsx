@@ -1,38 +1,13 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {Cloudinary} from 'meteor/lepozepo:cloudinary'
-// import ReactDOM from 'react-dom';
-// import onsen from 'onsenui';
-const packageOpts = require('/package.json');
-let minusIcon, cameraIcon;
-Meteor.isClient ? require('./PhotoInput.scss') : '';
-if (packageOpts.name === "CrashAssistApp") {
-    Ons = Meteor.isClient ? require('react-onsenui') : '';
-    minusIcon = "icon ons-icon zmdi zmdi-minus";
-    cameraIcon = "icon ons-icon zmdi zmdi-camera";
-    class Modal extends Component {
-        render() {
-            return (
-                <Ons.Modal isOpen={this.props.openState}>
-                    {this.props.children}
-                </Ons.Modal>
-            )
-        }
-    }
-} else if (packageOpts.name === "CrashAssistServer") {
-    Rb = Meteor.isClient ? require('react-bootstrap') : '';
-    minusIcon = "icon glyphicon glyphicon-minus";
-    cameraIcon = "icon glyphicon glyphicon-camera";
-    class Modal extends Component {
-        render() {
-            return (
-                <Rb.Modal showModal={this.props.openState} onHide={this.close}>
-                    {this.props.children}
-                </Rb.Modal>
-            )
-        }
-    }
+
+if(Meteor.isClient){
+    import {Icon, Modal} from 'react-onsenui';
+    import './PhotoInput.scss';
 }
+
+
 
 
 export default class PhotoInput extends Component {
@@ -114,7 +89,7 @@ export default class PhotoInput extends Component {
     };
 
     renderImage = ()=> {
-        let image = Cloudinary._helpers.url(publicId, {
+        let image = Cloudinary._helpers.url(this.state.activeImageId, {
             hash: {}
         });
         return (
@@ -144,8 +119,7 @@ export default class PhotoInput extends Component {
                     <a className="delete-photo" onClick={()=> {
                         this.removePhoto(index)
                     }}>
-                        {/*<Ons.Icon icon="md-minus"/></a>*/}
-                        <i className={minusIcon}></i>
+                        <Icon icon="md-minus"/>
                     </a>
                 </div>
             )
@@ -166,40 +140,14 @@ export default class PhotoInput extends Component {
                         }
                         this.getPicture();
                     }}>
-                        {/*<Ons.Icon icon="md-camera"/>*/}
-                        <i className={cameraIcon}></i>
+                        <Icon icon="md-camera"/>
                     </a>
                     <div className="spacer"></div>
                 </div>
-                <Modal openState={this.state.enlargeImageModal}>
+                <Modal isOpen={this.state.enlargeImageModal}>
                     {this.renderImage()}
                 </Modal>
             </div>
         )
     }
 }
-
-// <Ons.Dialog
-//     isOpen={this.state.dialogShown}
-//     isCancelable={true}
-//     onCancel={this.hideDialog.bind(this)}
-// >
-//     <div style={{textAlign: 'center', margin: '20px'}}>
-//         <p style={{opacity: 0.5}}>
-//             Would you like to take a picture, or choose a photo from your
-//             library?
-//         </p>
-//         <p>
-//             <Ons.Button onClick={()=> {
-//                 this.getPicture('CAMERA')
-//             }}>Picture</Ons.Button>
-//             <Ons.Button onClick={()=> {
-//                 this.getPicture('PHOTOLIBRARY')
-//             }}>Library</Ons.Button>
-//             <Ons.Button onClick={this.hideDialog.bind(this)}>Cancel</Ons.Button>
-//         </p>
-//     </div>
-// </Ons.Dialog>
-// <p>
-// {this.props.label}
-// </p>

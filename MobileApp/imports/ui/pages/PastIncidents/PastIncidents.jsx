@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Page, Toolbar, BackButton, ListItem, List } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
 import SingleIncident from '/imports/ui/pages/SingleIncident/SingleIncident.jsx';
-import { Incidents } from '/imports/shared/collections/Incidents.js';
+import { Incidents } from '/imports/api/collections/Incidents.js';
 
 
 class PastIncidents extends Component {
