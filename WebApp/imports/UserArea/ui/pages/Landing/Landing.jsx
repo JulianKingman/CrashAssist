@@ -15,9 +15,7 @@ import {
 } from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
 import {LoginBox, ResetPasswordBox} from 'meteor/universe:accounts-ui';
-if (Meteor.isClient) {
-    require('./Landing.scss');
-}
+
 export default class Landing extends Component {
     constructor(props){
         super(props);
