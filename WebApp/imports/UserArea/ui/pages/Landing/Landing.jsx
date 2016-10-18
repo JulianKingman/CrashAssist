@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PhotoInput from '/imports/shared/ui/FormElements/PhotoInput.jsx';
-import TextInput from '/imports/shared/ui/FormElements/TextInput.jsx';
-import TextareaInput from '/imports/shared/ui/FormElements/TextareaInput.jsx';
+import PhotoInput from '/imports/ui/FormElements/PhotoInput.jsx';
+import TextInput from '/imports/ui/FormElements/TextInput.jsx';
+import TextareaInput from '/imports/ui/FormElements/TextareaInput.jsx';
 
 export default class Landing extends Component {
     render() {
