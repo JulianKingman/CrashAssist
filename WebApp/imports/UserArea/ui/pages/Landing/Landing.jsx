@@ -19,6 +19,14 @@ if (Meteor.isClient) {
     require('./Landing.scss');
 }
 export default class Landing extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            email:'',
+            password:''
+        }
+    }
+
     loginHandler = (e)=> {
         e.preventDefault();
         //loginFunction(this.state.email, this.state.password);
@@ -48,24 +56,23 @@ export default class Landing extends Component {
                             </Navbar.Header>
                             <Navbar.Collapse>
                                 <Navbar.Form pullRight>
-                                    {/*<LoginBox />*/}
-                                    {/*<form onSubmit={(e)=>this.loginHandler}>*/}
-                                        {/*<FormGroup>*/}
-                                            {/*<FormControl*/}
-                                                {/*type="email"*/}
-                                                {/*placeholder="Email"*/}
-                                                {/*value={this.state.email}*/}
-                                                {/*onChange={this.emailHandler}/>*/}
-                                            {/*<FormControl*/}
-                                                {/*type="password"*/}
-                                                {/*placeholder="Password"*/}
-                                                {/*value={this.state.password}*/}
-                                                {/*onChange={this.passwordHandler}/>*/}
-                                        {/*</FormGroup>*/}
-                                        {/*<Button type="submit">*/}
-                                            {/*Log In*/}
-                                        {/*</Button>*/}
-                                    {/*</form>*/}
+                                    <form onSubmit={(e)=>this.loginHandler}>
+                                        <FormGroup>
+                                            <FormControl
+                                                type="email"
+                                                placeholder="Email"
+                                                value={this.state.email}
+                                                onChange={this.emailHandler}/>
+                                            <FormControl
+                                                type="password"
+                                                placeholder="Password"
+                                                value={this.state.password}
+                                                onChange={this.passwordHandler}/>
+                                        </FormGroup>
+                                        <Button type="submit">
+                                            Log In
+                                        </Button>
+                                    </form>
                                 </Navbar.Form>
                             </Navbar.Collapse>
                         </Navbar>
