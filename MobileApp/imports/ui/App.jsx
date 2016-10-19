@@ -30,7 +30,13 @@ import 'onsenui/css/onsen-css-components.css'
 
 const splitterMenuItems = [
     {title:"Past Incidents", component:PastIncidents},
-    {title:"My Account", component:Login},
+    {title:"My Account", component:undefined, check:(callback)=>{
+        if(!Meteor.user().emails){
+            callback && callback()
+            return true;
+        }
+        return false;
+    }},
     {title:"Help", component:undefined}
 ];
 
@@ -46,7 +52,13 @@ export default class App extends Component {
 
     navigateTo(item){
         this.handleMenu(false);
-        navigation.pushPage({component:item.component, props:{key:item.title}});
+        let check = item.check && item.check(()=>{
+                navigation.pushPage({component:Login, props:{key:'login'}})
+        });
+
+        if(!check){
+            navigation.pushPage({component:item.component, props:{key:item.title}});
+        }
     }
 
     handleMenu = (state) => {

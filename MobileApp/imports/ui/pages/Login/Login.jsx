@@ -29,7 +29,6 @@ let setState;
 export default class Login extends Component {
     constructor(props){
         super(props);
-        console.log(props);
         navigator = props.appContext.navigator;
         isLogin = props.isLogin;
         setState = this.setState.bind(this);
@@ -45,6 +44,7 @@ export default class Login extends Component {
     }
 
     handleSubmit = () => {
+        this.setState({});
         this.refs.form.submit();
     };
 
@@ -67,17 +67,17 @@ export default class Login extends Component {
                 });
             });
         }else{
-            Meteor.call("setEmailAddress", password, (error)=>{
+            Meteor.call("setEmailAddress", email, (error)=>{
                 if(!error){
-                    setState({loginError:error.reason});
-                }else{
-                    Accounts.changePassword(Meteor.userId(), password, (error)=>{
+                    Accounts.changePassword(Meteor.user().username, password, (error)=>{
                         if(!error){
                             navigator.popPage();
                         }else{
                             setState({loginError:error.reason});
                         }
                     });
+                }else{
+                    setState({loginError:error.reason});
                 }
             });
 
@@ -86,16 +86,18 @@ export default class Login extends Component {
 
     render() {
         return (
-            <Page id="login-page">
+            <Page id="login-page"
+                renderToolbar={this.renderToolbar}>
                 <div id="login-form">
-                    {this.renderToolbar()}
-                    <Form
-                        schema={loginSchema}
-                        type="function"
-                        ref='form'
-                        validate={true}
-                        onSubmit={this.onSubmit} />
-                    <p>{this.state.loginError}</p>
+                    <div>
+                        <Form
+                            schema={loginSchema}
+                            type="function"
+                            ref='form'
+                            validate={true}
+                            onSubmit={this.onSubmit} />
+                        <p>{this.state.loginError}</p>
+                    </div>
                     <Button modifier="large" onClick={this.handleSubmit}>{this.props.isLogin? "Login": "Save"}</Button>
                 </div>
             </Page>
