@@ -63,11 +63,14 @@ export default class App extends Component {
             deviceId = device.uuid;
         }
 
-        loginByDeviceId(deviceId, (error)=>{
-            if(error){
-                navigator.pushPage({component:Login, props:{key:"login"}})
-            }
-        });
+        if(route.component !== Login){
+            loginByDeviceId(deviceId, (error)=>{
+                if(error){
+                    navigator.replacePage({component:Login, props:{key:"login", isLogin:true}});
+                }
+            });
+        }
+
 
         return React.createElement(route.component, props);
     }
