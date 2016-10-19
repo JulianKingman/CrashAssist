@@ -3,6 +3,8 @@ import { Page, Toolbar, BackButton, List, ListItem } from 'react-onsenui';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Incidents } from '/imports/shared/collections/Incidents.js';
 
+import PageSchema from '../../../shared/page-schema';
+
 class SingleIncident extends Component {
     renderToolbar = () => {
         return (
@@ -21,7 +23,15 @@ class SingleIncident extends Component {
     render(){
         return (
             <Page renderToolbar={this.renderToolbar}>
-
+                {
+                    PageSchema.map((section)=>{
+                        section.accordions.map((accordian)=>{
+                            if(accordian.fields){
+                                
+                            }
+                        });
+                    })
+                }
             </Page>
         );
     }

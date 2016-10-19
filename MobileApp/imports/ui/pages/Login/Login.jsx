@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Page, Button } from 'react-onsenui';
+import { Page, Button, Toolbar } from 'react-onsenui';
 import { Form, Field } from 'simple-react-form';
 import TextInput  from '../../FormElements/TelInput.jsx';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
@@ -34,6 +34,14 @@ export default class Login extends Component {
         isLogin = props.isLogin;
         setState = this.setState.bind(this);
         this.state = {};
+    }
+
+    renderToolbar = () => {
+        return (
+            <Toolbar>
+                <div className="center">{this.props.isLogin? "Account Login": "Save Account"}</div>
+            </Toolbar>
+        );
     }
 
     handleSubmit = () => {
@@ -78,8 +86,9 @@ export default class Login extends Component {
 
     render() {
         return (
-            <Page>
-                <div id="login-page">
+            <Page id="login-page">
+                <div id="login-form">
+                    {this.renderToolbar()}
                     <Form
                         schema={loginSchema}
                         type="function"
@@ -87,7 +96,7 @@ export default class Login extends Component {
                         validate={true}
                         onSubmit={this.onSubmit} />
                     <p>{this.state.loginError}</p>
-                    <Button modifier="large" onClick={this.handleSubmit}>{this.props.isLogin? "Login": "Save Account"}</Button>
+                    <Button modifier="large" onClick={this.handleSubmit}>{this.props.isLogin? "Login": "Save"}</Button>
                 </div>
             </Page>
         );
