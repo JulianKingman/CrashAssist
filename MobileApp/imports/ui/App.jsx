@@ -30,7 +30,7 @@ import 'onsenui/css/onsen-css-components.css'
 
 const splitterMenuItems = [
     {title:"Past Incidents", component:PastIncidents},
-    {title:"My Account", component:undefined, check:(callback)=>{
+    {title:"Set Email/Password", component:Login, check:(callback)=>{
         if(!Meteor.user().emails){
             callback && callback()
             return true;

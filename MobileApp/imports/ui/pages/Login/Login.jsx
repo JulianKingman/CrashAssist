@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Page, Button, Toolbar } from 'react-onsenui';
+import { Page, Button, Toolbar, BackButton } from 'react-onsenui';
 import { Form, Field } from 'simple-react-form';
 import TextInput  from '../../FormElements/TelInput.jsx';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
@@ -38,6 +38,11 @@ export default class Login extends Component {
     renderToolbar = () => {
         return (
             <Toolbar>
+                <div className="left">
+                    <BackButton>
+                        Home
+                    </BackButton>
+                </div>
                 <div className="center">{this.props.isLogin? "Account Login": "Save Account"}</div>
             </Toolbar>
         );
