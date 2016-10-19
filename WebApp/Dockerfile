@@ -1,1 +1,1 @@
-FROM kadira/meteord:onbuild
+FROM kadirahq/meteord:onbuild
