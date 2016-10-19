@@ -30,7 +30,7 @@ import 'onsenui/css/onsen-css-components.css'
 
 const splitterMenuItems = [
     {title:"Past Incidents", component:PastIncidents},
-    {title:"My Account", component:undefined},
+    {title:"My Account", component:Login},
     {title:"Help", component:undefined}
 ];
 

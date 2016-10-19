@@ -39,9 +39,11 @@ export default class PhotoInput extends Component {
                 source = index === 1 ? 1 : 0;
                 console.log(source);
                 navigator.camera.getPicture((res)=> {
+                    console.log('got picture');
                     window.resolveLocalFileSystemURL(res,
                         (FileEntry) => {
                             FileEntry.file((file)=> {
+                                console.log('resolved file url');
                                 const context = this;
                                 Cloudinary.upload(file, {
                                     eager: [
@@ -49,7 +51,7 @@ export default class PhotoInput extends Component {
                                     ]
                                 }, function (err, res) {
                                     let value = (context.props.value || []);
-                                    console.log(`got fileid with vale ${value}`);
+                                    console.log(`got fileid with value ${res.public_id}`);
                                     value.push(res.public_id);
                                     context.props.onChange(value);
                                 });
