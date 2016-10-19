@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Page, Icon, ProgressBar} from 'react-onsenui';
+import Login from '../Login/Login.jsx';
 
 import './NewIncidentSuccess.scss';
 
@@ -21,7 +22,13 @@ export default class NewIncidentSuccess extends Component {
             progress++;
             this.setState({progress: progress});
         }, 20);
-        setTimeout(()=> this.props.appContext.navigator.popPage(), 2000);
+        setTimeout(()=> {
+            if(!Meteor.user().emails){
+                this.props.appContext.navigator.replacePage({component:Login, props:{key:"login"}})
+            }else{
+                this.props.appContext.navigator.popPage()
+            }
+        }, 2000);
     }
 
     componentWillUnmount() {

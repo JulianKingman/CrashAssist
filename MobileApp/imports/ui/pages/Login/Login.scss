@@ -9,11 +9,12 @@
 
   #login-form {
     padding: 20px;
-    height: 100vh;
+    box-sizing:border-box;
+    height:100vh;
     display: flex;
     flex-direction: column;
+    >div { margin: 100px 0 auto 0};
     form {
-      margin: 100px 0 auto 0;
       ons-input {
         display: block;
         margin-bottom: 40px;
