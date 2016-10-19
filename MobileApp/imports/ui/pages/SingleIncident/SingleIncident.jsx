@@ -57,12 +57,13 @@ class SingleIncident extends Component {
                 });
             }
         } else {
-            let explodeField = field.name.split('.');
-            if (this.props.incident[explodeField[0]]) {
+            let fieldParts = field.name.split('.');
+            let baseField = this.props.incident[fieldParts[0]];
+            if (baseField && baseField[fieldParts[1]]) {
                 return (
                     <ListItem key={`item-${index}`}>
                         <div className="left">{field.label}</div>
-                        <div className="center">{this.props.incident[explodeField[0]][explodeField[1]]}</div>
+                        <div className="center">{baseField[fieldParts[1]].toString()}</div>
                     </ListItem>
                 )
             }

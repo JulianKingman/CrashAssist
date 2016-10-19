@@ -37,7 +37,6 @@ export default class Accordion extends Component {
                 <div className="expander" ref="expander">
                     <div className="list__item">
                         <div className="center list__item__center">
-                            {/*{this.props.text}*/}
                             {this.props.children}
                         </div>
                     </div>

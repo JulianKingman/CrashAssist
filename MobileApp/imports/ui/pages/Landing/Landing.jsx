@@ -97,7 +97,7 @@ export default class Landing extends Component {
         }
 
         return (
-            <Page key="landing" className="page-landing">
+            <Page key="landing" style={{top: 0}}>
                 <div id="landing">
                     <Icon
                         id="menuActuator"
