@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 
-if(Meteor.isClient){
-    import {Input} from 'react-onsenui';
+if (Meteor.isClient) {
+    onsen = require('onsenui');
+    Ons = require('react-onsenui');
+    Input = Ons.Input;
 }
 
 
@@ -42,10 +44,12 @@ export default class TextInput extends Component {
 
     render() {
         var fieldType = this.props.fieldType || this.type;
+        let modifier = onsen.platform.isAndroid()? 'material': 'underbar';
         return (
             <div>
                 <Input
                     ref='input'
+                    modifier={modifier}
                     value={this.state.value || ''}
                     type={fieldType}
                     placeholder={this.props.label}

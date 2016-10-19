@@ -1,12 +1,12 @@
 $light-blue: rgba(18, 114, 224, 0.77);
 
 #landing {
-    padding:10px;
+    padding:10px 10px 0 10px;
     display:flex;
     align-items:center;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100vh - 20px);
+    height: calc(100vh);
     box-sizing: border-box;
 
     #menuActuator{
