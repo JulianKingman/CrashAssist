@@ -24,6 +24,7 @@ let loginSchema = new SimpleSchema({
 
 let navigator;
 let isLogin;
+let setState;
 
 export default class Login extends Component {
     constructor(props){
@@ -31,6 +32,7 @@ export default class Login extends Component {
         console.log(props);
         navigator = props.appContext.navigator;
         isLogin = props.isLogin;
+        setState = this.setState.bind(this);
         this.state = {};
     }
 
@@ -41,7 +43,7 @@ export default class Login extends Component {
     onSubmit(formData) {
         const { email, password } = formData;
 
-        this.setState({});
+        setState({});
 
         if(isLogin){
             Meteor.logout(()=>{
@@ -52,20 +54,20 @@ export default class Login extends Component {
                         }
                         navigator.replacePage({component:Landing, props:{key:"landing"}})
                     }else{
-                        this.setState({loginError:error.reason});
+                        setState({loginError:error.reason});
                     }
                 });
             });
         }else{
             Meteor.call("setEmailAddress", password, (error)=>{
                 if(!error){
-                    this.setState({loginError:error.reason});
+                    setState({loginError:error.reason});
                 }else{
                     Accounts.changePassword(Meteor.userId(), password, (error)=>{
                         if(!error){
                             navigator.popPage();
                         }else{
-                            this.setState({loginError:error.reason});
+                            setState({loginError:error.reason});
                         }
                     });
                 }
