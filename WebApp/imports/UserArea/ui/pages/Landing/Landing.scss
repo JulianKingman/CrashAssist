@@ -54,21 +54,29 @@ header {
           display: inline-block;
           position: relative;
           width: 300px;
-          @media screen and (max-width: 1200px) {
-            width: 250px;
+          margin-bottom: -270px;
+          @media screen and (max-width: 1200px){
+            margin-bottom: -470px;
           }
           @media screen and (max-width: 992px) {
             display: none;
           }
         }
         .ios-image {
-          margin-left: -300px;
-          bottom: -110px;
-
+          margin-right: -300px;
+          z-index: 1;
+          @media screen and (max-width: 1200px) {
+            width: 250px;
+          }
         }
         .android-image {
-          left: 80px;
-          bottom: -50px;
+          bottom: 50px;
+          left: 110px;
+          z-index: 0;
+          width: 280px;
+          @media screen and (max-width: 1200px) {
+            width: 228px;
+          }
         }
       }
       .text {

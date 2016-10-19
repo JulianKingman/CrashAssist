@@ -11,8 +11,8 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
-import Navigation from '/imports/UserArea/ui/components/Navigation.jsx';
-import Footer from '/imports/UserArea/ui/components/Footer.jsx';
+import Layout from '../../components/Layout.jsx';
+import ContactForm from '../../components/ContactForm.jsx';
 
 if (Meteor.isClient) {
     require('./Landing.scss');
@@ -24,19 +24,18 @@ export default class Landing extends Component {
 
     render() {
         return (
-            <Grid fluid={true}>
-                <Navigation />
+            <Layout>
                 <Row componentClass="section" className="header-section">
                     <Col xs={12}>
                         <Grid className="hero">
                             <Row>
                                 <Col smHidden={true} md={4} className="phone-screenshots">
-                                    <img src="/images/Android CrashAssist.png" alt="Android CrashAssist App Screenshot"
-                                         className="android-image"/>
                                     <img src="/images/iOS CrashAssist.png" alt="iOS CrashAssist App Screenshot"
                                          className="ios-image"/>
+                                    <img src="/images/Android CrashAssist.png" alt="Android CrashAssist App Screenshot"
+                                         className="android-image"/>
                                 </Col>
-                                <Col sm={12} md={5} mdOffset={3} className="text">
+                                <Col sm={12} md={7} mdOffset={1} className="text">
                                     <h1>Get the right information <br/>at the right time</h1>
                                     <p className="lead">A car accident is a stressful situation, and there are too
                                         many
@@ -105,29 +104,11 @@ export default class Landing extends Component {
                 <Row componentClass="section" className="contact-section">
                     <Col xs={12}>
                         <Grid className="">
-                            <h2>Contact Us</h2>
-                            <form>
-                                <FormGroup>
-                                    <ControlLabel>Your Email Address:</ControlLabel>
-                                    <FormControl type="email" placeholder="Subject"/>
-                                </FormGroup>
-                                <FormGroup>
-                                    <ControlLabel>Subject:</ControlLabel>
-                                    <FormControl type="text" placeholder="Subject"/>
-                                </FormGroup>
-                                <FormGroup controlId="formControlsTextarea">
-                                    <ControlLabel>Content</ControlLabel>
-                                    <FormControl componentClass="textarea" placeholder="textarea"/>
-                                </FormGroup>
-                                <Button type="submit" bsStyle="primary" bsSize="large">
-                                    <Glyphicon glyph="send"/> Send
-                                </Button>
-                            </form>
+                            <ContactForm />
                         </Grid>
                     </Col>
                 </Row>
-                <Footer/>
-            </Grid>
+            </Layout>
         );
     }
 }

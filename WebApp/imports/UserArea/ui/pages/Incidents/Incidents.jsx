@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {Meteor} from 'meteor/meteor';
 import {Incidents, Incident} from '../../../../shared/collections/Incidents.js';
-import Navigation from '/imports/UserArea/ui/components/Navigation.jsx';
 import {Row, Grid, Col, Table, Glyphicon, Button} from 'react-bootstrap';
-import Footer from '/imports/UserArea/ui/components/Footer.jsx';
+import Layout from '../../components/Layout.jsx';
 
 export default class IncidentList extends TrackerReact(Component) {
     constructor(props) {
@@ -26,8 +25,7 @@ export default class IncidentList extends TrackerReact(Component) {
 
     render() {
         return (
-            <Grid fluid={true}>
-                <Navigation/>
+            <Layout>
                 <Row className="incidents-section content-wrapper">
                     <Col xs={12} sm={10} smOffset={1} md={8} mdOffset={3}>
                         <Table responsive>
@@ -65,7 +63,8 @@ export default class IncidentList extends TrackerReact(Component) {
                                         <tr>
                                             <td>{incident.name}</td>
                                             <td>{incident.date}</td>
-                                            <td><Button href={`/incidents/${incident._id}`}>View <Glyphicon glyph="menu-right"/></Button></td>
+                                            <td><Button href={`/incidents/${incident._id}`}>View <Glyphicon
+                                                glyph="menu-right"/></Button></td>
                                         </tr>
                                     );
                                 })
@@ -74,8 +73,7 @@ export default class IncidentList extends TrackerReact(Component) {
                         </Table>
                     </Col>
                 </Row>
-                <Footer/>
-            </Grid>
+            </Layout>
         )
     }
 }
