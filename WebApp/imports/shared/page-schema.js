@@ -95,7 +95,7 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "passengerInfo",
-                        "type": "Array",
+                        "type": "array",
                         "label": "Passenger Information",
                         "arrayText": "Passenger"
                     }
@@ -222,7 +222,7 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "witnessInfo",
-                        "type": "Array",
+                        "type": "array",
                         "label": "Witness Information",
                         "arrayText": "Witness"
                     }
