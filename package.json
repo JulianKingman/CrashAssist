@@ -7,6 +7,7 @@
     "ios": "cd MobileApp && meteor run ios",
     "ios-prod": "cd WebApp && meteor && cd ../MobileApp && MONGO_URL=mongodb://localhost:3001/meteor meteor",
     "ios-device": "meteor run ios-device --port 4000 --mobile-server http://10.0.0.30:3000",
-    "build": "meteor build ~/Builds/CrashAssist --server app.crashassist.com"
+    "build": "meteor build ~/Builds/CrashAssist --server app.crashassist.com",
+    "update-shared": "rsync -av --delete shared WebApp/imports && rsync -av --delete shared MobileApp/imports"
   }
 }

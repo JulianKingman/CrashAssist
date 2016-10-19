@@ -56,6 +56,8 @@ const formSchema = new SimpleSchema({
     "sketch": {type: [String], srf: {type: PhotoInput}, optional: true},
     //array of photo public ids
     "photos": {type: [String], srf: {type: PhotoInput}, optional: true},
+    //injuries
+    "injuries": {type: [String], srf: {type: PhotoInput}, optional: true},
     //Symptoms
     "symptoms": {type: [String], optional: true, srf: {type: TextInput}}
 });
