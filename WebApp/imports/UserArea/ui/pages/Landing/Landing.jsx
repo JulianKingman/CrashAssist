@@ -1,8 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-    Navbar,
-    Nav,
-    NavItem,
     Button,
     Grid,
     Row,
@@ -14,68 +11,21 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
-import {LoginBox, ResetPasswordBox} from 'meteor/universe:accounts-ui';
+import Navigation from '/imports/UserArea/ui/components/Navigation.jsx';
+import Footer from '/imports/UserArea/ui/components/Footer.jsx';
 
+if (Meteor.isClient) {
+    require('./Landing.scss');
+}
 export default class Landing extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            email:'',
-            password:''
-        }
     }
-
-    loginHandler = (e)=> {
-        e.preventDefault();
-        //loginFunction(this.state.email, this.state.password);
-    };
-
-    handlePassword = (e)=> {
-        this.setState({password: e.target.value});
-    };
-
-    handleEmail = (e)=> {
-        this.setState({email: e.target.value});
-    };
 
     render() {
         return (
             <Grid fluid={true}>
-                <Row componentClass="header">
-                    <Col xs={12}>
-                        <Navbar fixedTop>
-                            <Navbar.Header>
-                                <Navbar.Brand>
-                                    <a href="/">
-                                        <img src="/images/CrashAssistLogoH.png" alt="Crash Assist Logo"/>
-                                    </a>
-                                </Navbar.Brand>
-                                <Navbar.Toggle />
-                            </Navbar.Header>
-                            <Navbar.Collapse>
-                                <Navbar.Form pullRight>
-                                    <form onSubmit={(e)=>this.loginHandler}>
-                                        <FormGroup>
-                                            <FormControl
-                                                type="email"
-                                                placeholder="Email"
-                                                value={this.state.email}
-                                                onChange={this.emailHandler}/>
-                                            <FormControl
-                                                type="password"
-                                                placeholder="Password"
-                                                value={this.state.password}
-                                                onChange={this.passwordHandler}/>
-                                        </FormGroup>
-                                        <Button type="submit">
-                                            Log In
-                                        </Button>
-                                    </form>
-                                </Navbar.Form>
-                            </Navbar.Collapse>
-                        </Navbar>
-                    </Col>
-                </Row>
+                <Navigation />
                 <Row componentClass="section" className="header-section">
                     <Col xs={12}>
                         <Grid className="hero">
@@ -176,13 +126,7 @@ export default class Landing extends Component {
                         </Grid>
                     </Col>
                 </Row>
-                <Row componentClass="section" className="copyright-section">
-                    <Col xs={12}>
-                        <Grid>
-                            © 2016 Designman
-                        </Grid>
-                    </Col>
-                </Row>
+                <Footer/>
             </Grid>
         );
     }
