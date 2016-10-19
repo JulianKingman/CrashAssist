@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Incidents } from '../../api/collections/Incidents';
+import { Incidents } from '../../api/collections/Incidents.js';
 
 Meteor.methods({
     /*
