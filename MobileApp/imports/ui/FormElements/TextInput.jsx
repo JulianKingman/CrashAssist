@@ -43,18 +43,21 @@ export default class TextInput extends Component {
     render() {
         var fieldType = this.props.fieldType || this.type;
         return (
-            <Input
-                ref='input'
-                value={this.state.value || ''}
-                type={fieldType}
-                placeholder={this.props.label}
-                disabled={this.props.disabled}
-                onChange={this.onChange.bind(this)}
-                onKeyDown={this.onKeyDown.bind(this)}
-                onBlur={() => this.props.onChange(this.state.value)}
-                className={this.props.className}
-                {...this.passProps}
-            />
+            <div>
+                <Input
+                    ref='input'
+                    value={this.state.value || ''}
+                    type={fieldType}
+                    placeholder={this.props.label}
+                    disabled={this.props.disabled}
+                    onChange={this.onChange.bind(this)}
+                    onKeyDown={this.onKeyDown.bind(this)}
+                    onBlur={() => this.props.onChange(this.state.value)}
+                    className={this.props.className}
+                    {...this.passProps}
+                />
+                <p>{this.props.errorMessage}</p>
+            </div>
         );
     }
 }
