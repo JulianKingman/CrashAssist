@@ -97,7 +97,7 @@ export default class Landing extends Component {
         }
 
         return (
-            <Page key="landing" hide-toolbar={true}>
+            <Page key="landing" className="page-landing">
                 <div id="landing">
                     <Icon
                         id="menuActuator"

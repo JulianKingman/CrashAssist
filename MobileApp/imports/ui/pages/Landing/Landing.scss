@@ -1,5 +1,9 @@
 $light-blue: rgba(18, 114, 224, 0.77);
 
+  .page__content{
+    top: 0 !important;
+  }
+
 #landing {
     padding:10px;
     display:flex;

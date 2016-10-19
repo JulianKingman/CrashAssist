@@ -65,11 +65,16 @@ export default class Accordions extends Component {
                         {/*let isOpen = this.state.activeAccordion*1 === index*1;*/
                         }
                         return (
-                            <Accordion key={key} title={accordion.title} index={index} ref={`accordion-${index}`}
-                                       openAccordion={this.openAccordion}>
+                            <Accordion
+                                key={key}
+                                title={accordion.title}
+                                index={index}
+                                ref={`accordion-${index}`}
+                                openAccordion={this.openAccordion}
+                            >
                                 {
                                     accordion.text ?
-                                        <div className="content" dangerouslySetInnerHTML={accordion.text}/>
+                                        <div className="content" dangerouslySetInnerHTML={{__html: accordion.text}}/>
                                         : ""
                                 }
                                 {

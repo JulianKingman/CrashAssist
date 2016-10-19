@@ -7,35 +7,35 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Stop, stay close",
-                "text": "Stop as close as you can to the crash site and turn off your car. If you are able, you want to make sure that everyone is safe. Check everyone in your car and anyone else involved in the collision."
+                "text": "<p>Stop as close as you can to the crash site and turn off your car. If you are able, you want to make sure that everyone is safe. Check everyone in your car and anyone else involved in the collision.</p>"
             },
             {
                 "title": "Are the vehicles in a safe place?",
-                "text": "Make sure that your vehicle and the other driver's are in a safe place out of heavy traffic, such as the shoulder, or the median if necessary."
+                "text": "<p>Make sure that your vehicle and the other driver's are in a safe place out of heavy traffic, such as the shoulder, or the median if necessary.</p>"
             },
             {
                 "title": "Any immediate attention needed? Tell people not to move",
-                "text": "Does anyone need immediate medical attention? Unless there is an urgent danger, do not move any injured people."
+                "text": "<p>Does anyone need immediate medical attention? Unless there is an urgent danger, do not move any injured people.</p>"
             },
             {
                 "title": "Call 911 to report the incident",
-                "text": "As soon as you have completed your survey, call 911 and report the collision, location and injuries as best you can."
+                "text": "<p>As soon as you have completed your survey, call 911 and report the collision, location and injuries as best you can.</p>"
             },
             {
                 "title": "Wait for the police to arrive",
-                "text": "Wait for the police to arrive. Do not leave, and insist that the other driver(s) remain at the scene."
+                "text": "<p>Wait for the police to arrive. Do not leave, and insist that the other driver(s) remain at the scene.</p>"
             },
             {
                 "title": "Don't admit fault",
-                "text": "Do not admit fault even if you think you’re wrong. The other person may be at fault according to the law. (When I was in college, my car died in the middle of a busy road and I was slammed into by another car. I felt it was my fault because my car died. However, it was the other persons fault because they  were traveling too fast to stop in time)."
+                "text": "<p>Do not admit fault even if you think you’re wrong. The other person may be at fault according to the law. (When I was in college, my car died in the middle of a busy road and I was slammed into by another car. I felt it was my fault because my car died. However, it was the other persons fault because they  were traveling too fast to stop in time).</p>"
             },
             {
                 "title": "Don't say you’re uninjured",
-                "text": "Do not tell the police officer that you are uninjured; tell him/her that you will go to your doctor to determine if there are any injuries."
+                "text": "<p>Do not tell the police officer that you are uninjured; tell him/her that you will go to your doctor to determine if there are any injuries.</p>"
             },
             {
                 "title": "Don't accept payment",
-                "text": "Do not accept any immediate payment. Sometimes the other person who is at fault will attempt to pay you off on the spot to keep the accident off the record. Do not go there. There are still too many variables to determine. For example, there may be hidden damage to you or your car."
+                "text": "<p>Do not accept any immediate payment. Sometimes the other person who is at fault will attempt to pay you off on the spot to keep the accident off the record. Do not go there. There are still too many variables to determine. For example, there may be hidden damage to you or your car.</p>"
             }
         ]
     },
@@ -47,7 +47,7 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Cooperate with the police",
-                "text": "The police are trained to handle all the details of an accident. Tell the officers how the accident happened. Fully describe the events that led up to the crash and those that followed after. The police should document what you told them in the police report. Always read it at your first opportunity. The police can also help with the next order of business."
+                "text": "<p>The police are trained to handle all the details of an accident. Tell the officers how the accident happened. Fully describe the events that led up to the crash and those that followed after. The police should document what you told them in the police report. Always read it at your first opportunity. The police can also help with the next order of business.</p>"
             }
         ]
     },
@@ -59,7 +59,7 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Driver information",
-                "text": "Enter the other driver's information",
+                "text": "<p>Enter the other driver's information</p>",
                 "form_id": "getInfo",
                 "fields": [
                     {
@@ -91,8 +91,7 @@ const pageSchema = [
             },
             {
                 "title": "Passenger information",
-                "repeatableFields": true,
-                "form_id": "passengerInfo",
+                "text": "<p>Enter information for any additional passengers in the car with the other driver</p>",
                 "fields": [
                     {
                         "name": "passengerInfo",
@@ -104,7 +103,7 @@ const pageSchema = [
             },
             {
                 "title": "Vehicle information",
-                "form_id": "vehicleInfo",
+                "text": "<p>What vehicle was the other driver in?</p>",
                 "fields": [
                     {
                         "name": "vehicleInfo.make",
@@ -130,8 +129,7 @@ const pageSchema = [
             },
             {
                 "title": "Registered owner information",
-                "text": "If the other driver is not the registered owner of the vehicle, add their information below",
-                "form_id": "ownerInfo",
+                "text": "<p>If the other driver is not the registered owner of the vehicle, add their information below</p>",
                 "fields": [
                     {
                         "name": "ownerInfo.name",
@@ -162,7 +160,7 @@ const pageSchema = [
             },
             {
                 "title": "Insurance information",
-                "form_id": "insuranceInfo",
+                "text": "<p>Collect insurance information from the other driver, don't skip this step!</p>",
                 "fields": [
                     {
                         "name": "insuranceInfo.company",
@@ -183,7 +181,7 @@ const pageSchema = [
             },
             {
                 "title": "Time and Location",
-                "form_id": "timeLocation",
+                "text": "<p>Fill out the time, date and location to the best of your ability</p>",
                 "fields": [
                     {
                         "name": "timeLocation.date",
@@ -204,8 +202,7 @@ const pageSchema = [
             },
             {
                 "title": "Traffic Information",
-                "text": "Describe the road conditions",
-                "form_id": "trafficInfo",
+                "text": "<p>Describe the road conditions</p>",
                 "fields": [
                     {
                         "name": "trafficInfo.roadConditions",
@@ -221,8 +218,7 @@ const pageSchema = [
             },
             {
                 "title": "Witness information",
-                "repeatableFields": true,
-                "form_id": "witnessInfo",
+                "text": "<p>If there are any witnesses, gather their contact information and statements.</p>",
                 "fields": [
                     {
                         "name": "witnessInfo",
@@ -234,8 +230,7 @@ const pageSchema = [
             },
             {
                 "title": "Any symptoms",
-                "text": "TBD",
-                "form_id": "symptoms",
+                "text": "<p>List any symptoms you have begun to notice.</p>",
                 "fields": [
                     {
                         "name": "symptoms",
@@ -246,8 +241,7 @@ const pageSchema = [
             },
             {
                 "title": "Driver statement",
-                "text": "Any statements the other driver makes, even if it is “I’m sorry” or “I didn’t see you”",
-                "form_id": "driverStatement",
+                "text": "<p>Any statements the other driver makes, even if it is “I’m sorry” or “I didn’t see you”</p>",
                 "fields": [
                     {
                         "name": "driverStatement",
@@ -258,7 +252,7 @@ const pageSchema = [
             },
             {
                 "title": "Make a sketch of the collision",
-                "text": "Draw a picture of the accident, then take a picture of it with your phone.",
+                "text": "<p>Draw a picture of the accident, then take a picture of it with your phone.</p>",
                 "form_id": "sketch",
                 "fields": [
                     {
@@ -269,9 +263,7 @@ const pageSchema = [
             },
             {
                 "title": "Take pictures",
-                "text": "Take pictures of everything — the vehicles, the license plates, the licenses, damage to the cars, even skid marks if you are able.",
-                "form_id": "pictures",
-                "repeatableFields": true,
+                "text": "<p>Take pictures of everything — the vehicles, the license plates, the licenses, damage to the cars, even skid marks if you are able.</p>",
                 "fields": [
                     {
                         "name": "photos",
@@ -281,7 +273,7 @@ const pageSchema = [
             },
             {
                 "title": "Fill out an “Operator’s report.“",
-                "text": "As soon as is practical you should fill out an Operator’s Report. This can be downloaded at: www.massrmv.com/rmv/forms/21278.pdf (This is for Massachusetts residents, but other states have similar options. You could always fill this one out first while researching where to get the form for your state.) The sooner you complete these steps the better, while your memory is focused on the events."
+                "text": "<p>As soon as is practical you should fill out an Operator’s Report. This can be downloaded at: <a href='http://www.massrmv.com/rmv/forms/21278.pdf'>massrmv.com/rmv/forms/21278.pdf</a> (This is for Massachusetts residents, but other states have similar options. You could always fill this one out first while researching where to get the form for your state.) The sooner you complete these steps the better, while your memory is focused on the events.</p>"
             }
         ]
     },
@@ -293,7 +285,7 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Notify Insurance",
-                "text": "Inform them of any injuries to you or your passengers. Remember that many times pain from these injuries may not happen for several hours or days after a collision. Do not volunteer much information here. Keep it simple. “I was in an accident, and my passenger and I have been hurt and we are going to the doctor.” Your insurance company may want other information, however you are not an expert in handling these situations. Leave it to a professional."
+                "text": "<p>Inform them of any injuries to you or your passengers. Remember that many times pain from these injuries may not happen for several hours or days after a collision. Do not volunteer much information here. Keep it simple. “I was in an accident, and my passenger and I have been hurt and we are going to the doctor.” Your insurance company may want other information, however you are not an expert in handling these situations. Leave it to a professional.</p>"
             }
         ]
     },
@@ -305,10 +297,10 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Speak to your Physician",
-                "text": "This is a critical aspect of your recovery from accident. /n Unfortunately, most of us are trained to minimize our injuries. FIGHT THIS URGE! As soon as any complaints of pain arise, even if they are minimal, you need to document these injuries. The best way to document them is to seek medical attention and be detailed with your descriptions to your physician. Make sure they are documented in the health care record."
+                "text": "<p>This is a critical aspect of your recovery from accident. /n Unfortunately, most of us are trained to minimize our injuries. FIGHT THIS URGE! As soon as any complaints of pain arise, even if they are minimal, you need to document these injuries. The best way to document them is to seek medical attention and be detailed with your descriptions to your physician. Make sure they are documented in the health care record.</p>"
             }, {
                 "title": "Document your Injuries",
-                "text": "Take photos of any bruises, abrasions, lacerations, redness, swelling, etc. Make sure to closely examine your face, neck, hands, arms, trunk, breasts, abdomen, knees or any other areas that hurt. /n Upload photos from your phone here",
+                "text": "<p>Take photos of any bruises, abrasions, lacerations, redness, swelling, etc. Make sure to closely examine your face, neck, hands, arms, trunk, breasts, abdomen, knees or any other areas that hurt. /n Upload photos from your phone here</p>",
                 "fields": [
                     {
                         "name": "injuries",
@@ -319,9 +311,9 @@ const pageSchema = [
                 "title": "Keep an Injury Diary",
                 "text": "<p>Describe how the injuries affect you at:</p>" +
                 "<ul><li>Work</li><li>Household routines</li><li>Recreational activities</li><li>Child care</li><li>Personal care</li><li>Relationships with others</li><li>Driving</li><li>Sitting, standing or lying down</li><li>Getting into/out of a chair or car</li><li>Sexual relations</li><li>Sleep</li></ul>"
-            },{
+            }, {
                 "title": "Injuries may not be obvious at first",
-                "text": "<p>I cannot emphasize enough that it is not unusual for pain or problems to be delayed in appearing after an initial trauma. It can take weeks or months for symptoms to appear.</p>" + 
+                "text": "<p>I cannot emphasize enough that it is not unusual for pain or problems to be delayed in appearing after an initial trauma. It can take weeks or months for symptoms to appear.</p>" +
                 "<p>Minor symptoms can worsen and cause major pain and disability. Shoulder and spine problems especially are notorious for this kind of onset. Injuries can cause post-traumatic arthritis which rarely shows up for several months or later than that.</p>"
             },
         ]
@@ -334,7 +326,7 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Consult attorney",
-                "text": "You are a teacher, financial advisor, housewife, baseball coach, etc. You are not an expert in insurance procedures and case law. Do not even think about handling your claim on your own. Having dealt with insurance companies for 25 years, I would never entertain the thought of handling an auto injury claim on my own. There are literally dozens of mistakes you can make in dealing with all the aspects of a bodily injury and compensation claim. I repeat, do not try to handle these complex situations on your own. Get help. The good news is that attorneys in this area work their cases on a contingent basis. This means they do not get paid unless you do. Once you get the initial documentation completed and hand off the administration of your claim to a professional, your main mission is to get well. Make all your doctor’s appointments, do your home rehabilitation exercises and get well. Your attorney’s job is to protect  your legal rights including just compensation for pain, suffering, inconvenience, lost wages, future health care needs and for any permanent injuries."
+                "text": "<p>You are a teacher, financial advisor, housewife, baseball coach, etc. You are not an expert in insurance procedures and case law. Do not even think about handling your claim on your own. Having dealt with insurance companies for 25 years, I would never entertain the thought of handling an auto injury claim on my own. There are literally dozens of mistakes you can make in dealing with all the aspects of a bodily injury and compensation claim. I repeat, do not try to handle these complex situations on your own. Get help. The good news is that attorneys in this area work their cases on a contingent basis. This means they do not get paid unless you do. Once you get the initial documentation completed and hand off the administration of your claim to a professional, your main mission is to get well. Make all your doctor’s appointments, do your home rehabilitation exercises and get well. Your attorney’s job is to protect  your legal rights including just compensation for pain, suffering, inconvenience, lost wages, future health care needs and for any permanent injuries.</p>"
             }
         ]
     },
@@ -345,8 +337,23 @@ const pageSchema = [
         "order": 7,
         "accordions": [
             {
-                "title": "Whiplash",
-                "text": "TBD, too long"
+                "title": "What is whiplash?",
+                "text": "<p>According to the Mayo Clinic Whiplash is a neck injury due to forceful, rapid back-and-forth movement of the neck, like the cracking of a whip. Whiplash most often occurs during a rear-end auto accident, but the injury can also result from a sports accident, physical abuse or other trauma. Whiplash can result in injuries to the vertebrae, nerves, discs, muscles, joints, ligaments and tendons.</p>" +
+                "<p>This force of whiplash can result in muscle strains and tears, vertebrae being shoved out of their normal position and the spinal cord being stretched and irritated. The brain may even be injured by hitting the inside of your skull.</p>" +
+                "<p>Unlike broken bones or torn ligaments, a standard x-ray cannot detect whiplash, so it is much harder to diagnose and easier to go untreated. Stress and or motion x- rays are the best ways to document these soft tissue injuries, so it is essential that if you’ve been in an accident you seek treatment with someone who can provide these diagnostic tests.</p>"
+            },
+            {
+                "title": "Symptoms of whiplash",
+                "text": "<p>The most common whiplash symptoms are:</p>" +
+                "<ul><li>Neck pain and/or stiffness</li><li>Blurred vision</li><li>Difficulty swallowing</li><li>Irritability</li><li>Fatigue</li><li>Dizziness</li><li>Pain between the shoulder blades</li><li>Pain in the arms or legs, feet and hands</li><li>Headache</li><li>Low back pain and/or stiffness</li><li>Shoulder pain</li><li>Nausea</li><li>Ringing in the ears</li><li>Vertigo</li><li>Numbness and tingling</li><li>Pain in the jaw or face</li></ul>"
+            }, {
+                "title": "Chronic injury resulting from whiplash",
+                "text": "<p>Untreated, whiplash trauma can lead to chronic injuries such as:</p>" +
+                "<ul><li>Neck pain</li><li>Headaches</li><li>Jaw problems</li><li>Brain injury</li><li>Low back problems</li><li>Shoulder problems</li><li>Disc injuries</li></ul>"
+            }, {
+                "title": "Healing from Whiplash",
+                "text": "<p>After you have been examined by a health professional and found to have a soft tissue injury these are my recommended steps to healing better and faster.</p>" +
+                "<ul><li>Ice: first 48 hours of any injury use straight ice. Try to gently move the injured area while applying the ice.</li> <li>Minimize the use of NSAIDS. The research is clear that these interfere with the quality of the healing response. On a practical note, I tell my patients if it were me and I needed help sleeping, that is when I would use them.</li> <li>Remain active despite of ongoing pain.</li> <li>Performance of exercises</li> <li>See a chiropractor to correct and assist in the healing of your spine and nervous system</li></ul>"
             }
         ]
     }
