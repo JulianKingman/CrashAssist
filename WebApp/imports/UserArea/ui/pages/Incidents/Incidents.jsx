@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {Meteor} from 'meteor/meteor';
-import {Incidents, Incident} from '/imports/shared/collections/Incidents.js';
+import {Incidents, Incident} from '../../../../shared/collections/Incidents.js';
 import Navigation from '/imports/UserArea/ui/components/Navigation.jsx';
 import {Row, Grid, Col, Table, Glyphicon, Button} from 'react-bootstrap';
 import Footer from '/imports/UserArea/ui/components/Footer.jsx';
