@@ -97,12 +97,12 @@ export default class Landing extends Component {
         }
 
         return (
-            <Page key="landing">
+            <Page key="landing" hide-toolbar={true}>
                 <div id="landing">
                     <Icon
                         id="menuActuator"
                         size={26}
-                        icon='ion-navicon, material:md-menu' 
+                        icon='ion-navicon, material:md-menu'
                         onClick={()=>this.props.appContext.handleMenu(!this.props.appContext.state.menuOpen)}/>
                     <h1>Remain Calm, <span>We'll help you through this!</span></h1>
                     {/*<img src="images/crash.svg"/>*/}

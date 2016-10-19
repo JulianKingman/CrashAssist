@@ -234,7 +234,7 @@ const pageSchema = [
             },
             {
                 "title": "Any symptoms",
-                "text": "TBD",
+                "text": "List any symptoms you are having or noticing.",
                 "form_id": "symptoms",
                 "fields": [
                     {
@@ -281,7 +281,7 @@ const pageSchema = [
             },
             {
                 "title": "Fill out an “Operator’s report.“",
-                "text": "As soon as is practical you should fill out an Operator’s Report. This can be downloaded at: www.massrmv.com/rmv/forms/21278.pdf (This is for Massachusetts residents, but other states have similar options. You could always fill this one out first while researching where to get the form for your state.) The sooner you complete these steps the better, while your memory is focused on the events."
+                "text": "<p>As soon as is practical you should fill out an Operator’s Report. This can be downloaded at: <a href='http://www.massrmv.com/rmv/forms/21278.pdf'>massrmv.com/rmv/forms/21278.pdf</a> (This is for Massachusetts residents, but other states have similar options. You could always fill this one out first while researching where to get the form for your state.) The sooner you complete these steps the better, while your memory is focused on the events.</p>"
             }
         ]
     },
@@ -345,8 +345,23 @@ const pageSchema = [
         "order": 7,
         "accordions": [
             {
-                "title": "Whiplash",
-                "text": "TBD, too long"
+                "title": "What is whiplash?",
+                "text": "<p>According to the Mayo Clinic Whiplash is a neck injury due to forceful, rapid back-and-forth movement of the neck, like the cracking of a whip. Whiplash most often occurs during a rear-end auto accident, but the injury can also result from a sports accident, physical abuse or other trauma. Whiplash can result in injuries to the vertebrae, nerves, discs, muscles, joints, ligaments and tendons.</p>" +
+                "<p>This force of whiplash can result in muscle strains and tears, vertebrae being shoved out of their normal position and the spinal cord being stretched and irritated. The brain may even be injured by hitting the inside of your skull.</p>"+
+                    "<p>Unlike broken bones or torn ligaments, a standard x-ray cannot detect whiplash, so it is much harder to diagnose and easier to go untreated. Stress and or motion x- rays are the best ways to document these soft tissue injuries, so it is essential that if you’ve been in an accident you seek treatment with someone who can provide these diagnostic tests.</p>"
+            },
+            {
+                "title": "Symptoms of whiplash",
+                "text": "<p>The most common whiplash symptoms are:</p>" +
+                "<ul><li>Neck pain and/or stiffness</li><li>Blurred vision</li><li>Difficulty swallowing</li><li>Irritability</li><li>Fatigue</li><li>Dizziness</li><li>Pain between the shoulder blades</li><li>Pain in the arms or legs, feet and hands</li><li>Headache</li><li>Low back pain and/or stiffness</li><li>Shoulder pain</li><li>Nausea</li><li>Ringing in the ears</li><li>Vertigo</li><li>Numbness and tingling</li><li>Pain in the jaw or face</li></ul>"
+            },{
+                "title": "Chronic injury resulting from whiplash",
+                "text": "<p>Untreated, whiplash trauma can lead to chronic injuries such as:</p>" +
+                "<ul><li>Neck pain</li><li>Headaches</li><li>Jaw problems</li><li>Brain injury</li><li>Low back problems</li><li>Shoulder problems</li><li>Disc injuries</li></ul>"
+            },{
+                "title": "Healing from Whiplash",
+                "text": "<p>After you have been examined by a health professional and found to have a soft tissue injury these are my recommended steps to healing better and faster.</p>" +
+                "<ul><li>Ice: first 48 hours of any injury use straight ice. Try to gently move the injured area while applying the ice.</li> <li>Minimize the use of NSAIDS. The research is clear that these interfere with the quality of the healing response. On a practical note, I tell my patients if it were me and I needed help sleeping, that is when I would use them.</li> <li>Remain active despite of ongoing pain.</li> <li>Performance of exercises</li> <li>See a chiropractor to correct and assist in the healing of your spine and nervous system</li></ul>"
             }
         ]
     }

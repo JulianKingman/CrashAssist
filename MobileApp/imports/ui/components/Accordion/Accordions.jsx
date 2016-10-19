@@ -54,7 +54,8 @@ export default class Accordions extends Component {
         let currentStepData = this.props.data[this.state.currentStep];
         let key = currentStepData._id;
         return (
-            <div className={`accordions ${this.props.className}`} id={`accordions-${currentStepData._id}`} ref="accordions" key={key}>
+            <div className={`accordions ${this.props.className}`} id={`accordions-${currentStepData._id}`}
+                 ref="accordions" key={key}>
                 {
                     currentStepData.accordions.map((accordion, index)=> {
                         let key = `${currentStepData._id}-${index}`;
@@ -68,7 +69,7 @@ export default class Accordions extends Component {
                                        openAccordion={this.openAccordion}>
                                 {
                                     accordion.text ?
-                                        <p>{accordion.text}</p>
+                                        <div className="content" dangerouslySetInnerHTML={accordion.text}/>
                                         : ""
                                 }
                                 {

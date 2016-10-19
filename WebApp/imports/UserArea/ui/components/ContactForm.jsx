@@ -34,7 +34,7 @@ export default class ContactForm extends Component {
     submitContactForm = (e)=> {
         e.preventDefault();
         Meteor.call('sendEmail', 'julian.kingman@gmail.com', this.state.email, `CrashAssist Email - ${this.state.subject}`, this.state.body, (e, r)=> {
-            if (r) {
+            if (!e) {
                 this.setState({
                     alert: {
                         show: true,

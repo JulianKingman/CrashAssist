@@ -3,8 +3,9 @@ import {ArrayComponent} from 'simple-react-form'
 import {Meteor} from 'meteor/meteor';
 
 if (Meteor.isClient) {
-    import {Row, Col, Button, Icon} from 'react-onsenui';
-    import './Array.scss';
+    const Ons = require('react-onsenui')
+    Row = Ons.Row; Col = Ons.Col; Button = Ons.Button; Icon = Ons.Icon;
+    require('./Array.scss');
 }
 
 export default class ArrayField extends ArrayComponent {

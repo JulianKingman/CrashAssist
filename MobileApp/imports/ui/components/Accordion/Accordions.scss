@@ -1,3 +1,11 @@
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+}
+
 .accordions {
   position: absolute;
   top: 0;
@@ -36,6 +44,9 @@
   }
 
   .accordion {
+    .content{
+      @include word-wrap();
+    }
     &.closed {
       .expander {
         height: 0;
