@@ -59,7 +59,7 @@ const formSchema = new SimpleSchema({
     //injuries
     "injuries": {type: [String], srf: {type: PhotoInput}, optional: true},
     //Symptoms
-    "symptoms": {type: String, optional: true, srf: {type: TextareaInput}}
+    "symptoms": {type: String, srf: {type: TextareaInput}, optional: true}
 });
 
 Incidents.attachSchema(formSchema);

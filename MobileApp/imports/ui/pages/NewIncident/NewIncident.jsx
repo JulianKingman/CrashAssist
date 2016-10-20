@@ -78,7 +78,7 @@ class NewIncident extends Component {
             <Toolbar>
                 <div className="left">
                     <BackButton>
-                        Home
+                        {this.props.incident.completed? 'Back': 'Home'}
                     </BackButton>
                 </div>
                 <div className="center">

@@ -105,7 +105,7 @@ const formSchema = new SimpleSchema({
     //injuries
     "injuries": {type: [String], optional: true},
     //Symptoms
-    "symptoms": {type: [String], optional: true}
+    "symptoms": {type: String, optional: true}
 });
 
 Incidents.attachSchema(formSchema);
