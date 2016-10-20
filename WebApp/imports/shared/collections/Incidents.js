@@ -52,6 +52,60 @@ Schemas.Incidents = new SimpleSchema({
 
 Incidents.attachSchema(Schemas.Incidents);
 
+const formSchema = new SimpleSchema({
+    //driver info
+    "driverInfo.name": {type: String},
+    "driverInfo.address": {type: String},
+    "driverInfo.phone": {type: String},
+    "driverInfo.email": {type: String},
+    "driverInfo.license": {type: String},
+    //[passenger info]
+    "passengerInfo": {type: [Object], optional: true},
+    "passengerInfo.$.name": {type: String, optional: true},
+    "passengerInfo.$.phone": {type: String, optional: true},
+    "passengerInfo.$.email": {type: String, optional: true},
+    //vehicle info
+    "vehicleInfo.make": {type: String},
+    "vehicleInfo.model": {type: String},
+    "vehicleInfo.year": {type: Number},
+    "vehicleInfo.plate": {type: String},
+    //owner info
+    "ownerInfo.name": {type: String},
+    "ownerInfo.address": {type: String},
+    "ownerInfo.phone": {type: String},
+    "ownerInfo.email": {type: String},
+    "ownerInfo.license": {type: String},
+    //insurance info
+    "insuranceInfo.company": {type: String},
+    "insuranceInfo.policyNumber": {type: String},
+    "insuranceInfo.agent": {type: String},
+    //time & location
+    "timeLocation.date": {type: Date},
+    "timeLocation.time": {type: String},
+    "timeLocation.location": {type: String},
+    //Traffic Information
+    "trafficInfo.roadConditions": {type: String},
+    "trafficInfo.trafficControls": {type: String},
+    //Witness Information
+    "witnessInfo": {type: [Object], optional: true},
+    "witnessInfo.$.name": {type: String},
+    "witnessInfo.$.phone": {type: String, optional: true},
+    "witnessInfo.$.email": {type: String, optional: true},
+    "witnessInfo.$.testimony": {type: String, optional: true},
+    //driver statement
+    "driverStatement": {type: String, optional: true},
+    //sketch photo public id
+    "sketch": {type: [String], optional: true},
+    //array of photo public ids
+    "photos": {type: [String], optional: true},
+    //injuries
+    "injuries": {type: [String], optional: true},
+    //Symptoms
+    "symptoms": {type: [String], optional: true}
+});
+
+Incidents.attachSchema(formSchema);
+
 //collection hooks
 
 // UserIncidents.before.insert((userId, doc) => {});
