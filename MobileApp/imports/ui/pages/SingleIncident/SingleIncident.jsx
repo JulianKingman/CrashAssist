@@ -44,13 +44,14 @@ class SingleIncident extends Component {
                 <ListItem key={`item-${index}`}>Photos go here</ListItem>
             )
         } else if (field.type === "array") {
+            console.log("is an array");
             let arrayField = this.props.incident[field.name];
             if (arrayField && arrayField.length) {
                 //getting the array of field value groups, i.e. fieldGroup.$
-                arrayField.map((fieldset, arrayIndex)=> {
+                return arrayField.map((fieldset, arrayIndex)=> {
                     // console.log(Object.keys(fieldset));
                     //getting the fields, e.g. fieldGroup.$.field1, fieldGroup.$.field2
-                    Object.keys(fieldset).map((key, fieldIndex)=> {
+                    return Object.keys(fieldset).map((key, fieldIndex)=> {
                         console.log(`Key: ${key}, Value: ${fieldset[key]}, Component Key: ${`item-${index}-${arrayIndex}-${fieldIndex}`}`);
                         return (
                             <ListItem key={`item-${index}-${arrayIndex}-${fieldIndex}`}>
