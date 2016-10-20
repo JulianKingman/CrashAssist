@@ -21,7 +21,9 @@ Meteor.methods({
         }
     },
     setEmailAddress: function(emailAddress){
-        Accounts.addEmail(Meteor.userId(), emailAddress)
+        Accounts.addEmail(Meteor.userId(), emailAddress);
+
+        Meteor.defer(()=>Accounts.sendVerificationEmail(this.userId));
     },
     sendEmail: function (to, from, subject, text) {
         check([to, from, subject, text], [String]);
