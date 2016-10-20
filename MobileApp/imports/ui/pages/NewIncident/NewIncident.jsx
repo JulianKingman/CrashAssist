@@ -17,7 +17,7 @@ class NewIncident extends Component {
         super(props);
 
         this.state = {
-            currentStep: this.props.currentStep,
+            currentStep: this.props.incident.currentStep,
             isForward: true
         }
     }
@@ -29,6 +29,7 @@ class NewIncident extends Component {
                 activeAccordion: 0,
                 isForward: true
             });
+            this.props.incident.setStep(this.state.currentStep);
         }
     };
 
@@ -39,6 +40,7 @@ class NewIncident extends Component {
                 activeAccordion: 0,
                 isForward: false
             });
+            this.props.incident.setStep(this.state.currentStep);
         }
     };
 
@@ -49,6 +51,7 @@ class NewIncident extends Component {
                 activeAccordion: 0,
                 isForward: stepNumber + 1 > this.state.currentStep
             })
+            this.props.incident.setStep(this.state.currentStep);
         }
 
     };

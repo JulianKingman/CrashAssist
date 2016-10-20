@@ -43,6 +43,10 @@ Schemas.Incidents = new SimpleSchema({
         denyUpdate: true,
         index: 1
     },
+    currentStep: {
+        type: Number,
+        optional: true
+    },
     completed: {
         type: Boolean,
         defaultValue: false,
@@ -81,6 +85,9 @@ class Incident extends BaseModel {
         return Users.findOne(this.userId);
     }
 
+    setStep(value){
+        this.update({$set: {currentStep: value}});
+    }
 }
 
 Incident.attachCollection(Incidents);

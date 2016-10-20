@@ -5,7 +5,7 @@ import {Button, List, ListItem, Col, Row} from 'react-onsenui';
 import {Meteor} from 'meteor/meteor';
 
 if(Meteor.isClient){
-    import './IncidentUpdateForm.scss';
+    require('./IncidentUpdateForm.scss');
 }
 
 export default class IncidentUpdateForm extends Component {
@@ -35,7 +35,7 @@ export default class IncidentUpdateForm extends Component {
                     {
                         this.props.fields.map(function (field, index) {
                             let arrayText = field.arrayText? field.arrayText: 'Item';
-                            return <Field fieldName={field.name} key={index} label={field.label} arrayText={arrayText}/>
+                            return <Field fieldName={field.name} key={index} label={field.label} placeholder={field.label} arrayText={arrayText}/>
                         })
                     }
                 </Form>
