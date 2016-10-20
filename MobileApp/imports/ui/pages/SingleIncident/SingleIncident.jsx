@@ -36,24 +36,29 @@ class SingleIncident extends Component {
     };
 
     renderField = (field, index)=> {
-        console.log(`field ${field.name} of type ${field.type}`);
+        // console.log(`field ${field.name} of type ${field.type}`);
+        // console.log(`index: ${index}`);
+        index = field.name + index;
         if (field.type === "photo") {
             return (
                 <ListItem key={`item-${index}`}>Photos go here</ListItem>
             )
         } else if (field.type === "array") {
-            if (this.props.incident[field.name]) {
+            let arrayField = this.props.incident[field.name];
+            if (arrayField && arrayField.length) {
                 //getting the array of field value groups, i.e. fieldGroup.$
-                this.props.incident[field.name].map((fieldset, arrayIndex)=> {
-                    _.map(fieldset, (value, label)=> {
-                        //getting the fields, e.g. fieldGroup.$.field
+                arrayField.map((fieldset, arrayIndex)=> {
+                    // console.log(Object.keys(fieldset));
+                    //getting the fields, e.g. fieldGroup.$.field1, fieldGroup.$.field2
+                    Object.keys(fieldset).map((key, fieldIndex)=> {
+                        console.log(`Key: ${key}, Value: ${fieldset[key]}, Component Key: ${`item-${index}-${arrayIndex}-${fieldIndex}`}`);
                         return (
-                            <ListItem key={`item-${index}-${arrayIndex}`}>
-                                <div className="left">{label}</div>
-                                <div className="center"> value</div>
+                            <ListItem key={`item-${index}-${arrayIndex}-${fieldIndex}`}>
+                                <div className="left">{key}</div>
+                                <div className="center">{fieldset[key]}</div>
                             </ListItem>
                         )
-                    });
+                    })
                 });
             }
         } else {
