@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {Cloudinary} from 'meteor/lepozepo:cloudinary';
+import { createContainer } from 'meteor/react-meteor-data';
+
 if (Meteor.isClient) {
     Ons = require('react-onsenui');
     Icon = Ons.Icon;
@@ -9,13 +11,14 @@ if (Meteor.isClient) {
 }
 
 
-export default class PhotoInput extends Component {
+class PhotoInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dialogShown: false,
             enlargeImageModal: false,
-            activeImageId: ''
+            activeImageId: '',
+            uploadingImages: {}
         };
     }
 
@@ -127,6 +130,21 @@ export default class PhotoInput extends Component {
         });
     };
 
+    renderUploads = ()=> {
+        return this.props.uploadingImages.map((image)=>{
+            console.log(image);
+            return (
+                <div className="photo">
+                    <div
+                        className="image"
+                        style={{backgroundImage: `url('${image.preview}')`}}>
+                    </div>
+                    <div className="progress" style={{width:`${image.percent_uploaded}%`}}></div>
+                </div>
+            )
+        })
+    };
+
     hideDialog = ()=> {
         // this.setState({dialogShown: false});
     };
@@ -136,6 +154,7 @@ export default class PhotoInput extends Component {
             <div className="photo-input">
                 <div className="photos">
                     {this.renderPhotos()}
+                    {this.renderUploads()}
                     <a className="photo-button" onClick={()=> {
                         {/*this.setState({dialogShown: true})*/
                         }
@@ -152,3 +171,10 @@ export default class PhotoInput extends Component {
         )
     }
 }
+
+export default PhotoInputContainer = createContainer((props)=>{
+    return {
+        uploadingImages:Cloudinary.collection.find({status:{$ne:"complete"}}).fetch(),
+        ...props
+    }
+}, PhotoInput);
