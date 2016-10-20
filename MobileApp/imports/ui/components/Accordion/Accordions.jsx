@@ -51,6 +51,7 @@ export default class Accordions extends Component {
     }
 
     render() {
+        console.log(this.props.incident.currentStep);
         let currentStepData = this.props.data[this.state.currentStep];
         let key = currentStepData._id;
         return (
