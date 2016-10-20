@@ -76,6 +76,12 @@
         flex-direction: column;
         background: none;
         padding-right: 0;
+        ons-button.go-next{
+          margin-left: auto;
+          min-width: 50px;
+          text-align: center;
+          float: right;
+        }
       }
     }
   }

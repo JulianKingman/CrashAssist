@@ -1,7 +1,8 @@
 import { Meteor} from 'meteor/meteor';
 import {Email} from 'meteor/email';
 import {check} from 'meteor/check';
-import { Incidents } from '../../api/collections/Incidents.js';
+import { Incidents } from '../collections/Incidents.js';
+import {Users} from '../collections/Users.js';
 
 Meteor.methods({
     /*
@@ -20,8 +21,9 @@ Meteor.methods({
             Incidents.update({userId:duplicate._id}, {$set:{userId}});
         }
     },
-    setEmailAddress: function(emailAddress){
+    setEmailAddress: function(emailAddress, isSubscribed){
         Accounts.addEmail(Meteor.userId(), emailAddress);
+        Users.update({_id: Meteor.userId()}, {$set: {'profile.subscribed': isSubscribed}});
 
         Meteor.defer(()=>Accounts.sendVerificationEmail(this.userId));
     },
