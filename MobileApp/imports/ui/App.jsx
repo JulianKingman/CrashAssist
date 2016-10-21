@@ -14,6 +14,7 @@ import {
 
 import Landing from './pages/Landing/Landing.jsx';
 import Login from './pages/Login/Login.jsx';
+import Help from './pages/Help/Help.jsx';
 import PastIncidents from './pages/PastIncidents/PastIncidents.jsx';
 import loginByDeviceId from '../startup/client/accounts.js';
 
@@ -32,7 +33,7 @@ import 'onsenui/css/onsen-css-components.css';
 const splitterMenuItems = [
     {title: "Past Incidents", component: PastIncidents},
     {title: "Set Email/Password", component: Login},
-    {title: "Help", component: undefined}
+    {title: "Help", component: Help}
 ];
 
 let navigation;
@@ -81,9 +82,9 @@ export default class App extends Component {
             <Splitter>
                 <SplitterSide
                     side='right'
-                    width={300}
+                    width={200}
                     collapse={true}
-                    isSwipeable={true}
+                    isSwipeable={false}
                     isOpen={this.state.menuOpen}
                     onOpen={() => this.handleMenu(true)}
                     onClose={() => this.handleMenu(false)}>

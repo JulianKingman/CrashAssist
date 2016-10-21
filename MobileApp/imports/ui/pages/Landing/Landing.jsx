@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Page, Button, Ripple, Popover, Modal, Icon} from 'react-onsenui';
 import onsen from 'onsenui';
 import {Incidents, Incident} from '/imports/shared/collections/Incidents.js';
+import {Users} from '/imports/shared/collections/Users.js'
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
 
 import {Meteor} from 'meteor/meteor';
@@ -28,7 +29,7 @@ export default class Landing extends Component {
 
     gotoNewIncident = () => {
         if (!Incidents.findOne({completed: false})) {
-                this.setState({hasIncompleteIncident: true});
+            this.setState({hasIncompleteIncident: true});
             new Incident().save();
         }
         this.props.appContext.navigator.pushPage({
@@ -36,10 +37,10 @@ export default class Landing extends Component {
             props: {currentStep: 1, key: "Steps"}
         });
     };
-
-    incompleteIncidentExists() {
-        return Incidents.findOne({completed: false}) ? true : false;
-    }
+    //
+    // incompleteIncidentExists() {
+    //     return Incidents.findOne({completed: false}) ? true : false;
+    // }
 
     startButton = ()=> {
         console.log(this.refs.startButton);
@@ -68,20 +69,32 @@ export default class Landing extends Component {
         // )
     };
 
+    hideLoginDialog = ()=> {
+        console.log('hid dialog, preventing from seeing in the future');
+        Users.update(Meteor.userId(), {$set: {'profile.hideLoginDialog': true}});
+        // this.setState({showLoginDialog: false});
+    };
     renderLoginDialog = ()=> {
-        if (Incidents.find({completed: true}).count()) {
-            // return (
-            //     <Popover
-            //         getTarget={this.startButton}
-            //         isOpen={this.state.tooltipOpen}
-            //         onOpen={this.toggleTooltip}
-            //         onHide={this.toggleTooltip}
-            //         isCancelable={true}
-            //         direction="up down"
-            //     >
-            //         <p>Enter your email and password to save and share your information.</p>
-            //     </Popover>
-            // )
+        if (true) {
+            return (
+                <Popover
+                    getTarget={()=> {
+                        return this.refs.menuActuator
+                    }}
+                    isOpen={this.props.completeIncidents && this.props.hideLoginDialog}
+                    onOpen=""
+                    onHide={this.hideLoginDialog}
+                    onCancel={this.hideLoginDialog}
+                    isCancelable={true}
+                    direction="left right"
+                >
+                    <p style={{textAlign: 'center'}}><Icon icon="md-thumb-up" className="center" size={32}
+                                                           style={{color: 'lightgreen'}}/></p>
+                    <p>Congrats, you completed filling out an incident report! If you need to access or edit your
+                        report, or set up your email and password to access your report on <a
+                            href="https://crashassistapp.com">crashassistapp.com</a>, click this menu icon.</p>
+                </Popover>
+            )
         }
     };
 
@@ -97,13 +110,15 @@ export default class Landing extends Component {
         }
 
         return (
-            <Page key="landing" style={{top: 0}}>
+            <Page key="landing" contentStyle={{top: 0}}>
                 <div id="landing">
                     <Icon
                         id="menuActuator"
                         size={26}
                         icon='ion-navicon, material:md-menu'
-                        onClick={()=>this.props.appContext.handleMenu(!this.props.appContext.state.menuOpen)}/>
+                        onClick={()=>this.props.appContext.handleMenu(!this.props.appContext.state.menuOpen)}
+                        ref="menuActuator"
+                    />
                     <h1>Remain Calm, <span>We'll help you through this!</span></h1>
                     {/*<img src="images/crash.svg"/>*/}
                     <svg
@@ -161,7 +176,7 @@ export default class Landing extends Component {
                                 onClick={this.gotoNewIncident}
                                 ref="startButton"
                         >
-                            {ripple}{this.incompleteIncidentExists() ? "Continue Incident" : "New Incident"}
+                            {ripple}{this.props.incompleteIncidentExists ? "Continue Incident" : "New Incident"}
                         </Button>
                         {this.renderFirstTimeDialog()}
                         {this.renderLoginDialog()}
@@ -172,8 +187,13 @@ export default class Landing extends Component {
     }
 }
 
-export default LandingContainer = createContainer(()=>{
+export default LandingContainer = createContainer(()=> {
+    const pastIncidentsHandle = Meteor.subscribe('PastIncidents');
+    // const loading = !pastIncidentsHandle.ready();
+    const pastIncidents = Incidents.find({completed: true}).fetch();
     return {
-        incompleteIncidentExists: !!Incidents.findOne({completed: false})
+        incompleteIncidentExists: !!Incidents.findOne({completed: false}),
+        completeIncidents: !!pastIncidents.length,
+        hideLoginDialog: Meteor.user()['profile'] ? !Meteor.user()['profile']['hideLoginDialog'] : true
     }
 }, Landing);
