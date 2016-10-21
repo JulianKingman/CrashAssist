@@ -17,7 +17,8 @@ export default class ImageGallary extends Component {
 
     setIndex = (index) => {
         this.setState({index})
-    }
+    };
+
 
     render() {
         console.log('images to display: ', this.props.images);

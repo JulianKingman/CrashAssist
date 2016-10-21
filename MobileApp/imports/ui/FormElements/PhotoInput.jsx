@@ -120,11 +120,11 @@ class PhotoInput extends Component {
                         }}
                     >
                     </div>
-                    {/*<a className="delete-photo" onClick={()=> {*/}
-                        {/*this.removePhoto(index)*/}
-                    {/*}}>*/}
-                        {/*<Icon icon="md-minus"/>*/}
-                    {/*</a>*/}
+                    <Button modifier="large" className="delete-photo" onClick={()=> {
+                        this.removePhoto(index)
+                    }}>
+                        <Icon icon="md-delete"/>
+                    </Button>
                 </div>
             )
         });

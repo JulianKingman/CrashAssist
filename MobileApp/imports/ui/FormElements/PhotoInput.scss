@@ -9,41 +9,33 @@
       margin: 7.5px;
     }
     .photo {
-      width: 55px;
+      width: 95px;
       height: 55px;
       position: relative;
+      display: flex;
+      flex-direction: row;
       .image {
         background-size: cover;
         width: 100%;
         height: 100%;
-        border-radius: 3px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
       }
       .delete-photo {
-        width: 22px;
-        height: 22px;
-        position: absolute;
-        top: -11px;
-        right: -11px;
-        background-color: red;
-        border-radius: 50%;
+        width: 40px;
         text-align: center;
-        line-height: 23px;
-        color: #fff;
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
-        opacity: 0;
-        transition: opacity .2s;
+        padding: 0 5px;
+        line-height: 55px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: #707070;
       }
       .progress {
-        position:absolute;
-        height:3px;
+        position: absolute;
+        height: 3px;
         background-color: cornflowerblue;
-        bottom:0;
-        left:0;
-      }
-      &:hover {
-        .delete-photo {
-          opacity: 1;
-        }
+        bottom: 0;
+        left: 0;
       }
     }
     .photo-button {
@@ -56,7 +48,7 @@
       justify-content: space-around;
       box-sizing: border-box;
       text-decoration: none;
-      .ons-icon{
+      .ons-icon {
         &:before {
           color: #cccccc;
           font-size: 1.4em;
