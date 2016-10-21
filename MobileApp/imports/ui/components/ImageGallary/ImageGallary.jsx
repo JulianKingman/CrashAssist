@@ -34,7 +34,7 @@ export default class ImageGallary extends Component {
                     index={this.state.index}
                     direction="horizontal"
                     autoRefresh={true}
-                    autoScrollRatio={.5}
+                    autoScrollRatio={.25}
                     swipeable
                     overscrollable
                     centered
