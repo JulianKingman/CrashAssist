@@ -38,7 +38,7 @@ const formSchema = new SimpleSchema({
     "insuranceInfo.policyNumber": {type: String, srf: {type: TextInput}},
     "insuranceInfo.agent": {type: String, srf: {type: TextInput}},
     //time & location
-    "timeLocation.date": {type: Date, srf: {type: DateInput}},
+    "timeLocation.date": {type: String, srf: {type: DateInput}},
     "timeLocation.time": {type: String, srf: {type: TextInput}},
     "timeLocation.location": {type: String, srf: {type: TextInput}},
     //Traffic Information
@@ -59,7 +59,7 @@ const formSchema = new SimpleSchema({
     //injuries
     "injuries": {type: [String], srf: {type: PhotoInput}, optional: true},
     //Symptoms
-    "symptoms": {type: [String], optional: true, srf: {type: TextInput}}
+    "symptoms": {type: String, srf: {type: TextareaInput}, optional: true}
 });
 
 Incidents.attachSchema(formSchema);

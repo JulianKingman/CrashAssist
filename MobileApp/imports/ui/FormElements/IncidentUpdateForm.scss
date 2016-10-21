@@ -1,5 +1,9 @@
 .IncidentUpdateForm {
   width: 100%;
+  .warning{
+    padding: 20px 0;
+    color: #797979;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -8,4 +12,9 @@
       margin-bottom: 15px;
     }
   }
+}
+
+
+.toast-notification {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
 }

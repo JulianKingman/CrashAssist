@@ -18,7 +18,7 @@ class NewIncident extends Component {
         super(props);
 
         this.state = {
-            currentStep: this.props.currentStep,
+            currentStep: this.props.incident.currentStep ? this.props.incident.currentStep : 1,
             isForward: true
         }
     }
@@ -29,6 +29,8 @@ class NewIncident extends Component {
                 currentStep: this.state.currentStep + 1,
                 activeAccordion: 0,
                 isForward: true
+            }, ()=> {
+                this.props.incident.setStep(this.state.currentStep);
             });
         }
     };
@@ -39,17 +41,21 @@ class NewIncident extends Component {
                 currentStep: this.state.currentStep - 1,
                 activeAccordion: 0,
                 isForward: false
+            }, ()=> {
+                this.props.incident.setStep(this.state.currentStep);
             });
         }
     };
 
-    jumpToStep = (stepNumber) =>{
-        if(this.state.currentStep !== stepNumber + 1){
+    jumpToStep = (stepNumber) => {
+        if (this.state.currentStep !== stepNumber) {
             this.setState({
-                currentStep: stepNumber + 1,
+                currentStep: stepNumber,
                 activeAccordion: 0,
-                isForward: stepNumber + 1 > this.state.currentStep
-            })
+                isForward: stepNumber > this.state.currentStep
+            }, ()=> {
+                this.props.incident.setStep(this.state.currentStep);
+            });
         }
 
     };
@@ -73,7 +79,7 @@ class NewIncident extends Component {
             <Toolbar>
                 <div className="left">
                     <BackButton>
-                        Home
+                        {this.props.incident.completed? 'Back': 'Home'}
                     </BackButton>
                 </div>
                 <div className="center">
@@ -110,7 +116,7 @@ class NewIncident extends Component {
     };
 
     renderAccordions = (key)=> {
-        let animationClass = this.state.isForward? "step-forward": "step-backward";
+        let animationClass = this.state.isForward ? "step-forward" : "step-backward";
         return (
             <Accordions
                 data={pageSchema}
@@ -133,7 +139,8 @@ class NewIncident extends Component {
                 renderToolbar={this.renderToolbar}
                 renderModal={this.renderModal}>
                 <div className="new-incident">
-                    <ReactCSSTransitionGroup transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionName="step">
+                    <ReactCSSTransitionGroup transitionEnterTimeout={300} transitionLeaveTimeout={300}
+                                             transitionName="step">
                         {this.renderAccordions(key)}
                     </ReactCSSTransitionGroup>
                     <StepNav

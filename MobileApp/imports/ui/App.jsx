@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import onsen from 'onsenui';
 
@@ -18,6 +18,7 @@ import PastIncidents from './pages/PastIncidents/PastIncidents.jsx';
 import loginByDeviceId from '../startup/client/accounts.js';
 
 import 'onsenui/css/onsenui.css'
+import Notifications from 'react-notify-toast';
 //todo: Custom theme for OnsenUi components. Mainly Android issue here as default iOS styles are ok
 /*
  Custom theme can be generated from http://components2.onsen.io
@@ -26,12 +27,12 @@ import 'onsenui/css/onsenui.css'
  render stacked instead of side by side.
  */
 //import '../startup/client/css/onsen-css-components.css';
-import 'onsenui/css/onsen-css-components.css'
+import 'onsenui/css/onsen-css-components.css';
 
 const splitterMenuItems = [
-    {title:"Past Incidents", component:PastIncidents},
-    {title:"Set Email/Password", component:Login},
-    {title:"Help", component:undefined}
+    {title: "Past Incidents", component: PastIncidents},
+    {title: "Set Email/Password", component: Login},
+    {title: "Help", component: undefined}
 ];
 
 let navigation;
@@ -40,17 +41,17 @@ export default class App extends Component {
     constructor() {
         super();
         this.state = {
-            menuOpen:false
+            menuOpen: false
         }
     }
 
-    navigateTo(item){
+    navigateTo(item) {
         this.handleMenu(false);
-        navigation.pushPage({component:item.component, props:{key:item.title}});
+        navigation.pushPage({component: item.component, props: {key: item.title}});
     }
 
     handleMenu = (state) => {
-        this.setState({menuOpen:state});
+        this.setState({menuOpen: state});
     };
 
     renderPage(route, navigator) {
@@ -59,14 +60,14 @@ export default class App extends Component {
         props.appContext = this.appContext;
 
         let deviceId;
-        if(typeof device !== 'undefined'){
+        if (typeof device !== 'undefined') {
             deviceId = device.uuid;
         }
 
-        if(route.component !== Login){
-            loginByDeviceId(deviceId, (error)=>{
-                if(error){
-                    navigator.replacePage({component:Login, props:{key:"login", isLogin:true}});
+        if (route.component !== Login) {
+            loginByDeviceId(deviceId, (error)=> {
+                if (error) {
+                    navigator.replacePage({component: Login, props: {key: "login", isLogin: true}});
                 }
             });
         }
@@ -90,15 +91,17 @@ export default class App extends Component {
                         <List
                             dataSource={splitterMenuItems}
                             renderRow={(item) => (
-                                <ListItem key={item.title} onClick={()=>this.navigateTo(item)} tappable>{item.title}</ListItem>
+                                <ListItem key={item.title} onClick={()=>this.navigateTo(item)}
+                                          tappable>{item.title}</ListItem>
                             )}
                         />
                     </Page>
                 </SplitterSide>
                 <SplitterContent>
+                    <Notifications/>
                     <Navigator
                         appContext={this}
-                        initialRoute={{component:Landing, props:{key:"landing"}}}
+                        initialRoute={{component: Landing, props: {key: "landing"}}}
                         renderPage={this.renderPage}
                     />
                 </SplitterContent>

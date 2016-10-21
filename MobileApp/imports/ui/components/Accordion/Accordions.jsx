@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from 'react-onsenui';
+import {Button, Icon} from 'react-onsenui';
 // import onsen from 'onsenui';
 import './Accordions.scss';
 import Accordion from '/imports/ui/components/Accordion/Accordion.jsx';
@@ -20,7 +20,6 @@ export default class Accordions extends Component {
     openAccordion = (index = this.state.activeAccordion + 1) => {
         this.setState({activeAccordion: index});
         let accordion = this.refs[`accordion-${index}`];
-        // console.log(typeof accordion);
         if (typeof accordion === 'undefined') {
             this.props.next();
             return;
@@ -86,9 +85,9 @@ export default class Accordions extends Component {
                                             goNext={this.openAccordion}
                                             showModal={this.props.showModal}
                                         />
-                                        : <Button modifier="outline large" onClick={()=> {
+                                        : <Button modifier="outline" className="go-next" onClick={()=> {
                                         this.openAccordion(index + 1)
-                                    }}>Continue</Button>
+                                    }}><Icon icon="md-check"/> Next</Button>
                                 }
                             </Accordion>
                         )

@@ -12,12 +12,12 @@ export default class StepNav extends Component {
             if(this.props.currentStep === thisStep){
                 className += ' active';
             }
-            return <div className={className} key={thisStep}><div className="clickArea" onClick={()=>{this.props.jump(index)}}></div><span>{thisStep}</span></div>
+            return <div className={className} key={thisStep}><div className="clickArea" onClick={()=>{this.props.jump(thisStep)}}></div><span>{thisStep}</span></div>
         })
     }
 
     renderPrevButton() {
-        if(this.props.currentStep > 1){
+        if(this.props.currentStep !== 1){
             return (
                 <NavButton
                     text="PREV"
@@ -44,7 +44,7 @@ export default class StepNav extends Component {
     }
 
     render() {
-        let currentStep = this.props.steps[this.props.currentStep-1];
+        let currentStep = this.props.steps[this.props.currentStep - 1];
 
         return (
             <div className="step-nav">
