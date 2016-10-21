@@ -57,6 +57,7 @@ class PhotoInput extends Component {
                                     console.log(`got fileid with value ${res.public_id}`);
                                     value.push(res.public_id);
                                     context.props.onChange(value);
+                                    context.props.submitForm(true);
                                 });
                             }, (err) => {
                                 console.log("error getting file", err);
@@ -87,9 +88,8 @@ class PhotoInput extends Component {
         return false;
     };
 
-    enlargeImage = (publicId)=> {
-        console.log(`enlarging image ${publicId}`);
-        this.setState({enlargeImageModal: true, activeImageId: publicId});
+    enlargeImage = (index)=> {
+        this.props.showModal(this.props.value, index);
     };
 
     renderImage = ()=> {
@@ -116,7 +116,7 @@ class PhotoInput extends Component {
                         className="image"
                         style={{backgroundImage: `url('${bgImage}')`}}
                         onClick={()=> {
-                            this.enlargeImage(publicId)
+                            this.enlargeImage(index)
                         }}
                     >
                     </div>
@@ -164,9 +164,7 @@ class PhotoInput extends Component {
                     </a>
                     <div className="spacer"></div>
                 </div>
-                <Modal isOpen={this.state.enlargeImageModal}>
-                    {this.renderImage()}
-                </Modal>
+                
             </div>
         )
     }
@@ -175,6 +173,7 @@ class PhotoInput extends Component {
 export default PhotoInputContainer = createContainer((props)=>{
     return {
         uploadingImages:Cloudinary.collection.find({status:{$ne:"complete"}}).fetch(),
-        ...props
+        ...props,
+        ...props.passProps
     }
 }, PhotoInput);

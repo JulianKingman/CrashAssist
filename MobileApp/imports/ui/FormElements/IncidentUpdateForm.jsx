@@ -14,10 +14,10 @@ export default class IncidentUpdateForm extends Component {
         this.state = {};
     }
 
-    submitForm = ()=> {
+    submitForm = (noNext)=> {
         // console.log(this.props.doc, this.refs.form);
         this.refs.form.submit();
-        this.props.goNext();
+        if(!noNext) this.props.goNext();
     };
 
     render() {
@@ -33,9 +33,15 @@ export default class IncidentUpdateForm extends Component {
                     className="IncidentUpdateForm"
                 >
                     {
-                        this.props.fields.map(function (field, index) {
+                        this.props.fields.map((field, index)=> {
                             let arrayText = field.arrayText? field.arrayText: 'Item';
-                            return <Field fieldName={field.name} key={index} label={field.label} arrayText={arrayText}/>
+                            return <Field 
+                                        fieldName={field.name} 
+                                        key={index} 
+                                        label={field.label} 
+                                        arrayText={arrayText} 
+                                        showModal={this.props.showModal}
+                                        submitForm={this.submitForm}/>
                         })
                     }
                 </Form>

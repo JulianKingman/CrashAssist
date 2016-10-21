@@ -1,0 +1,13 @@
+ons-carousel-item {
+  visibility: visible !important;
+
+  .photo{
+    display: flex;
+    align-items: center;
+    height:100vh;
+    img {
+      max-width: 100%;
+    }
+  }
+
+}
