@@ -5,6 +5,7 @@ import NewIncidentSuccess from '/imports/ui/pages/NewIncidentSuccess/NewIncident
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 import {Users, User} from '/imports/shared/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
+import ImageGallary from '/imports/ui/components/ImageGallary/ImageGallary.jsx';
 import {createContainer} from 'meteor/react-meteor-data';
 import pageSchema from '/imports/shared/page-schema.js';
 import ReactTransitionGroup from 'react-addons-transition-group';
@@ -95,6 +96,25 @@ class NewIncident extends Component {
         );
     };
 
+    renderModal = () => {
+        return (
+            <ImageGallary
+            show={this.state.showModal}
+            images={this.state.images}
+            index={this.state.index}
+            close={this.closeModal}/>
+        )
+    };
+
+    closeModal = () => {
+        this.setState({showModal:false});
+    };
+    
+    showModal = (images, index) => {
+        console.log("showing modal");
+        this.setState({showModal:true, images, index});
+    };
+
     renderAccordions = (key)=> {
         let animationClass = this.state.isForward ? "step-forward" : "step-backward";
         return (
@@ -105,6 +125,7 @@ class NewIncident extends Component {
                 incident={this.props.incident}
                 next={this.nextStep}
                 key={key}
+                showModal={this.showModal}
                 className={animationClass}
             />
         );
@@ -114,7 +135,9 @@ class NewIncident extends Component {
     render() {
         let key = this.state.currentStep;
         return (
-            <Page renderToolbar={this.renderToolbar}>
+            <Page
+                renderToolbar={this.renderToolbar}
+                renderModal={this.renderModal}>
                 <div className="new-incident">
                     <ReactCSSTransitionGroup transitionEnterTimeout={300} transitionLeaveTimeout={300}
                                              transitionName="step">

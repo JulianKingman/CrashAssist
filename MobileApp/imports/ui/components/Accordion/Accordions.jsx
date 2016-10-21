@@ -63,6 +63,7 @@ export default class Accordions extends Component {
                         }
                         {/*let isOpen = this.state.activeAccordion*1 === index*1;*/
                         }
+                        
                         return (
                             <Accordion
                                 key={key}
@@ -82,6 +83,7 @@ export default class Accordions extends Component {
                                             doc={this.props.incident}
                                             fields={accordion.fields}
                                             goNext={this.openAccordion}
+                                            showModal={this.props.showModal}
                                         />
                                         : <Button modifier="outline" className="go-next" onClick={()=> {
                                         this.openAccordion(index + 1)

@@ -17,12 +17,12 @@ export default class IncidentUpdateForm extends Component {
         };
     }
 
-    submitForm = ()=> {
+    submitForm = (noNext)=> {
         // console.log(this.props.doc, this.refs.form);
         this.refs.form.submit();
         this.setState({isSaved: true});
         notify.show('Progress saved', 'success');
-        this.props.goNext();
+        if(!noNext) this.props.goNext();
     };
 
     modified = ()=> {
@@ -54,10 +54,16 @@ export default class IncidentUpdateForm extends Component {
                     className="IncidentUpdateForm"
                 >
                     {
-                        this.props.fields.map(function (field, index) {
-                            let arrayText = field.arrayText ? field.arrayText : 'Item';
-                            return <Field fieldName={field.name} key={index} label={field.label}
-                                          placeholder={field.label} arrayText={arrayText}/>
+                        this.props.fields.map((field, index)=> {
+                            let arrayText = field.arrayText? field.arrayText: 'Item';
+                            return <Field 
+                                        fieldName={field.name} 
+                                        key={index} 
+                                        label={field.label}
+                                        placeHolder={field.label}
+                                        arrayText={arrayText} 
+                                        showModal={this.props.showModal}
+                                        submitForm={this.submitForm}/>
                         })
                     }
                 </Form>
