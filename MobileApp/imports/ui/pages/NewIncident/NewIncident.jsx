@@ -32,6 +32,8 @@ class NewIncident extends Component {
             }, ()=> {
                 this.props.incident.setStep(this.state.currentStep);
             });
+        }else if(this.state.currentStep === pageSchema.length){
+            this.finishSteps();
         }
     };
 
