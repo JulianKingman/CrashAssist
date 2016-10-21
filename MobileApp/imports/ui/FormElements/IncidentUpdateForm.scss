@@ -1,6 +1,6 @@
 .IncidentUpdateForm {
   width: 100%;
-  .warning{
+  .warning {
     padding: 20px 0;
     color: #797979;
   }
@@ -14,7 +14,9 @@
   }
 }
 
-
-.toast-notification {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+.notification-wrapper {
+  .toast-notification {
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    width: auto;
+  }
 }

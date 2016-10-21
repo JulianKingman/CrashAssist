@@ -84,7 +84,7 @@ export default class App extends Component {
                     side='right'
                     width={200}
                     collapse={true}
-                    isSwipeable={false}
+                    isSwipeable={true}
                     isOpen={this.state.menuOpen}
                     onOpen={() => this.handleMenu(true)}
                     onClose={() => this.handleMenu(false)}>
