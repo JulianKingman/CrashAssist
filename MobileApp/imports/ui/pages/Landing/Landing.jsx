@@ -191,7 +191,7 @@ export default LandingContainer = createContainer(()=> {
     const pastIncidentsHandle = Meteor.subscribe('PastIncidents');
     // const loading = !pastIncidentsHandle.ready();
     const pastIncidents = Incidents.find({completed: true}).fetch();
-    const hideLoginDialog = Meteor._get(Meteor.user(), "profile", "hideLoginDialog") || true;
+    const hideLoginDialog = Meteor._get(Meteor.user() || {}, "profile", "hideLoginDialog") || true;
     return {
         incompleteIncidentExists: !!Incidents.findOne({completed: false}),
         completeIncidents: !!pastIncidents.length,
