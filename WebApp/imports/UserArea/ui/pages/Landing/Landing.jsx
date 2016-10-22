@@ -56,9 +56,9 @@ export default class Landing extends Component {
                     <Col xs={12}>
                         <Grid className="">
                             <h1 className="callout">Download Free</h1>
-                            <a href="#" className="google-play"><img src="/images/google-play-badge.png"
+                            <a href="https://play.google.com/store/apps/details?id=com.crashassist.app" className="google-play"><img src="/images/google-play-badge.png"
                                                                      alt="Download CrashAssist on the Google Play store"/></a>
-                            <a href="#" className="app-store"><img
+                            <a href="https://itunes.apple.com/us/app/crash-assist-app/id1167647959?ls=1&mt=8" className="app-store"><img
                                 src="/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg"
                                 alt="Download CrashAssist on the App Store"/></a>
                         </Grid>

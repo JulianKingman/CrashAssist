@@ -1,6 +1,6 @@
 App.info({
     id: 'com.crashassist.app',
-    version: '1.0.1',
+    version: '1.0.4',
     name: 'Crash Assist',
     description: 'Step-by-step Guide through Car Accidents',
     author: 'Designman.io',
@@ -15,6 +15,11 @@ App.accessRule("blob:*");
 App.setPreference('StatusBarBackgroundColor', '#ffffff');
 //set color of the title of the tile in recently used apps
 App.setPreference('RecentsBackgroundColor', '#ffffff');
+
+App.configurePlugin('cordova-plugin-camera', {
+   "NSCameraUsageDescription": "Use your camera to add photos to your crash incident report.",
+   "NSPhotoLibraryUsageDescriptionentry": "Add photos from your photo library to to your crash incident report."
+});
 
 //generate resources with: https://github.com/lpender/meteor-assets
 App.icons({
