@@ -1,7 +1,7 @@
 const pageSchema = [
     {
         "_id": "1",
-        "title": "Safety",
+        "title": "Safety First",
         "subtitle": "Stay safe and follow along with the steps above.",
         "order": 1,
         "accordions": [
@@ -52,9 +52,29 @@ const pageSchema = [
         ]
     },
     {
+        "_id": "2.5",
+        "title": "Witnesses",
+        "subtitle": "Gather witness testimony.",
+        "order": 2.5,
+        "accordions": [
+            {
+                "title": "Witness information",
+                "text": "<p>If there are any witnesses, gather their contact information and statements. Their testimony may be very helpful if there are discrepancies later on.</p>",
+                "fields": [
+                    {
+                        "name": "witnessInfo",
+                        "type": "array",
+                        "label": "Witness Information",
+                        "arrayText": "Witness"
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "_id": "3",
         "title": "Get Info",
-        "subtitle": "Stay safe and follow along with the steps above.",
+        "subtitle": "Gather information at the accident scene.",
         "order": 3,
         "accordions": [
             {
@@ -62,6 +82,11 @@ const pageSchema = [
                 "text": "<p>Enter the other driver's information</p>",
                 "form_id": "getInfo",
                 "fields": [
+                    {
+                        "name": "driverInfo.licensePhoto",
+                        "type": "photo",
+                        "label": "Take a picture of the other driver's license, and/or enter the details manually",
+                    },
                     {
                         "name": "driverInfo.name",
                         "type": "text",
@@ -89,18 +114,18 @@ const pageSchema = [
                     }
                 ]
             },
-            {
-                "title": "Passenger information",
-                "text": "<p>Enter information for any additional passengers in the car with the other driver</p>",
-                "fields": [
-                    {
-                        "name": "passengerInfo",
-                        "type": "array",
-                        "label": "Passenger Information",
-                        "arrayText": "Passenger"
-                    }
-                ]
-            },
+            // {
+            //     "title": "Passenger information",
+            //     "text": "<p>Enter information for any additional passengers in the car with the other driver</p>",
+            //     "fields": [
+            //         {
+            //             "name": "passengerInfo",
+            //             "type": "array",
+            //             "label": "Passenger Information",
+            //             "arrayText": "Passenger"
+            //         }
+            //     ]
+            // },
             {
                 "title": "Vehicle information",
                 "text": "<p>What vehicle was the other driver in?</p>",
@@ -163,6 +188,11 @@ const pageSchema = [
                 "text": "<p>Collect insurance information from the other driver, don't skip this step!</p>",
                 "fields": [
                     {
+                        "name": "insuranceInfo.photo",
+                        "type": "photo",
+                        "label": "Take a picture of the driver's insurance information and/or enter it below",
+                    },
+                    {
                         "name": "insuranceInfo.company",
                         "type": "text",
                         "label": "Company Name",
@@ -217,18 +247,6 @@ const pageSchema = [
                 ]
             },
             {
-                "title": "Witness information",
-                "text": "<p>If there are any witnesses, gather their contact information and statements.</p>",
-                "fields": [
-                    {
-                        "name": "witnessInfo",
-                        "type": "array",
-                        "label": "Witness Information",
-                        "arrayText": "Witness"
-                    }
-                ]
-            },
-            {
                 "title": "Any symptoms",
                 "text": "<p>List any symptoms you have begun to notice.</p>",
                 "fields": [
@@ -267,7 +285,8 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "photos",
-                        "type": "photo"
+                        "type": "photo",
+                        "label": "Photos go here"
                     }
                 ]
             },
@@ -280,7 +299,7 @@ const pageSchema = [
     {
         "_id": "4",
         "title": "Notify insurance",
-        "subtitle": "Next step is to notify insurance.",
+        "subtitle": "Call your insurance company to report the incident.",
         "order": 4,
         "accordions": [
             {
@@ -292,12 +311,12 @@ const pageSchema = [
     {
         "_id": "5",
         "title": "Seek medical attention",
-        "subtitle": "It's important to seek medical attention.",
+        "subtitle": "Don't minimize or discount your injuries.",
         "order": 5,
         "accordions": [
             {
                 "title": "Speak to your Physician",
-                "text": "<p>This is a critical aspect of your recovery from accident. /n Unfortunately, most of us are trained to minimize our injuries. FIGHT THIS URGE! As soon as any complaints of pain arise, even if they are minimal, you need to document these injuries. The best way to document them is to seek medical attention and be detailed with your descriptions to your physician. Make sure they are documented in the health care record.</p>"
+                "text": "<p>This is a critical aspect of your recovery from accident.</p><p>Unfortunately, most of us are trained to minimize our injuries. FIGHT THIS URGE! As soon as any complaints of pain arise, even if they are minimal, you need to document these injuries. The best way to document them is to seek medical attention and be detailed with your descriptions to your physician. Make sure they are documented in the health care record.</p>"
             }, {
                 "title": "Document your Injuries",
                 "text": "<p>Take photos of any bruises, abrasions, lacerations, redness, swelling, etc. Make sure to closely examine your face, neck, hands, arms, trunk, breasts, abdomen, knees or any other areas that hurt. /n Upload photos from your phone here</p>",
@@ -326,7 +345,7 @@ const pageSchema = [
         "accordions": [
             {
                 "title": "Consult attorney",
-                "text": "<p>You are a teacher, financial advisor, housewife, baseball coach, etc. You are not an expert in insurance procedures and case law. Do not even think about handling your claim on your own. Having dealt with insurance companies for 25 years, I would never entertain the thought of handling an auto injury claim on my own. There are literally dozens of mistakes you can make in dealing with all the aspects of a bodily injury and compensation claim. I repeat, do not try to handle these complex situations on your own. Get help. The good news is that attorneys in this area work their cases on a contingent basis. This means they do not get paid unless you do. Once you get the initial documentation completed and hand off the administration of your claim to a professional, your main mission is to get well. Make all your doctor’s appointments, do your home rehabilitation exercises and get well. Your attorney’s job is to protect  your legal rights including just compensation for pain, suffering, inconvenience, lost wages, future health care needs and for any permanent injuries.</p>"
+                "text": "<p>You are a teacher, financial advisor, housewife, baseball coach, etc. You are not an expert in insurance procedures and case law. Do not even think about handling your claim on your own. Having dealt with insurance companies for 25 years, I would never entertain the thought of handling an auto injury claim on my own. There are literally dozens of mistakes you can make in dealing with all the aspects of a bodily injury and compensation claim. I repeat, do not try to handle these complex situations on your own.</p><p>Get help. The good news is that attorneys in this area work their cases on a contingent basis. This means they do not get paid unless you do.</p><p>Once you get the initial documentation completed and hand off the administration of your claim to a professional, your main mission is to get well. Make all your doctor’s appointments, do your home rehabilitation exercises and get well. Your attorney’s job is to protect  your legal rights including just compensation for pain, suffering, inconvenience, lost wages, future health care needs and for any permanent injuries.</p>"
             }
         ]
     },

@@ -58,6 +58,7 @@ Incidents.attachSchema(Schemas.Incidents);
 
 const formSchema = new SimpleSchema({
     //driver info
+    "driverInfo.licensePhoto": {type: [String]},
     "driverInfo.name": {type: String},
     "driverInfo.address": {type: String},
     "driverInfo.phone": {type: String},
@@ -80,11 +81,12 @@ const formSchema = new SimpleSchema({
     "ownerInfo.email": {type: String},
     "ownerInfo.license": {type: String},
     //insurance info
+    "insuranceInfo.photo": {type: [String]},
     "insuranceInfo.company": {type: String},
     "insuranceInfo.policyNumber": {type: String},
     "insuranceInfo.agent": {type: String},
     //time & location
-    "timeLocation.date": {type: Date},
+    "timeLocation.date": {type: String},
     "timeLocation.time": {type: String},
     "timeLocation.location": {type: String},
     //Traffic Information

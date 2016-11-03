@@ -81,7 +81,7 @@ class Landing extends Component {
                     getTarget={()=> {
                         return this.refs.menuActuator
                     }}
-                    isOpen={this.props.completeIncidents && this.props.hideLoginDialog}
+                    isOpen={this.props.completeIncidents && !this.props.hideLoginDialog}
                     onOpen=""
                     onHide={this.hideLoginDialog}
                     onCancel={this.hideLoginDialog}

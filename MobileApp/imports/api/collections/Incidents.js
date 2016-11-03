@@ -12,6 +12,7 @@ import ArrayField from '../../ui/FormElements/Array.jsx';
 
 const formSchema = new SimpleSchema({
     //driver info
+    "driverInfo.licensePhoto": {type: String, srf: {type: PhotoInput}},
     "driverInfo.name": {type: String, srf: {type: TextInput}},
     "driverInfo.address": {type: String, srf: {type: TextInput}},
     "driverInfo.phone": {type: String, srf: {type: TelInput}},
@@ -34,6 +35,7 @@ const formSchema = new SimpleSchema({
     "ownerInfo.email": {type: String, srf: {type: EmailInput}},
     "ownerInfo.license": {type: String, srf: {type: TextInput}},
     //insurance info
+    "insuranceInfo.photo": {type: [String], srf: {type: PhotoInput}},
     "insuranceInfo.company": {type: String, srf: {type: TextInput}},
     "insuranceInfo.policyNumber": {type: String, srf: {type: TextInput}},
     "insuranceInfo.agent": {type: String, srf: {type: TextInput}},

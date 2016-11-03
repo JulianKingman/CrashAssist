@@ -35,7 +35,7 @@ export default class IncidentUpdateForm extends Component {
                 {
                     !this.state.isSaved ?
                         <div className="warning">
-                            <Icon icon="md-alert-triangle"/> Pending changes, click the check to save and continue.
+                            <Icon icon="md-alert-triangle"/> Pending changes, click 'save' to save and continue.
                         </div>
                         : ""
                 }

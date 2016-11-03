@@ -29,6 +29,7 @@ import Notifications from 'react-notify-toast';
  */
 //import '../startup/client/css/onsen-css-components.css';
 import 'onsenui/css/onsen-css-components.css';
+import './App.scss';
 
 const splitterMenuItems = [
     {title: "Past Incidents", component: PastIncidents},

@@ -20,7 +20,7 @@ export default class TextareaInput extends TextInput {
     render() {
         return (
             <textarea className="TextareaInput" name={this.props.fieldName} id="" cols="30"
-                      rows={this.props.rows || "5"} onChange={this.onChange.bind(this)}
+                      rows={this.props.rows || "3"} onChange={this.onChange.bind(this)}
                       ref="textarea" value={this.state.value} placeholder={this.props.label}>
             </textarea>
         )

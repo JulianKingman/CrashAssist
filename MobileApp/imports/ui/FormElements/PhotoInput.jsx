@@ -152,6 +152,7 @@ class PhotoInput extends Component {
     render() {
         return (
             <div className="photo-input">
+                <label htmlFor="">{this.props.label}</label>
                 <div className="photos">
                     {this.renderPhotos()}
                     {this.renderUploads()}

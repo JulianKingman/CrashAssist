@@ -1,10 +1,13 @@
 .photo-input {
+  label{
+    color: #8c8c8c;
+  }
   .photos {
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
     justify-content: space-between;
-    margin: -7.5px -7.5px 7.5px -7.5px;
+    margin: 0 -7.5px 7.5px -7.5px;
     & > * {
       margin: 7.5px;
     }
