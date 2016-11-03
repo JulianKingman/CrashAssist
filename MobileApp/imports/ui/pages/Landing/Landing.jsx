@@ -10,7 +10,7 @@ import {createContainer} from 'meteor/react-meteor-data';
 
 import './Landing.scss';
 
-export default class Landing extends Component {
+class Landing extends Component {
 
     constructor(props) {
         super(props);
