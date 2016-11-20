@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Modal, Icon, Carousel, CarouselItem} from 'react-onsenui';
 
-import './ImageGallary.scss';
+import './ImageGallery.scss';
 
-export default class ImageGallary extends Component {
+export default class ImageGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ export default class ImageGallary extends Component {
 
     handleChange = (event) => {
         this.setState({index: event.activeIndex});
-    }
+    };
 
     setIndex = (index) => {
         this.setState({index})

@@ -4,10 +4,20 @@ import {createContainer} from 'meteor/react-meteor-data';
 import {Incidents} from '/imports/shared/collections/Incidents.js';
 import _ from 'underscore';
 import NewIncident from '/imports/ui/pages/NewIncident/NewIncident.jsx';
+import ImageGallery from '/imports/ui/components/ImageGallery/ImageGallery.jsx'
 
 import pageSchema from '/imports/shared/page-schema.js';
 
 class SingleIncident extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            openImageModal: false,
+            imageIndex: 0,
+            images: []
+        }
+    }
+
     renderToolbar = () => {
         return (
             <Toolbar>
@@ -35,24 +45,53 @@ class SingleIncident extends Component {
         });
     };
 
+    enlargeImage = (index, images)=> {
+        console.log('image should be open now');
+        this.setState({openImageModal: true, imageIndex: index, images: images});
+    };
+    
+    closeModal = ()=>{
+        this.setState({openImageModal: false});
+    };
+
     renderField = (field, index)=> {
-        // console.log(`field ${field.name} of type ${field.type}`);
-        // console.log(`index: ${index}`);
+        let fieldParts = field.name.split('.');
+        let baseField = this.props.incident[fieldParts[0]];
+        let value;
+        if (fieldParts.length > 1) {
+            value = baseField ? baseField[fieldParts[1]] : baseField;
+        } else {
+            value = baseField;
+        }
         index = field.name + index;
         if (field.type === "photo") {
+            console.log(value);
+            value = Array.isArray(value) ? value : [value];
+            // if (photoIds && photoIds.length) {
             return (
-                <ListItem key={`item-${index}`}>Photos go here</ListItem>
-            )
+                <ListItem key={`item-${index}`}>
+                    {
+                        value.map((photoId, index)=> {
+                            let imageUrl = Cloudinary._helpers.url(photoId, {
+                                hash: {
+                                    width: 55, height: 55, crop: 'fill'
+                                }
+                            });
+                            return <img src={imageUrl} style={{marginRight: 15}}key={`${field.name}-photo-${index}`} onClick={()=> {
+                                this.enlargeImage(index, value)
+                            }}/>
+                        })
+                    }
+                </ListItem>
+            );
+            // }
         } else if (field.type === "array") {
-            // console.log("is an array");
             let arrayField = this.props.incident[field.name];
             if (arrayField && arrayField.length) {
                 //getting the array of field value groups, i.e. fieldGroup.$
                 return arrayField.map((fieldset, arrayIndex)=> {
-                    // console.log(Object.keys(fieldset));
                     //getting the fields, e.g. fieldGroup.$.field1, fieldGroup.$.field2
                     return Object.keys(fieldset).map((key, fieldIndex)=> {
-                        // console.log(`Key: ${key}, Value: ${fieldset[key]}, Component Key: ${`item-${index}-${arrayIndex}-${fieldIndex}`}`);
                         return (
                             <ListItem key={`item-${index}-${arrayIndex}-${fieldIndex}`}>
                                 <div className="left">{key}</div>
@@ -63,15 +102,6 @@ class SingleIncident extends Component {
                 });
             }
         } else {
-            let fieldParts = field.name.split('.');
-            let baseField = this.props.incident[fieldParts[0]];
-            let value;
-            if (fieldParts.length > 1) {
-                value = baseField ? baseField[fieldParts[1]] : baseField;
-            } else {
-                value = baseField;
-            }
-            // console.log(fieldParts, baseField, value);
             if (value) {
                 return (
                     <ListItem key={`item-${index}`}>
@@ -104,6 +134,12 @@ class SingleIncident extends Component {
                         }
                     })
                 }
+                <ImageGallery
+                    images={this.state.images}
+                    show={this.state.openImageModal}
+                    index={this.state.imageIndex}
+                    close={this.closeModal}
+                />
                 <Button modifier="large outline" onClick={this.deleteIncident}><Icon icon="md-delete"/> Delete</Button>
             </Page>
         );

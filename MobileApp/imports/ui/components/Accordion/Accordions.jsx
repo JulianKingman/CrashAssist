@@ -20,30 +20,28 @@ export default class Accordions extends Component {
     openAccordion = (index = this.state.activeAccordion + 1) => {
         this.setState({activeAccordion: index});
         let accordion = this.refs[`accordion-${index}`];
+        $(".accordion .expander").animate({height: 0});
         if (typeof accordion === 'undefined') {
+            //if they try to go next after the last one
             this.props.next();
             return;
+            //only open if they didn't click the same one
+        } else if (!(this.state.activeAccordion === index && $('.accordion.open').length)) {
+            let expander = accordion.refs.expander;
+            let accordionDom = ReactDOM.findDOMNode(accordion);
+            $(accordionDom).removeClass("closed").addClass("open");
+            setTimeout(function () {
+                $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
+                        //todo: tweak this later to make sure everything scrolls right
+                        $(expander).css({height: "auto"});
+                        $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
+                    }
+                );
+            }, 30);
+        } else {
+            $(".accordion").removeClass("open").addClass("closed");
         }
-        let expander = accordion.refs.expander;
-        let accordionDom = ReactDOM.findDOMNode(accordion);
-        // $(expander).css({"height": "auto"});
-        // let normalHeight = expander.clientHeight;
-        // $(expander).css({"height": 0});
-        // console.log(expander, normalHeight);
-        $(".accordion .expander").height(0);
-        // console.log($(accordion));
-        $(".accordion").removeClass("open").addClass("closed");
-        $(accordionDom).removeClass("closed").addClass("open");
-        //timeout is a fix for content that appears after loading
-        setTimeout(function () {
-            $(expander).animate({"height": $(expander).get(0).scrollHeight}, 200, function () {
-                    //todo: tweak this later to make sure everything scrolls right
-                    $(expander).css({height: "auto"});
-                    $(".page__content").animate({scrollTop: $(accordionDom).position().top}, 200);
-                }
-            );
-        }, 30);
-    }
+    };
 
     componentDidMount() {
         this.openAccordion(0);
@@ -63,7 +61,7 @@ export default class Accordions extends Component {
                         }
                         {/*let isOpen = this.state.activeAccordion*1 === index*1;*/
                         }
-                        
+
                         return (
                             <Accordion
                                 key={key}

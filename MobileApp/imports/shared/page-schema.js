@@ -85,7 +85,7 @@ const pageSchema = [
                     {
                         "name": "driverInfo.licensePhoto",
                         "type": "photo",
-                        "label": "Take a picture of the other driver's license, and/or enter the details manually",
+                        "label": "Photo of License",
                     },
                     {
                         "name": "driverInfo.name",
@@ -190,7 +190,7 @@ const pageSchema = [
                     {
                         "name": "insuranceInfo.photo",
                         "type": "photo",
-                        "label": "Take a picture of the driver's insurance information and/or enter it below",
+                        "label": "Photo of Insurance Info",
                     },
                     {
                         "name": "insuranceInfo.company",
@@ -237,12 +237,12 @@ const pageSchema = [
                     {
                         "name": "trafficInfo.roadConditions",
                         "type": "textarea",
-                        "label": "Describe the Road Conditions"
+                        "label": "Road Conditions"
                     },
                     {
                         "name": "trafficInfo.trafficControls",
                         "type": "textarea",
-                        "label": "Describe the traffic controls and signs."
+                        "label": "Traffic Controls & Signs"
                     }
                 ]
             },
@@ -275,7 +275,8 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "sketch",
-                        "type": "photo"
+                        "type": "photo",
+                        "label": "Sketch of accident"
                     }
                 ]
             },
@@ -286,7 +287,7 @@ const pageSchema = [
                     {
                         "name": "photos",
                         "type": "photo",
-                        "label": "Photos go here"
+                        "label": "Pictures of the scene"
                     }
                 ]
             },
@@ -323,7 +324,8 @@ const pageSchema = [
                 "fields": [
                     {
                         "name": "injuries",
-                        "type": "photo"
+                        "type": "photo",
+                        "label": "Photos of Injuries"
                     }
                 ]
             }, {

@@ -12,7 +12,7 @@ import ArrayField from '../../ui/FormElements/Array.jsx';
 
 const formSchema = new SimpleSchema({
     //driver info
-    "driverInfo.licensePhoto": {type: String, srf: {type: PhotoInput}},
+    "driverInfo.licensePhoto": {type: [String], srf: {type: PhotoInput}},
     "driverInfo.name": {type: String, srf: {type: TextInput}},
     "driverInfo.address": {type: String, srf: {type: TextInput}},
     "driverInfo.phone": {type: String, srf: {type: TelInput}},

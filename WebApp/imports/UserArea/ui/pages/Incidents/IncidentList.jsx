@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {Meteor} from 'meteor/meteor';
-import {Incidents, Incident} from '../../../../shared/collections/Incidents.js';
+import {Incidents, Incident} from '/imports/shared/collections/Incidents.js';
 import {Row, Grid, Col, Table, Glyphicon, Button} from 'react-bootstrap';
 import Layout from '../../components/Layout.jsx';
+import moment from 'moment';
 
 export default class IncidentList extends TrackerReact(Component) {
     constructor(props) {
@@ -20,7 +21,10 @@ export default class IncidentList extends TrackerReact(Component) {
     }
 
     incidents() {
-        return Incidents.find().fetch();
+        // if (this.state.subscription.incidents.ready()) {
+        // console.log(Incidents);
+            return Incidents.find({}).fetch();
+        // }
     }
 
     render() {
@@ -37,36 +41,16 @@ export default class IncidentList extends TrackerReact(Component) {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Example Name</td>
-                                <td>7/10/86</td>
-                                <td><Button href="/incidents/example">View <Glyphicon glyph="menu-right"/></Button></td>
-                            </tr>
-                            <tr>
-                                <td>Example Name</td>
-                                <td>7/10/86</td>
-                                <td><Button href="/incidents/example">View <Glyphicon glyph="menu-right"/></Button></td>
-                            </tr>
-                            <tr>
-                                <td>Example Name</td>
-                                <td>7/10/86</td>
-                                <td><Button href="/incidents/example">View <Glyphicon glyph="menu-right"/></Button></td>
-                            </tr>
-                            <tr>
-                                <td>Example Name</td>
-                                <td>7/10/86</td>
-                                <td><Button href="/incidents/example">View <Glyphicon glyph="menu-right"/></Button></td>
-                            </tr>
                             {
-                                this.incidents().map((incident, index)=> {
+                                this.incidents().map((incident, i)=> {
                                     return (
-                                        <tr>
-                                            <td>{incident.name}</td>
-                                            <td>{incident.date}</td>
+                                        <tr key={`incident-${i}`}>
+                                            <td>{incident.title}</td>
+                                            <td>{moment(incident.dateCreated).format('DD/MM/YYYY').toString()}</td>
                                             <td><Button href={`/incidents/${incident._id}`}>View <Glyphicon
                                                 glyph="menu-right"/></Button></td>
                                         </tr>
-                                    );
+                                    )
                                 })
                             }
                             </tbody>

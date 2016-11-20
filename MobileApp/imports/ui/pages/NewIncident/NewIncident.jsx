@@ -5,7 +5,7 @@ import NewIncidentSuccess from '/imports/ui/pages/NewIncidentSuccess/NewIncident
 import Accordions from '/imports/ui/components/Accordion/Accordions.jsx';
 import {Users, User} from '/imports/shared/collections/Users.js';
 import {Incidents, Incident} from '/imports/api/collections/Incidents.js';
-import ImageGallary from '/imports/ui/components/ImageGallary/ImageGallary.jsx';
+import ImageGallery from '/imports/ui/components/ImageGallery/ImageGallery.jsx';
 import {createContainer} from 'meteor/react-meteor-data';
 import pageSchema from '/imports/shared/page-schema.js';
 import ReactTransitionGroup from 'react-addons-transition-group';
@@ -100,7 +100,7 @@ class NewIncident extends Component {
 
     renderModal = () => {
         return (
-            <ImageGallary
+            <ImageGallery
             show={this.state.showModal}
             images={this.state.images}
             index={this.state.index}
