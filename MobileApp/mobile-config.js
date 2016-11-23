@@ -1,6 +1,6 @@
 App.info({
     id: 'com.crashassist.app',
-    version: '1.0.5',
+    version: '1.1.0',
     name: 'Crash Assist',
     description: 'Step-by-step Guide through Car Accidents',
     author: 'Designman.io',
