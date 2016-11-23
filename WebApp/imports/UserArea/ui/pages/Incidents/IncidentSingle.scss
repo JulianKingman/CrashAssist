@@ -1,6 +1,11 @@
-span.witness-row {
+span.array-field {
   margin-right: 15px;
 }
-.incident-photo{
+
+.incident-photo {
   max-width: 100%;
+}
+
+canvas#data-image {
+  display: none;
 }
