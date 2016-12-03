@@ -21,6 +21,7 @@
     "simple-react-form": "^1.7.3",
     "react-onsenui": "^1.0.0",
     "onsenui": "^2.0.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "lodash": "^4.17.2"
   }
 }
