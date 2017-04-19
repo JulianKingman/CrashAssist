@@ -33,6 +33,7 @@ const formSchema = new SimpleSchema({
   "do.cooperate": {type: Boolean, optional: true, srf: {type: TextInput}},
   "do.collectInformation": {type: Boolean, optional: true, srf: {type: TextInput}},
     //driver info
+    "driverInfo.licensePhoto": {type: Array, optional: true, srf: {type: PhotoInput}},
     "driverInfo.name": {type: String, optional: true, srf: {type: TextInput}},
     "driverInfo.address": {type: String, optional: true, srf: {type: TextInput}},
     "driverInfo.phone": {type: String, optional: true, srf: {type: TelInput}},
@@ -67,6 +68,7 @@ const formSchema = new SimpleSchema({
     "trafficInfo.trafficControls": {type: String, optional: true, srf: {type: TextareaInput}},
     //Witness Information
     "witnessInfo": {type: [Object], optional: true, srf: {type: ArrayField}},
+    "witnessInfo.$.infoPhoto": {type: Array, optional: true, srf: {type: PhotoInput}},
     "witnessInfo.$.name": {type: String, srf: {type: TextInput}, optional: true},
     "witnessInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
     "witnessInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
