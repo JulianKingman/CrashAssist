@@ -1,7 +1,7 @@
 {
   "name": "CrashAssist",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "start": "cd MobileApp && meteor run",
     "ios": "cd MobileApp && meteor run ios",
