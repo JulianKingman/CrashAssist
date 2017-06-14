@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import {Incident, Incidents} from '../../shared/collections/Incidents.js';
+import {Incident, Incidents} from '/imports/collections/Incidents.js';
 
 // import TextInput from '../../ui/FormElements/TextInput.jsx';
 // import NumberInput from '../../ui/FormElements/NumberInput.jsx';

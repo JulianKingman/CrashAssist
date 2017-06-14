@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom'
 import {Row, Grid, Col, Table, Glyphicon, Button, Panel, Image} from 'react-bootstrap';
 import {Meteor} from 'meteor/meteor';
-import {Incidents} from '/imports/shared/collections/Incidents.js';
+import {Incidents} from '/imports/collections/Incidents.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 // import {Cloudinary} from 'meteor/lepozepo:cloudinary';
 import Layout from '../../components/Layout.jsx';
-import pageSchema from '/imports/shared/page-schema.js';
+import pageSchema from '/imports/page-schema.js';
 import _ from 'lodash';
 // const pdfMake = require('pdfmake-node');
 import {getBinary, base64Encode} from '/imports/UserArea/lib/encodeImage.js'

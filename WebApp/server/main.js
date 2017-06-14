@@ -1,9 +1,9 @@
-import '../imports/shared/publications/PastIncidents.js';
-import '../imports/shared/publications/SingleIncident.js';
-import '../imports/shared/publications/IncompleteIncidents.js';
+import '/imports/publications/PastIncidents.js';
+import '/imports/publications/SingleIncident.js';
+import '/imports/publications/IncompleteIncidents.js';
 
-import '../imports/startup/routes';
+import '/imports/startup/routes';
 
-import '../imports/shared/server/accounts.js';
-import '../imports/shared/server/methods.js';
-import '/imports/shared/server/cloudinary-config.js'
+import '/imports/server/accounts.js';
+import '/imports/server/methods.js';
+import '/imports/server/cloudinary-config.js'
