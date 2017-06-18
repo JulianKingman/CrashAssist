@@ -1,3 +1,4 @@
+import '/imports/SimpleSchemaExtension.js';
 import '/imports/publications/PastIncidents.js';
 import '/imports/publications/SingleIncident.js';
 import '/imports/publications/IncompleteIncidents.js';

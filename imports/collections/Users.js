@@ -4,7 +4,7 @@
 
 import {BaseModel} from 'meteor/socialize:base-model';
 import {Incidents} from './Incidents.js';
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 // import {Ground} from 'meteor/ground:db';
 
 
