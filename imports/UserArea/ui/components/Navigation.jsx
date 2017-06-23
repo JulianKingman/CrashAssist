@@ -11,7 +11,7 @@ export default class Navigation extends Component {
         }
     }
 
-    loginHandler = (e)=> {
+    loginHandler(e) {
         e.preventDefault();
         console.log(`logging in with email ${this.state.email}`);
         Meteor.loginWithPassword(this.state.email, this.state.password, (err, res) => {
@@ -70,7 +70,10 @@ export default class Navigation extends Component {
                                     </Nav>
                                     :
                                     <Navbar.Form pullRight>
-                                        <form onSubmit={this.loginHandler}>
+                                        <form onSubmit={(e) => {
+                                          console.log(e);
+                                          this.loginHandler(e);
+                                        }}>
                                             <FormGroup>
                                                 <FormControl
                                                     type="email"
