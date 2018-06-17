@@ -9,5 +9,5 @@ SimpleSchema.extendOptions({
     unique: Match.Optional(Boolean),
     denyInsert: Match.Optional(Boolean),
     denyUpdate: Match.Optional(Boolean),
-    srf: Match.Optional(Object)
+    srf: Match.Optional(Object),
 });

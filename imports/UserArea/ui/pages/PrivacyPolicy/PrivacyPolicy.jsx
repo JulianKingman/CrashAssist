@@ -66,14 +66,14 @@ export default class PrivacyPolicy extends Component {
                                 identifiable information (such as name, address, email or phone) with trusted partners
                                 in order to provide you with relevant advertising, offers or services. Contact us
                                 if you want to opt-out of this sharing:</p>
-                            <p>crashassistapp.com OR <a
+                            <p>crashassist.app OR <a
                                 href="mailto:julian.kingman@gmail.com">julian.kingman@gmail.com</a></p>
                             <p>102 Charles St, Boston, MA 02114 </p>
 
                             <p>California residents are legally entitled (at no charge and no more than once annually)
                                 to request information about how we may have shared your information with others for
                                 direct marketing purposes. Contact us for this information: </p>
-                            <p>crashassistapp.com OR <a
+                            <p>crashassist.app OR <a
                                 href="mailto:julian.kingman@gmail.com">julian.kingman@gmail.com</a></p>
                             <p>102 Charles St, Boston, MA 02114</p>
 
@@ -84,7 +84,7 @@ export default class PrivacyPolicy extends Component {
                             <h3>Contact</h3>
                             <p>You can ask privacy questions. If you have any questions or concerns about our privacy
                                 policies, please contact us:</p>
-                            <p>crashassistapp.com OR <a
+                            <p>crashassist.app OR <a
                                 href="mailto:julian.kingman@gmail.com">julian.kingman@gmail.com</a></p>
                             <p>102 Charles St, Boston, MA 02114 </p>
 

@@ -30,7 +30,7 @@ export default class Navigation extends Component {
         );
     };
 
-    logoutHandler = ()=> {
+    logoutHandler = ()=> {Ï
         Meteor.logout();
         this.setState({loggedIn: false});
     }
@@ -71,7 +71,7 @@ export default class Navigation extends Component {
                                     :
                                     <Navbar.Form pullRight>
                                         <form onSubmit={(e) => {
-                                          console.log(e);
+                                          console.log('submitted', e);
                                           this.loginHandler(e);
                                         }}>
                                             <FormGroup>
