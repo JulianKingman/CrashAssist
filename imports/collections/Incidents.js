@@ -124,6 +124,7 @@ Schemas.formSchema = new SimpleSchema({
   "witnessInfo": {type: Array, optional: true, srf: {type: ArrayField}},
   "witnessInfo.$": {type: Object, optional: true},
   "witnessInfo.$.infoPhoto": {type: Array, optional: true, srf: {type: PhotoInput}},
+  "witnessInfo.$.infoPhoto.$": {type: String, optional: true},
   "witnessInfo.$.name": {type: String, srf: {type: TextInput}, optional: true},
   "witnessInfo.$.phone": {type: String, srf: {type: TelInput}, optional: true},
   "witnessInfo.$.email": {type: String, srf: {type: EmailInput}, optional: true},
