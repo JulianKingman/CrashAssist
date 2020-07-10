@@ -4,7 +4,8 @@
   "version": "2.0.0",
   "scripts": {
     "start": "meteor run",
-    "build": "meteor build ~/Builds/CrashAssistServer --architecture os.linux.x86_64 --server https://app.crashassist.app"
+    "build": "meteor build ~/Builds/CrashAssistServer --architecture os.linux.x86_64 --server https://app.crashassist.app",
+    "deploy": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json account.crashassist.app"
   },
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
