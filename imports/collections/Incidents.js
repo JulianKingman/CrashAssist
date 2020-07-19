@@ -25,7 +25,7 @@ let ArrayField = class extends Component {};
 const Schemas = {};
 
 Schemas.Incidents = new SimpleSchema({
-  _id: { type: String, index: 1, unique: 1 },
+  _id: { type: String },
   userId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,

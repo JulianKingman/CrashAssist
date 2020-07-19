@@ -1,0 +1,66 @@
+Arguments: 
+  /Users/Julian/.nvm/versions/node/v12.13.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js deploy
+
+PATH: 
+  /Users/Julian/.nvm/versions/node/v12.13.0/bin:/Users/Julian/.rvm/gems/ruby-2.3.1/bin:/Users/Julian/.rvm/gems/ruby-2.3.1@global/bin:/Users/Julian/.rvm/rubies/ruby-2.3.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/Julian/.rvm/bin:/Users/Julian/.rvm/bin:/Users/Julian/Library/Android/sdk:/Users/Julian/Library/Android/sdk:/Users/Julian/Library/Android/sdk:/Users/Julian/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  12.13.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "CrashAssistServer",
+    "private": true,
+    "version": "2.0.0",
+    "scripts": {
+      "start": "meteor run",
+      "build": "meteor build ~/Builds/CrashAssistServer --architecture os.linux.x86_64 --server https://app.crashassist.app",
+      "deploy": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json account.crashassist.app"
+    },
+    "dependencies": {
+      "@babel/runtime": "^7.10.4",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "bcrypt": "^1.0.3",
+      "bootstrap-sass": "^3.3.7",
+      "meteor-node-stubs": "^0.2.11",
+      "moment": "^2.18.1",
+      "onsenui": "^2.4.2",
+      "react": "^15.6.1",
+      "react-addons-pure-render-mixin": "^15.6.0",
+      "react-bootstrap": "^0.31.0",
+      "react-dom": "^15.6.1",
+      "react-onsenui": "^1.4.0",
+      "react-router": "^3.0.5",
+      "react-router-bootstrap": "^0.23.3",
+      "simpl-schema": "^0.3.2",
+      "simple-react-form": "^2.0.1",
+      "underscore": "^1.8.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json account.crashassist.app
+  Directory: /Users/Julian/Projects/CrashAssist
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:210:5)
+      at maybeClose (internal/child_process.js:1021:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:283:5)
