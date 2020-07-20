@@ -26,9 +26,9 @@ npm manifest:
     "dependencies": {
       "@babel/runtime": "^7.10.4",
       "babel-plugin-transform-class-properties": "^6.24.1",
-      "bcrypt": "^1.0.3",
+      "bcrypt": "^5.0.0",
       "bootstrap-sass": "^3.3.7",
-      "meteor-node-stubs": "^0.2.11",
+      "meteor-node-stubs": "^1.0.0",
       "moment": "^2.18.1",
       "onsenui": "^2.4.2",
       "react": "^15.6.1",
