@@ -151,8 +151,9 @@ Schemas.formSchema = new SimpleSchema({
     srf: { type: TextInput },
   },
   //driver info
+  driverInfo: { type: Object, optional: true },
   'driverInfo.licensePhoto': {
-    type: Array,
+    type: String,
     optional: true,
     srf: { type: PhotoInput },
   },
@@ -175,6 +176,7 @@ Schemas.formSchema = new SimpleSchema({
   },
   //[passenger info]
   passengerInfo: { type: Array, optional: true, srf: { type: ArrayField } },
+  'passengerInfo.$': { type: Object, optional: true },
   'passengerInfo.$.name': {
     type: String,
     optional: true,
@@ -191,6 +193,7 @@ Schemas.formSchema = new SimpleSchema({
     optional: true,
   },
   //vehicle info
+  vehicleInfo: { type: Object, optional: true },
   'vehicleInfo.make': {
     type: String,
     optional: true,
@@ -212,6 +215,7 @@ Schemas.formSchema = new SimpleSchema({
     srf: { type: TextInput },
   },
   //owner info
+  ownerInfo: { type: Object, optional: true },
   'ownerInfo.name': { type: String, optional: true, srf: { type: TextInput } },
   'ownerInfo.address': {
     type: String,
@@ -230,6 +234,7 @@ Schemas.formSchema = new SimpleSchema({
     srf: { type: TextInput },
   },
   //insurance info
+  insuranceInfo: { type: Object, optional: true },
   'insuranceInfo.company': {
     type: String,
     optional: true,
@@ -246,6 +251,7 @@ Schemas.formSchema = new SimpleSchema({
     srf: { type: TextInput },
   },
   //time & location
+  timeLocation: { type: Object, optional: true },
   'timeLocation.date': {
     type: String,
     optional: true,
@@ -276,11 +282,10 @@ Schemas.formSchema = new SimpleSchema({
   witnessInfo: { type: Array, optional: true, srf: { type: ArrayField } },
   'witnessInfo.$': { type: Object, optional: true },
   'witnessInfo.$.infoPhoto': {
-    type: Array,
+    type: String,
     optional: true,
     srf: { type: PhotoInput },
   },
-  'witnessInfo.$.infoPhoto.$': { type: String, optional: true },
   'witnessInfo.$.name': {
     type: String,
     srf: { type: TextInput },
@@ -308,13 +313,13 @@ Schemas.formSchema = new SimpleSchema({
     optional: true,
   },
   //sketch photo public id
-  sketch: { type: Array, srf: { type: PhotoInput }, optional: true },
+  sketch: { type: String, srf: { type: PhotoInput }, optional: true },
   //array of photo public ids
-  photos: { type: Array, srf: { type: PhotoInput }, optional: true },
-  'photos.$': { type: String, optional: true },
+  photos: { type: Array, srf: { type: ArrayField }, optional: true },
+  'photos.$': { type: String, srf: { type: PhotoInput }, optional: true },
   //injuries
-  injuries: { type: String, srf: { type: PhotoInput }, optional: true },
-  // 'injuries.$': { type: String, optional: true },
+  injuries: { type: Array, srf: { type: ArrayField }, optional: true },
+  'injuries.$': { type: String, srf: { type: PhotoInput }, optional: true },
   //Symptoms
   symptoms: { type: String, optional: true, srf: { type: TextInput } },
 });
